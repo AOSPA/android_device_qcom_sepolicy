@@ -70,3 +70,7 @@ r_dir_file(mediaserver, adsprpcd_file);
 binder_call(mediaserver, bootanim);
 
 allow mediaserver surfaceflinger:unix_stream_socket rw_socket_perms;
+
+# Allow mediaserver to search and get the widevine, playready firmwares
+allow mediaserver firmware_file:dir search;
+allow mediaserver firmware_file:file { read getattr open };
