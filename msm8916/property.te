@@ -27,4 +27,5 @@
 
 #properites for init.qcom.sh script
 type media_msm8939hw_prop, property_type;
+type media_msm8929hw_prop, property_type;
 

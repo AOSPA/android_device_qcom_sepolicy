@@ -26,3 +26,4 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 media.msm8939hw            u:object_r:media_msm8939hw_prop:s0
+media.msm8929hw            u:object_r:media_msm8929hw_prop:s0
