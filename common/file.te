@@ -173,3 +173,5 @@ type ssr_ramdump_data_file, file_type, data_file_type;
 
 # qtitetherservice files
 type qtitetherservice_app_data_file, file_type, data_file_type;
+#bluetooth firmware file types
+#type bt_firmware_file, fs_type, contextmount_type;
