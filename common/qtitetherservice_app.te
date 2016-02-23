@@ -25,26 +25,21 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-type dpmservice_app, domain;
-app_domain(dpmservice_app)
+type qtitetherservice_app, domain;
+app_domain(qtitetherservice_app)
 
-#allow db create, write, read and access
-allow dpmservice_app dpmd_app_data_file:dir create_dir_perms;
-allow dpmservice_app dpmd_socket:sock_file write;
-allow dpmservice_app dpmd_app_data_file:file create_file_perms;
-allow dpmservice_app dpmservice:service_manager  { add find };
+allow qtitetherservice_app qtitetherservices_service:service_manager add;
+allow qtitetherservice_app { app_api_service system_api_service }:service_manager find;
 
-allow dpmservice_app dpmd_data_file:dir rw_dir_perms;
-allow dpmservice_app dpmd_data_file:file create_file_perms;
-allow dpmservice_app app_api_service:service_manager find;
-allow dpmservice_app system_api_service:service_manager find;
+allow qtitetherservice_app self:socket create_socket_perms;
 
-#allow dpmservice to search mediaserver and radio service.
-allow dpmservice_app mediaserver_service:service_manager find;
-allow dpmservice_app radio_service:service_manager find;
+allow qtitetherservice_app ipa_dev:chr_file rw_file_perms;
 
-#don't audit /proc/<pid>/stat denials
-dontaudit dpmservice_app domain:dir r_dir_perms;
+unix_socket_connect(qtitetherservice_app, netd, netd);
 
-#allow dpmservice to get running time for apps
-r_dir_file(dpmservice_app, appdomain)
+qmux_socket(qtitetherservice_app);
+
+allow qtitetherservice_app qtitetherservice_app_data_file:dir create_dir_perms;
+allow qtitetherservice_app qtitetherservice_app_data_file:{ file lnk_file } create_file_perms;
+
+allow qtitetherservice_app wcnss_service_exec:file rx_file_perms;

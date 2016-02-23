@@ -29,7 +29,6 @@
 type RIDL, domain;
 type RIDL_exec, exec_type, file_type;
 
-type_transition RIDL RIDL_data_file:sock_file RIDL_socket;
 allow RIDL RIDL_socket:sock_file create_file_perms;
 allow RIDL RIDL_socket:dir create_dir_perms;
 
@@ -77,8 +76,40 @@ allow RIDL cache_file:file create_file_perms;
 allow RIDL powerctl_prop:property_service set;
 unix_socket_connect(RIDL, property, init)
 
-# Access to ANR/segfaults
+# ANR
+allow RIDL anr_data_file:dir r_dir_perms;
+allow RIDL anr_data_file:file r_file_perms;
+
+# detect /data/anr directory is created
+allow RIDL system_data_file:dir read;
+
 userdebug_or_eng(`
+	# Access to ANR/segfaults
 	allow RIDL tombstone_data_file:dir rw_dir_perms;
 	allow RIDL tombstone_data_file:file { unlink rw_file_perms };
+	allow RIDL anr_data_file:dir rw_dir_perms;
+	allow RIDL anr_data_file:file { unlink rw_file_perms };
+
+	# tcpdump
+	allow RIDL self:packet_socket create_socket_perms;
+	allow RIDL self:capability net_raw;
+
+        # allow location
+        allow RIDL app_api_service:service_manager find;
 ')
+
+# drop root caps
+allow RIDL self:capability { setuid setgid };
+
+# access to /proc/kmsg
+allow RIDL self:capability2 syslog;
+allow RIDL kernel:system syslog_mod;
+
+# allow access to /storage/ for sdcard
+allow RIDL storage_file:dir r_dir_perms;
+
+# allow logcat access
+read_logd( RIDL );
+
+# allow netstats
+allow RIDL system_api_service:service_manager find;
