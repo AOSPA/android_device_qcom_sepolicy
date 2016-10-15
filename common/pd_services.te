@@ -39,3 +39,6 @@ allow pd_mapper self:socket create_socket_perms;
 allow pd_mapper self:capability { setpcap setuid setgid net_bind_service };
 allow pd_mapper smem_log_device:chr_file rw_file_perms;
 qmux_socket(pd_mapper);
+
+#Allow pd-mapper to write error strings from non-hlos side to kmsg
+allow pd_mapper kmsg_device:chr_file w_file_perms;
