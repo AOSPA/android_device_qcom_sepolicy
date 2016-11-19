@@ -1,4 +1,5 @@
 # Board specific SELinux policy variable definitions
+ifneq ($(TARGET_EXCLUDE_QCOM_SEPOLICY),true)
 ifeq ($(call is-vendor-board-platform,QCOM),true)
 LOCAL_PATH:= $(call my-dir)
 BOARD_SEPOLICY_DIRS := \
@@ -23,4 +24,5 @@ BOARD_PLAT_PRIVATE_SEPOLICY_DIR := \
 
 # Add sepolicy version to support OS upgrade and backward compatibility
 BOARD_SEPOLICY_VERS := $(PLATFORM_SDK_VERSION).0
+endif
 endif
