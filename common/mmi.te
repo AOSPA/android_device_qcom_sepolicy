@@ -121,6 +121,10 @@ net_domain(mmi);
 
 #allow mmi access boot mode switch
 allow mmi boot_mode_prop:property_service set;
+
+#allow mmi monitor uevent
+allow mmi self:netlink_kobject_uevent_socket create_socket_perms;
+
 #diag
 userdebug_or_eng(`
     diag_use(mmi)
