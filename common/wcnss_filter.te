@@ -32,12 +32,16 @@ init_daemon_domain(wcnss_filter)
 net_domain(wcnss_filter)
 
 userdebug_or_eng(`
+typeattribute wcnss_filter qti_debugfs_domain;
+allow wcnss_filter debugfs:dir r_dir_perms;
+allow wcnss_filter debugfs:file rw_file_perms;
 allow wcnss_filter proc_sysrq:file { open write };
 ')
 allow wcnss_filter sysfs_msmuart_file:file rw_file_perms;
 allow wcnss_filter {
     serial_device
 }:chr_file rw_file_perms;
+
 
 #wakelock policy
 wakelock_use(wcnss_filter);
