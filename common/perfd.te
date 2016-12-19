@@ -51,6 +51,7 @@ allow perfd {
     surfaceflinger
     appdomain
     audioserver
+    cameraserver
 }:process signull;
 
 #Allow perfd to set properties
