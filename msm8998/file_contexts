@@ -66,6 +66,7 @@
 #
 /data/misc/qvop(/.*)?      u:object_r:qvop_data_file:s0
 /data/misc/qvr(/.*)?       u:object_r:qvrd_data_file:s0
+/data/misc/tloc(/.*)?      u:object_r:tlocd_data_file:s0
 
 ##################################
 # non-hlos mount points
