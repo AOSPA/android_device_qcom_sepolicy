@@ -101,6 +101,9 @@ type sec_nvm_sampleapp_device, dev_type;
 # Define sec_nvm_jcos device
 type sec_nvm_jcos_device, dev_type;
 
+# Define splog device
+type splog_device, dev_type;
+
 # Define cryptoapp device
 type cryptoapp_device, dev_type;
 
