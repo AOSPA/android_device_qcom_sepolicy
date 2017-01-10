@@ -46,6 +46,7 @@ allow perfd {
     system_server
     system_app
     wfdservice
+    mediacodec
     mediaserver
     thermal-engine
     surfaceflinger
