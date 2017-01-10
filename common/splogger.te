@@ -1,4 +1,4 @@
-# Copyright (c) 2016, The Linux Foundation. All rights reserved.
+# Copyright (c) 2017, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,16 +25,30 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#sysfs emmc dload type
-type sysfs_emmc_dload, sysfs_type, fs_type;
+# splogger service
+type splogger, domain;
 
-# Data type for QVOP
-type qvop_data_file, file_type, data_file_type;
+type splogger_exec, exec_type, file_type;
 
-# Data type for qvrd
-type qvrd_data_file, file_type, data_file_type;
-type qvrd_socket, file_type, mlstrustedobject;
+init_daemon_domain(splogger)
 
-#tloc daemon
-type tlocd_data_file, file_type, data_file_type;
-type tlocd_fifo, file_type;
+# Allow access to spcom device
+allow splogger spcom_device:chr_file rw_file_perms;
+
+# Allow access to skp device
+allow splogger skp_device:chr_file rw_file_perms;
+
+# Allow access to sp_ssr device
+allow splogger sp_ssr_device:chr_file rw_file_perms;
+
+# Allow access to spcom channel splog device
+allow splogger splog_device:chr_file rw_file_perms;
+
+# Allow to write to SPSS log file
+allow splogger spss_data_file:dir r_dir_perms;
+allow splogger spss_data_file:file r_file_perms;
+
+# Allow get system info
+r_dir_file(splogger, sysfs)
+
+

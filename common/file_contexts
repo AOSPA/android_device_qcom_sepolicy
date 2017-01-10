@@ -18,8 +18,11 @@
 /dev/nq-nci                                     u:object_r:nfc_device:s0
 /dev/qseecom                                    u:object_r:tee_device:s0
 /dev/spcom                                      u:object_r:spcom_device:s0
+/dev/splog                                      u:object_r:splog_device:s0
 /dev/sp_kernel                                  u:object_r:skp_device:s0
 /dev/sp_ssr                                     u:object_r:sp_ssr_device:s0
+/dev/sec_nvm_sampleapp                          u:object_r:sec_nvm_sampleapp_device:s0
+/dev/sec_nvm_jcos                               u:object_r:sec_nvm_jcos_device:s0
 /dev/sp_keymaster                               u:object_r:sp_keymaster_device:s0
 /dev/cryptoapp                                  u:object_r:cryptoapp_device:s0
 /dev/qsee_ipc_irq_spss                          u:object_r:qsee_ipc_irq_spss_device:s0
@@ -180,7 +183,9 @@
 /system/bin/tftp_server                         u:object_r:rfs_access_exec:s0
 /system/bin/hvdcp                               u:object_r:hvdcp_exec:s0
 /system/bin/qseecomd                            u:object_r:tee_exec:s0
+/system/bin/sec_nvm                             u:object_r:sec_nvm_exec:s0
 /system/bin/spdaemon                            u:object_r:spdaemon_exec:s0
+/system/bin/splogger                            u:object_r:splogger_exec:s0
 /system/bin/hostapd_cli                         u:object_r:hostapd_exec:s0
 /system/bin/adsprpcd                            u:object_r:adsprpcd_exec:s0
 /system/bin/wpa_cli                             u:object_r:wcnss_service_exec:s0
