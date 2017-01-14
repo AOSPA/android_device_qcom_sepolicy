@@ -28,6 +28,9 @@
 type qseeproxy, domain, domain_deprecated;
 type qseeproxy_exec, exec_type, file_type;
 
+#Allow surfaceflinger access qseeproxy for secure camera preview
+allow qseeproxy surfaceflinger:fd use;
+
 #Allow for transition from init domain to qseeproxy
 init_daemon_domain(qseeproxy)
 
