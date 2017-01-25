@@ -34,3 +34,4 @@ allow init-qti-fbe-sh shell_exec:file rx_file_perms;
 
 # execute toybox/toolbox
 allow init-qti-fbe-sh toolbox_exec:file rx_file_perms;
+allow init-qti-fbe-sh rootfs:lnk_file getattr;
