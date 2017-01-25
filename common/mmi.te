@@ -55,6 +55,8 @@ allow mmi fm_radio_device:chr_file r_file_perms;
 allow mmi fm_data_file:file r_file_perms;
 allow mmi fm_prop:property_service set;
 allow mmi ctl_default_prop:property_service set;
+unix_socket_connect(mmi, bluetooth, bluetooth)
+set_prop(mmi, bluetooth_prop)
 
 #bluetooth case
 allow mmi bluetooth_data_file:dir rw_dir_perms;
