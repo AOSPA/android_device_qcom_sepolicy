@@ -23,3 +23,6 @@ userdebug_or_eng(`
 
 # for finding gba_auth_service
 allow untrusted_app gba_auth_service:service_manager find;
+
+# To find MinkBinderSvc
+allow untrusted_app MinkBinderSvc:service_manager find;
