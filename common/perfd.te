@@ -52,6 +52,7 @@ allow perfd {
     appdomain
     audioserver
     cameraserver
+    wcnss_service
 }:process signull;
 
 #Allow perfd to set properties

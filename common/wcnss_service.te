@@ -36,6 +36,10 @@ allow wcnss_service sysfs:file w_file_perms;
 # allow access to netd
 unix_socket_connect(wcnss_service, netd, netd)
 
+# allow access to perfd
+unix_socket_connect(wcnss_service, mpctl, perfd)
+unix_socket_send(wcnss_service, mpctl, perfd)
+
 userdebug_or_eng(`
 allow wcnss_service fuse:dir create_dir_perms;
 allow wcnss_service fuse:file create_file_perms;
