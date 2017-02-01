@@ -27,4 +27,4 @@
 
 #binder access to surfaceflinger
 binder_call(mediadrmserver, surfaceflinger)
-allow mediadrmserver surfaceflinger_service:service_manager find;
+allow mediadrmserver surfaceflinger_service:service_manager find;
