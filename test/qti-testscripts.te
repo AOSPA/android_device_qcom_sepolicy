@@ -79,4 +79,6 @@ userdebug_or_eng(`
   allow domain qti-testscripts:fifo_file { write getattr };
   allow domain qti-testscripts:process sigchld;
   diag_use(radio)
+  #allow wpa to communicate to test scripts
+  allow wpa qti-testscripts:unix_dgram_socket sendto;
 ')
