@@ -87,6 +87,7 @@ allow mmi video_device:chr_file rw_file_perms;
 allow mmi camera_data_file:sock_file write;
 allow mmi camera_data_file:dir r_dir_perms;
 allow mmi mm-qcamerad:unix_dgram_socket sendto;
+set_prop(mmi, camera_prop)
 
 #nfc case
 allow mmi nfc_data_file:dir rw_dir_perms;
