@@ -32,5 +32,8 @@ allow init configfs:lnk_file create_file_perms;
 allow init firmware_file:dir { mounton };
 allow init bt_firmware_file:dir { mounton };
 
+#Allow module loading from the init.target.rc
+allow init system_file:system module_load;
+
 #dontaudit non configfs usb denials
 dontaudit init sysfs:dir write;
