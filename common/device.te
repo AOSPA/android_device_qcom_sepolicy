@@ -151,3 +151,6 @@ type at_device, dev_type;
 
 #define Bluetooth device
 type bt_device, dev_type;
+
+#define smcinvoke device
+type smcinvoke_device, dev_type;

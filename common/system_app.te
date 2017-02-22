@@ -200,3 +200,8 @@ unix_socket_connect(system_app, ims, ims)
 
 # access to qseeproxy domain
 allow system_app qseeproxy:unix_dgram_socket sendto;
+
+# allow system_app to interact with smcinvoke daemon
+binder_call(system_app, smcinvoke_daemon)
+# allow MinkBinderSvc to be found
+allow system_app MinkBinderSvc:service_manager find;

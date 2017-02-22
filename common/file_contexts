@@ -17,6 +17,7 @@
 /dev/nfc-nci                                    u:object_r:nfc_device:s0
 /dev/nq-nci                                     u:object_r:nfc_device:s0
 /dev/qseecom                                    u:object_r:tee_device:s0
+/dev/smcinvoke                                  u:object_r:smcinvoke_device:s0
 /dev/spcom                                      u:object_r:spcom_device:s0
 /dev/splog                                      u:object_r:splog_device:s0
 /dev/sp_kernel                                  u:object_r:skp_device:s0
@@ -259,6 +260,7 @@
 /system/bin/fstman                              u:object_r:fstman_exec:s0
 /system/vendor/bin/mdtpd                        u:object_r:mdtpdaemon_exec:s0
 /system/bin/wifi_ftmd                           u:object_r:wifi_ftmd_exec:s0
+/system/vendor/bin/smcinvoked                   u:object_r:smcinvoke_daemon_exec:s0
 
 ###################################
 # sysfs files
