@@ -162,3 +162,6 @@ allow system_server persist_alarm_file:file { rw_file_perms create };
 userdebug_or_eng(`
   diag_use(system_server)
 ')
+
+allow system_server iop_data_file:dir search;
+allow system_server iop_data_file:sock_file write;
