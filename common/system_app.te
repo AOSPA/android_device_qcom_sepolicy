@@ -200,3 +200,14 @@ unix_socket_connect(system_app, ims, ims)
 
 # access to qseeproxy domain
 allow system_app qseeproxy:unix_dgram_socket sendto;
+
+# allow system_app to interact with smcinvoke daemon
+binder_call(system_app, smcinvoke_daemon)
+# allow MinkBinderSvc to be found
+allow system_app MinkBinderSvc:service_manager find;
+
+# allow access to cache recovery for LK3
+allow system_app cache_file:dir create_dir_perms;
+allow system_app cache_file:file create_file_perms;
+allow system_app cache_recovery_file:dir rw_dir_perms;
+allow system_app cache_recovery_file:file create_file_perms;

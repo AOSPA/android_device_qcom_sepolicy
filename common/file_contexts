@@ -17,6 +17,7 @@
 /dev/nfc-nci                                    u:object_r:nfc_device:s0
 /dev/nq-nci                                     u:object_r:nfc_device:s0
 /dev/qseecom                                    u:object_r:tee_device:s0
+/dev/smcinvoke                                  u:object_r:smcinvoke_device:s0
 /dev/spcom                                      u:object_r:spcom_device:s0
 /dev/splog                                      u:object_r:splog_device:s0
 /dev/sp_kernel                                  u:object_r:skp_device:s0
@@ -79,6 +80,7 @@
 /dev/dri/card0                                  u:object_r:graphics_device:s0
 /dev/dri/controlD64                             u:object_r:graphics_device:s0
 /dev/dri/renderD128                             u:object_r:graphics_device:s0
+/dev/wlan                                       u:object_r:wlan_device:s0
 
 ###################################
 # Dev block nodes
@@ -259,6 +261,7 @@
 /system/bin/fstman                              u:object_r:fstman_exec:s0
 /system/vendor/bin/mdtpd                        u:object_r:mdtpdaemon_exec:s0
 /system/bin/wifi_ftmd                           u:object_r:wifi_ftmd_exec:s0
+/system/vendor/bin/smcinvoked                   u:object_r:smcinvoke_daemon_exec:s0
 
 ###################################
 # sysfs files
@@ -288,6 +291,7 @@
 /sys/devices/f9a55000.*/power_supply/usb(/.*)?                      u:object_r:sysfs_usb_supply:s0
 /sys/devices/virtual/graphics/fb([0-3])+/hpd                        u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/graphics/fb([0-3])+/res_info                   u:object_r:sysfs_graphics:s0
+/sys/devices/virtual/graphics/fb([0-3])+/hdcp2p2/min_level_change   u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/graphics/fb([0-3])+/s3d_mode                   u:object_r:sysfs_graphics:s0
 /sys/class/graphics/fb([0-2])+/mdp/caps                             u:object_r:sysfs_graphics:s0
 /sys/class/graphics/fb([0-2])+/ad                                   u:object_r:sysfs_graphics:s0
@@ -330,7 +334,6 @@
 /data/misc/location(/.*)?                                           u:object_r:location_data_file:s0
 /data/misc/location/mq/location-mq-s                                u:object_r:location_socket:s0
 /data/misc/location/mq/alarm_svc                                    u:object_r:location_socket:s0
-/data/FTM_AP(/.*)?                                                  u:object_r:mmi_data_file:s0
 /data/misc/hbtp(/.*)?                                               u:object_r:hbtp_log_file:s0
 /data/misc/qlogd(/.*)?                                              u:object_r:qlogd_data_file:s0
 /data/usf(/.*)?                                                     u:object_r:usf_data_file:s0
@@ -372,6 +375,7 @@
 /persist/speccfg(/.*)?                                              u:object_r:regionalization_file:s0
 /persist/misc(/.*)?                                                 u:object_r:persist_misc_file:s0
 /persist/bms(/.*)?                                                  u:object_r:persist_bms_file:s0
+/persist/FTM_AP(/.*)?                                               u:object_r:mmi_data_file:s0
 
 ###################################
 # etc files
@@ -382,8 +386,3 @@
 # adsp files
 #
 /dsp(/.*)?                                                          u:object_r:adsprpcd_file:s0
-
-###################################
-# cache files
-#
-/cache/FTM_AP(/.*)?                                                  u:object_r:mmi_data_file:s0
