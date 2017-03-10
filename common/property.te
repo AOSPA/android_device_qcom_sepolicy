@@ -107,3 +107,6 @@ type boot_mode_prop, property_type;
 type nfc_nq_prop, property_type, core_property_type;
 #mdlog property
 type diag_mdlog_prop, property_type, core_property_type;
+
+#properties for crash detection
+type detect_prop, property_type;

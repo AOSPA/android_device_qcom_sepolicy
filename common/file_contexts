@@ -262,7 +262,7 @@
 /system/vendor/bin/mdtpd                        u:object_r:mdtpdaemon_exec:s0
 /system/bin/wifi_ftmd                           u:object_r:wifi_ftmd_exec:s0
 /system/vendor/bin/smcinvoked                   u:object_r:smcinvoke_daemon_exec:s0
-
+/system/bin/qdmastatsd                          u:object_r:qdmastatsd_exec:s0
 ###################################
 # sysfs files
 #
@@ -340,6 +340,7 @@
 /data/misc/dts(/.*)?                                                u:object_r:dts_data_file:s0
 /data/misc/seemp(/.*)?                                              u:object_r:seemp_file:s0
 /data/misc/SelfHost(/.*)?                                           u:object_r:RIDL_data_file:s0
+/data/misc/OTA(/.*)?                                                u:object_r:RIDL_data_file:s0
 /data/misc/qti-logkit(/.*)?                                         u:object_r:qti_logkit_priv_data_file:s0
 /data/misc/qti-logkit/shared-public(/.*)?                           u:object_r:qti_logkit_pub_data_file:s0
 /data/misc/qti-logkit/logdata(/.*)?                                 u:object_r:qti_logkit_pub_data_file:s0
@@ -356,6 +357,8 @@
 /data/misc/wifi/wigig_sockets(/.*)?                                 u:object_r:wpa_socket:s0
 /data/misc/wifi/wigig_sockets/wpa_ctrl.*                            u:object_r:system_wpa_socket:s0
 /data/app-regional(/.*)?                                            u:object_r:regionalization_data_file:s0
+/data/misc/qdma(/.*)?                                               u:object_r:qdma_data_file:s0
+/data/misc/qdmastats(/.*)?                                          u:object_r:qdma_data_file:s0
 ###################################
 # persist files
 #

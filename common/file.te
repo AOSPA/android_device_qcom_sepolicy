@@ -210,3 +210,7 @@ type sysfs_kgsl, sysfs_type, fs_type;
 
 # secure touch files
 type sysfs_securetouch, fs_type, sysfs_type;
+
+# QDMA data files
+type qdma_data_file, file_type, data_file_type;
+type qdma_app_data_file, file_type, data_file_type;
