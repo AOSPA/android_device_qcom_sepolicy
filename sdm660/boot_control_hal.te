@@ -46,12 +46,15 @@ allow boot_control_hal {
 # Allow the boot_control_hal to edit the attributes stored in the GPT.
 allow boot_control_hal gpt_block_device:blk_file rw_file_perms;
 allow boot_control_hal root_block_device:blk_file rw_file_perms;
-allow boot_control_hal self:capability sys_rawio;
 
 # Allow boot_control_hal to access /dev/sgN devices (generic SCSI) to write the
 # A/B slot selection for the XBL partition. Allow also to issue a
 # UFS_IOCTL_QUERY ioctl.
 allow boot_control_hal sg_device:chr_file rw_file_perms;
+# The sys_rawio denial message is benign, and shows up due to a capability()
+# call made by the scsi driver to check for CAP_SYS_RAWIO. Not having this
+# capability does not result in a error.
+dontaudit boot_control_hal self:capability sys_rawio;
 
 # Allow boot_control_hal to write to the XBL devices.
 allow boot_control_hal xbl_block_device:blk_file rw_file_perms;
