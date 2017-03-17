@@ -30,3 +30,6 @@ allow platform_app gba_auth_service:service_manager find;
 
 # Allow dpmservice to be found
 allow platform_app dpmservice:service_manager find;
+
+# Allow MinkBinderSvc to be found
+allow platform_app MinkBinderSvc:service_manager find;

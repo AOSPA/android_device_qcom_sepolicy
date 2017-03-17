@@ -96,3 +96,7 @@ sys.boot_mode              u:object_r:boot_mode_prop:s0
 ro.gpu.available_frequencies u:object_r:freq_prop:s0
 # NFC
 sys.nfc.nq.                u:object_r:nfc_nq_prop:s0
+
+#crash detection property
+sys.crash.detect			u:object_r:detect_prop:s0
+persist.crash.cnt			u:object_r:detect_prop:s0
