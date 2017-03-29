@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2017, The Linux Foundation. All rights reserved.
+# Copyright (c) 2017, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,14 +25,6 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# For Regionalization service
-allow system_server regionalization_service:service_manager { add find };
-allow system_server regionalization_file:file rw_file_perms;
-allow system_server regionalization_file:dir r_dir_perms;
-allow system_server resourcecache_data_file:dir create_dir_perms;
-allow system_server resourcecache_data_file:file create_file_perms;
-
-# For Iris service
-binder_call(system_server, irisdaemon)
-allow system_server irisdaemon_service:service_manager find;
-set_prop(system_server, iris_prop)
+# Provide access to iris data file
+allow tee iris_data_file:dir create_dir_perms;
+allow tee iris_data_file:file create_file_perms;

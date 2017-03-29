@@ -137,3 +137,7 @@
 
 # Block devices for the drive that holds the xbl_a and xbl_b partitions.
 /dev/block/platform/soc/1da4000.ufshc/sd[bc]                 u:object_r:xbl_block_device:s0
+
+# Iris data files
+/system/bin/irisdaemon                                          u:object_r:irisdaemon_exec:s0
+/data/misc/iris(/.*)?                                           u:object_r:iris_data_file:s0
