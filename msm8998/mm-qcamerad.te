@@ -27,3 +27,6 @@
 
 #Allow camera to work normally in VR mode
 binder_call(mm-qcamerad, qvrd)
+
+#Allow camera to work with iris
+allow mm-qcamerad irisdaemon:fd use;

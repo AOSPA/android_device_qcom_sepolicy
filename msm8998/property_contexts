@@ -26,3 +26,5 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ctl.qvrd                   u:object_r:ctl_qvrd_prop:s0
+
+persist.iris.              u:object_r:iris_prop:s0

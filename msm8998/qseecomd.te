@@ -28,3 +28,7 @@
 # Provide access to Q VoicePrint
 allow tee qvop_data_file:dir create_dir_perms;
 allow tee qvop_data_file:file create_file_perms;
+
+# Provide access to iris data file
+allow tee iris_data_file:dir create_dir_perms;
+allow tee iris_data_file:file create_file_perms;
