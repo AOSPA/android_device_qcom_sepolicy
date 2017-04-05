@@ -24,6 +24,7 @@
 /system/bin/Wifilogger_app                      u:object_r:wcnss_service_exec:s0
 /system/bin/hs20-osu-client                     u:object_r:wcnss_service_exec:s0
 /system/bin/ndc                                 u:object_r:wcnss_service_exec:s0
+/system/bin/icm                                 u:object_r:wcnss_service_exec:s0
 /system/bin/playreadygtest(.*)                  u:object_r:sectest_exec:s0
 /system/bin/oem(.*)test                         u:object_r:sectest_exec:s0
 /system/bin/widevine(.*)                        u:object_r:sectest_exec:s0

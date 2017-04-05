@@ -214,3 +214,6 @@ allow system_app cache_recovery_file:file create_file_perms;
 
 # update engine
 binder_call( system_app, update_engine )
+
+# allow to read detect_prop
+allow system_app detect_prop:file r_file_perms;
