@@ -73,6 +73,9 @@ userdebug_or_eng(`
 ')
 allow qvrd appdomain:process setsched;
 
+# Allow access to kgsl sysfs nodes for performance optimization
+allow qvrd sysfs_kgsl:file rw_file_perms;
+
 #
 # Camera
 #
@@ -85,7 +88,7 @@ allow qvrd mm-qcamerad:unix_dgram_socket sendto;
 binder_use(qvrd)
 binder_call(qvrd, surfaceflinger);
 allow qvrd surfaceflinger_service:service_manager find;
-allow qvrd sysfs:file r_file_perms;
+allow qvrd sysfs:file rw_file_perms;
 
 # Allow access to /dev/video/* devices
 allow qvrd video_device:dir r_dir_perms;
