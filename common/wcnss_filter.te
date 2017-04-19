@@ -57,6 +57,7 @@ allow wcnss_filter bluetooth_data_file:notdevfile_class_set create_file_perms;
 allow wcnss_filter persist_bluetooth_file:dir r_dir_perms;
 allow wcnss_filter persist_bluetooth_file:file r_file_perms;
 allow wcnss_filter persist_file:dir r_dir_perms;
+allow wcnss_filter sysfs:file r_file_perms;
 
 #diag
 userdebug_or_eng(`
