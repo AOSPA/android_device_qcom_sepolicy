@@ -38,8 +38,14 @@ allow hostapd cnd:{
           fifo_file
           netlink_route_socket
           netlink_tcpdiag_socket
-          unix_stream_socket} { read write };
+          unix_stream_socket
+          unix_dgram_socket} { read write };
 allow hostapd cnd:fifo_file r_file_perms;
 allow hostapd smem_log_device:chr_file rw_file_perms;
 allow hostapd fstman:unix_dgram_socket sendto;
 unix_socket_send(hostapd, wpa, netd)
+
+#diag
+userdebug_or_eng(`
+    diag_use(hostapd)
+')

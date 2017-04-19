@@ -65,3 +65,6 @@
 
 #Context for mediaserver
 /data/display-tests/media(/.*)?                 u:object_r:display_test_media_file:s0
+
+# Custom coredump file object
+/data/misc/core(/.*)?                           u:object_r:custom_coredump_file:s0
