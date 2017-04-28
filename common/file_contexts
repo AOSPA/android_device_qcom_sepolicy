@@ -133,6 +133,7 @@
 /dev/socket/rild-debug3                         u:object_r:rild_debug_socket:s0
 /dev/socket/msm_irqbalance                      u:object_r:msm_irqbalance_socket:s0
 /dev/socket/seempdw                             u:object_r:seempdw_socket:s0
+/dev/socket/mlid                                u:object_r:mlid_socket:s0
 /dev/socket/wififtmd_server                     u:object_r:wififtmd_socket:s0
 /dev/socket/wpa_wigig[0-9]                      u:object_r:wpa_socket:s0
 
@@ -213,6 +214,7 @@
 /system/bin/ssr_setup                           u:object_r:ssr_setup_exec:s0
 /system/bin/subsystem_ramdump                   u:object_r:subsystem_ramdump_exec:s0
 /system/bin/ssr_diag                            u:object_r:ssr_diag_exec:s0
+/system/bin/mlid                                u:object_r:mlid_exec:s0
 /system/bin/loc_launcher                        u:object_r:location_exec:s0
 /system/bin/quipc_main                          u:object_r:location_exec:s0
 /system/bin/ipepb                               u:object_r:location_exec:s0
