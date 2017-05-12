@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b7ad26d_38f6047d",
+        "filename": "msm8974/netmgrd.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000007
+      },
+      "writtenOn": "2017-05-12T10:43:41Z",
+      "side": 1,
+      "message": "Isn\u0027t this neverallow?",
+      "revId": "2ebe9a392fa2d4a7094dd6ab9e2004f98eba3a39",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad",
+      "unresolved": false
+    }
+  ]
+}
