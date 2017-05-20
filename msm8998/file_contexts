@@ -82,6 +82,8 @@
 # Dev socket nodes
 #
 /dev/socket/qvrservice                                                          u:object_r:qvrd_socket:s0
+/dev/socket/qvrservice_camera                                                   u:object_r:qvrd_cam_socket:s0
+/dev/socket/qvrservice_hvx_camera                                               u:object_r:qvrd_hvx_cam_socket:s0
 
 ###################################
 # System files
