@@ -16,6 +16,24 @@
       "revId": "2ebe9a392fa2d4a7094dd6ab9e2004f98eba3a39",
       "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1bc9f40_af0421f2",
+        "filename": "msm8974/netmgrd.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1000070
+      },
+      "writtenOn": "2017-05-23T15:59:29Z",
+      "side": 1,
+      "message": "FYI this is not a neverallow, and in fact needed on bacon as well.\nI put it into my device tree though.",
+      "parentUuid": "9b7ad26d_38f6047d",
+      "revId": "2ebe9a392fa2d4a7094dd6ab9e2004f98eba3a39",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad",
+      "unresolved": false
     }
   ]
 }
