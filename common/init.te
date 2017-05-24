@@ -37,3 +37,6 @@ allow init system_file:system module_load;
 
 #dontaudit non configfs usb denials
 dontaudit init sysfs:dir write;
+
+#rawdump
+allow init rawdump_block_device:blk_file setattr;
