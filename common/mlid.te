@@ -25,7 +25,12 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-allow priv_app rfs_system_file:dir r_dir_perms;
+# mlid - Mink-Lowi Interface daemon
+type mlid, domain, mlstrustedsubject;
+type mlid_exec, exec_type, file_type;
 
-# Allow access to mlid socket
-unix_socket_connect(priv_app, mlid, mlid)
+init_daemon_domain(mlid)
+
+# Allow access to location socket
+allow mlid location_data_file:dir r_dir_perms;
+unix_socket_connect(mlid, location, location)

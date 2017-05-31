@@ -25,7 +25,9 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-allow priv_app rfs_system_file:dir r_dir_perms;
-
-# Allow access to mlid socket
-unix_socket_connect(priv_app, mlid, mlid)
+# Allow system_server to access custoem_coredump_file
+# i.e. /data/misc/core(/*)
+userdebug_or_eng(`
+    allow system_server custom_coredump_file:file { create_file_perms };
+    allow system_server custom_coredump_file:dir { rw_dir_perms };
+')
