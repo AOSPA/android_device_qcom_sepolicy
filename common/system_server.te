@@ -77,6 +77,9 @@ allow system_server wlan_device:chr_file rw_file_perms;
 #For ssr
 allow system_server ssr_device:chr_file r_file_perms;
 
+#for contexthub
+allow system_server qdsp_device:chr_file r_file_perms;
+
 allow system_server { fuse persist_file }:dir search;
 
 allow system_server {

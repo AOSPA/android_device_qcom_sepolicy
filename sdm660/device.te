@@ -30,3 +30,6 @@ type custom_ab_block_device, dev_type;
 type xbl_block_device, dev_type;
 type gpt_block_device, dev_type;
 type modem_block_device, dev_type;
+
+#Define rawdump block device
+type rawdump_block_device, dev_type;
