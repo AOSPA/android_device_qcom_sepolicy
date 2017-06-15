@@ -38,8 +38,10 @@ init_daemon_domain(qvrd)
 allow qvrd qvrd_data_file:dir create_dir_perms;
 allow qvrd qvrd_data_file:file create_file_perms;
 
-# Allow access to our socket
+# Allow access to our sockets
 allow qvrd qvrd_socket:sock_file rw_file_perms;
+allow qvrd qvrd_cam_socket:sock_file rw_file_perms;
+allow qvrd qvrd_hvx_cam_socket:sock_file rw_file_perms;
 
 #
 # Sensors
@@ -90,6 +92,9 @@ binder_call(qvrd, surfaceflinger);
 allow qvrd surfaceflinger_service:service_manager find;
 allow qvrd sysfs:file rw_file_perms;
 
+# Allow access to permission service to check camera permission
+allow qvrd permission_service:service_manager find;
+
 # Allow access to /dev/video/* devices
 allow qvrd video_device:dir r_dir_perms;
 
@@ -101,3 +106,10 @@ allow qvrd self:socket create_socket_perms;
 allow qvrd persist_file:dir r_dir_perms;
 allow qvrd sensors_persist_file:dir r_dir_perms;
 allow qvrd sensors_persist_file:file r_file_perms;
+
+userdebug_or_eng(`
+    diag_use(qvrd)
+')
+
+# Write system property
+set_prop(qvrd, camera_prop);
