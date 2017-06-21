@@ -25,9 +25,15 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-type hal_display_color_hwservice, hwservice_manager_type;
-type hal_display_config_hwservice, hwservice_manager_type;
-type hal_display_postproc_hwservice, hwservice_manager_type;
-type hal_dpmqmi_hwservice, hwservice_manager_type;
-type hal_imsrtp_hwservice, hwservice_manager_type;
-type hal_perf_hwservice, hwservice_manager_type;
+
+####### device files ##############
+/dev/seemplog                                   u:object_r:seemplog_device:s0
+
+####### dev/socket files ##########
+/dev/socket/seempdw                             u:object_r:seempdw_socket:s0
+
+####### system file ###############
+/system/bin/seempd                              u:object_r:seempd_exec:s0
+
+####### data files ################
+/data/misc/seemp(/.*)?                          u:object_r:seemp_data_file:s0
