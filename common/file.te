@@ -201,6 +201,9 @@ type swap_data_file, file_type, data_file_type;
 # dynamic nv files
 type dynamic_nv_data_file, file_type, data_file_type;
 
+# Wifi Data file
+type wifi_vendor_data_file, file_type, data_file_type;
+
 # wififtmd socket file
 type wififtmd_socket, file_type;
 
@@ -219,3 +222,7 @@ type sysfs_data, fs_type, sysfs_type;
 
 #diag sysfs files
 type sysfs_diag, fs_type, sysfs_type;
+
+# QDMA data files
+type qdma_data_file, file_type, data_file_type;
+type qdma_app_data_file, file_type, data_file_type;
