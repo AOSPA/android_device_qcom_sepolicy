@@ -1,0 +1,7 @@
+Code-Review+2: Alex Naidis <alex.naidis@linux.com>
+Verified+1: Alex Naidis <alex.naidis@linux.com>
+Submitted-by: Alex Naidis <alex.naidis@linux.com>
+Submitted-at: Tue, 04 Jul 2017 23:25:35 +0000
+Reviewed-on: https://gerrit.aospa.co/3223
+Project: AOSPA/android_device_qcom_sepolicy
+Branch: refs/heads/nougat-mr2
