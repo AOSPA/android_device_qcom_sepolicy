@@ -115,8 +115,8 @@
 /dev/socket/iop                                 u:object_r:iop_socket:s0
 /dev/socket/qlogd                               u:object_r:qlogd_socket:s0
 /dev/socket/ipacm_log_file                      u:object_r:ipacm_socket:s0
-/dev/socket/dpmd                                u:object_r:dpmd_socket:s0
-/dev/socket/dpmwrapper                          u:object_r:dpmwrapper_socket:s0
+#/dev/socket/dpmd                                u:object_r:dpmd_socket:s0
+#/dev/socket/dpmwrapper                          u:object_r:dpmwrapper_socket:s0
 /dev/socket/pps                                 u:object_r:pps_socket:s0
 /dev/socket/rild2                               u:object_r:rild_socket:s0
 /dev/socket/rild2-debug                         u:object_r:rild_debug_socket:s0
@@ -222,7 +222,7 @@
 /(vendor|system/vendor)/bin/ipacm                               u:object_r:ipacm_exec:s0
 /(vendor|system/vendor)/bin/ipacm-diag          u:object_r:ipacm-diag_exec:s0
 /(vendor|system/vendor)/bin/dpmQmiMgr           u:object_r:hal_dpmQmiMgr_exec:s0
-/(vendor|system/vendor)/bin/dpmd                                u:object_r:dpmd_exec:s0
+#/(vendor|system/vendor)/bin/dpmd                                u:object_r:dpmd_exec:s0
 /(vendor|system/vendor)/bin/ssr_setup           u:object_r:ssr_setup_exec:s0
 /(vendor|system/vendor)/bin/subsystem_ramdump   u:object_r:subsystem_ramdump_exec:s0
 /(vendor|system/vendor)/bin/ssr_diag            u:object_r:ssr_diag_exec:s0
@@ -256,7 +256,8 @@
 /(vendor|system/vendor)/bin/btsnoop                             u:object_r:btsnoop_exec:s0
 /(vendor|system/vendor)/bin/bt_logger                           u:object_r:bt_logger_exec:s0
 /(vendor|system/vendor)/bin/dun-server                          u:object_r:dun-server_exec:s0
-/(vendor|system/vendor)/bin/wfdservice                          u:object_r:wfdservice_exec:s0
+/system/bin/wfdservice                          u:object_r:wfdservice_exec:s0
+/(vendor|system/vendor)/bin/wifidisplayhalservice               u:object_r:wifidisplayhalservice_qti_exec:s0
 /(vendor|system/vendor)/bin/wcnss_filter        u:object_r:wcnss_filter_exec:s0
 /(vendor|system/vendor)/bin/fmhal_service                       u:object_r:fmhal_service_exec:s0
 /(vendor|system/vendor)/bin/usf_epos            u:object_r:usf_exec:s0
@@ -280,6 +281,8 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.gatekeeper@1\.0-service-qti u:object_r:hal_gatekeeper_qti_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.nxp\.hardware\.nfc@1\.0-service     u:object_r:hal_nfc_default_exec:s0
 /(vendor|system/vendor)/bin/qdmastatsd          u:object_r:qdmastatsd_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.alarm@1\.0-service      u:object_r:hal_alarm_qti_default_exec:s0
+/(vendor|system/vendor)/bin/imsrcsd             u:object_r:hal_rcsservice_exec:s0
 
 ###################################
 # sysfs files
@@ -334,6 +337,7 @@
 /sys/devices/msm_hsic_host/host_ready                               u:object_r:sysfs_hsic_host_rdy:s0
 /sys/bus/esoc(/.*)?                                                 u:object_r:sysfs_esoc:s0
 /sys/bus/msm_subsys(/.*)?                                           u:object_r:sysfs_ssr:s0
+/sys/devices(/platform)?/soc/[a-z0-9\.:]+,[a-z0-9\-]+/subsys[0-9]+/name         u:object_r:sysfs_ssr:s0
 /sys/module/ccid_bridge(/.*)?                                       u:object_r:sysfs_usb_uicc:s0
 /sys/bus/msm_subsys/devices/subsys0/restart_level                   u:object_r:sysfs_ssr_toggle:s0
 /sys/bus/msm_subsys/devices/subsys1/restart_level                   u:object_r:sysfs_ssr_toggle:s0
@@ -348,6 +352,8 @@
 /sys/firmware/devicetree/base/cpus(/.*)?                            u:object_r:sysfs_devices_system_cpu:s0
 /sys/devices/vendor/vendor:bt_wcn3990/extldo                        u:object_r:sysfs_bluetooth_writable:s0
 /sys/devices/vendor/vendor:bt_wcn3990/rfkill/rfkill0/state          u:object_r:sysfs_bluetooth_writable:s0
+/sys/devices/bt_qca6174/extldo                                      u:object_r:sysfs_bluetooth_writable:s0
+/sys/devices/bt_qca6174/rfkill/rfkill0/state                        u:object_r:sysfs_bluetooth_writable:s0
 /sys/module/diagchar(/.*)?                                          u:object_r:sysfs_diag:s0
 /sys/devices/virtual/xt_hardidletimer/timers(/.*)?                  u:object_r:sysfs_data:s0
 /sys/devices/virtual/xt_idletimer/timers(/.*)?                      u:object_r:sysfs_data:s0
@@ -364,6 +370,7 @@
 # data files
 #
 /data/connectivity(/.*)?                                            u:object_r:cnd_data_file:s0
+/data/vendor/connectivity(/.*)?                                     u:object_r:cnd_data_file:s0
 /data/data_test(/.*)?                                               u:object_r:data_test_data_file:s0
 /data/diag_log(/.*)?                                                u:object_r:diag_data_file:s0
 /data/misc/sensors(/.*)?                                            u:object_r:sensors_data_file:s0
@@ -372,13 +379,13 @@
 /data/camera(/.*)?                                                  u:object_r:camera_socket:s0
 /data/vendor/misc/qti_fp(/.*)?                                      u:object_r:qfp-daemon_data_file:s0
 /data/system/sensors(/.*)?                                          u:object_r:sensors_data_file:s0
-/data/time(/.*)?                                                    u:object_r:time_data_file:s0
+/data/vendor/time(/.*)?                                             u:object_r:time_data_file:s0
 /data/nfc(/.*)?                                                     u:object_r:nfc_data_file:s0
 /data/vendor/perfd(/.*)?                                            u:object_r:mpctl_data_file:s0
 /data/misc/iop(/.*)?                                                u:object_r:iop_data_file:s0
 /data/vendor/display(/.*)?                                          u:object_r:display_misc_file:s0
 /data/misc/ipa(/.*)?                                                u:object_r:ipacm_data_file:s0
-/data/dpm(/.*)?                                                     u:object_r:dpmd_data_file:s0
+#/data/dpm(/.*)?                                                     u:object_r:dpmd_data_file:s0
 /data/misc/qsee(/.*)?                                               u:object_r:data_qsee_file:s0
 /data/misc/spss(/.*)?                                               u:object_r:spss_data_file:s0
 /data/vendor/location(/.*)?                                         u:object_r:location_data_file:s0
@@ -395,6 +402,7 @@
 /data/misc/qti-logkit/shared-public(/.*)?                           u:object_r:qti_logkit_pub_data_file:s0
 /data/misc/qti-logkit/logdata(/.*)?                                 u:object_r:qti_logkit_pub_data_file:s0
 /data/misc/radio(/.*)?                                              u:object_r:radio_data_file:s0
+/data/vendor/radio(/.*)?                                            u:object_r:vendor_radio_data_file:s0
 /data/vendor/netmgr(/.*)?                                           u:object_r:netmgrd_data_file:s0
 /data/vendor/port_bridge(/.*)?                                      u:object_r:port_bridge_data_file:s0
 /data/misc/fm(/.*)?                                                 u:object_r:fm_data_file:s0
@@ -405,12 +413,16 @@
 /data/misc/qti-logkit/socket-public(/.*)?                           u:object_r:qti_logkit_pub_socket:s0
 /data/system/swap(/.*)?                                             u:object_r:swap_data_file:s0
 /data/vendor/wifi(/.*)?                                             u:object_r:wifi_vendor_data_file:s0
+/data/vendor/wifi/sockets(/.*)?                                     u:object_r:wifi_vendor_wpa_socket:s0
+/data/vendor/wifi/hostapd/ctrl(/.*)?                                u:object_r:wifi_vendor_hostapd_socket:s0
 /data/misc/wifi/nvbin(/.*)?                                         u:object_r:dynamic_nv_data_file:s0
 /data/misc/wifi/wigig_sockets(/.*)?                                 u:object_r:wpa_socket:s0
 /data/misc/wifi/wigig_sockets/wpa_ctrl.*                            u:object_r:system_wpa_socket:s0
 /data/vendor/qdmastats(/.*)?                                        u:object_r:qdma_data_file:s0
 
 /data/vendor/qdma(/.*)?                                             u:object_r:qdma_data_file:s0
+/data/vendor/ramdump/bluetooth(/.*)?                                u:object_r:bluetooth_data_file:s0
+/data/vendor/ramdump/bluetooth/logs(/.*)?                           u:object_r:bluetooth_logs_data_file:s0
 
 ###################################
 # persist files
@@ -452,6 +464,9 @@
 # vendor files
 #
 /data/vendor/misc/audio(/.*)?   u:object_r:audio_data_file:s0
+/vendor/package(/.*)?                                               u:object_r:regionalization_file:s0
+/vendor/package(/.*)?/overlay(/.*)?                                 u:object_r:vendor_overlay_file:s0
+/vendor/package(/.*)?/app(/.*)?                                     u:object_r:vendor_app_file:s0
 
 # same-process HAL files and their dependencies
 #
@@ -487,10 +502,14 @@
 # libGLESv2_adreno depends on this
 /vendor/lib(64)?/libllvm-glnext\.so         u:object_r:same_process_hal_file:s0
 
+# libOpenCL and its dependencies
+/vendor/lib(64)?/libOpenCL\.so              u:object_r:same_process_hal_file:s0
+/vendor/lib(64)?/libq3dtools_adreno\.so     u:object_r:same_process_hal_file:s0
+
 #Loaded by native loader (zygote) for all processes
 /vendor/lib(64)?/libhalide_hexagon_host\.so u:object_r:same_process_hal_file:s0
 /vendor/lib(64)?/libadsprpc\.so             u:object_r:same_process_hal_file:s0
-
+/vendor/lib(64)?/libdiag\.so                u:object_r:same_process_hal_file:s0
 ###################################
 # firmware images
 #

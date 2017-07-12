@@ -53,8 +53,7 @@ allow system_app {
 #unix_socket_connect(system_app, pps, mm-pp-daemon)
 
 userdebug_or_eng(`
-  typeattribute system_app qti_debugfs_domain;
-  allow system_app debugfs:file r_file_perms;
+  allow system_app qti_debugfs:file r_file_perms;
   allow system_app su:unix_dgram_socket sendto;
   allow system_app persist_file:dir r_dir_perms;
   allow system_app sensors_persist_file:dir r_dir_perms;
@@ -81,14 +80,14 @@ allow system_app bluetooth:unix_stream_socket ioctl;
 # system app to access DTS data files
 r_dir_file(system_app, dts_data_file)
 
-# access to time_daemon
-#allow system_app time_daemon:unix_stream_socket connectto;
-
 # usf (ultrasound) apps need following permissions
 #allow system_app usf:unix_stream_socket connectto;
 allow system_app usf_data_file:sock_file write;
 allow system_app usf_data_file:dir rw_dir_perms;
 allow system_app usf_data_file:{ file lnk_file } create_file_perms;
+
+# Allow hbtp hal Service to be found
+hal_client_domain(system_app, hal_hbtp)
 
 #access to wifi_ftmd
 allow system_app wififtmd_prop:property_service set;
@@ -221,3 +220,5 @@ hal_client_domain(system_app, hal_perf)
 #allow system_app access ioctl
 allowxperm system_app self:socket ioctl msm_sock_ipc_ioctls;
 allow system_app self:socket ioctl;
+
+hal_client_domain(system_app, hal_alarm_qti);

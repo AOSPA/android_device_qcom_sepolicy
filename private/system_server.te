@@ -27,3 +27,6 @@
 
 binder_call(system_server, seempd)
 unix_socket_send(system_server, seempdw, seempd)
+
+allow system_server dpmd_data_file:dir create_dir_perms;
+allow system_server dpmd_data_file:file create_file_perms;

@@ -15,9 +15,9 @@ type cnd_socket, file_type, mlstrustedobject;
 type cnd_data_file, file_type;
 
 # Define dpmd data file type
-type dpmd_socket, file_type;
-type dpmwrapper_socket, file_type, mlstrustedobject;
-type dpmd_data_file, file_type, data_file_type;
+#type dpmd_socket, file_type;
+#type dpmwrapper_socket, file_type, mlstrustedobject;
+#type dpmd_data_file, file_type, data_file_type;
 #typealias system_app_data_file alias dpmd_app_data_file;
 #typealias system_app_data_file alias qtitetherservice_app_data_file;
 
@@ -203,6 +203,8 @@ type dynamic_nv_data_file, file_type, data_file_type;
 
 # Wifi Data file
 type wifi_vendor_data_file, file_type, data_file_type;
+type wifi_vendor_wpa_socket, file_type;
+type wifi_vendor_hostapd_socket, file_type;
 
 # wififtmd socket file
 type wififtmd_socket, file_type;
@@ -226,3 +228,10 @@ type sysfs_diag, fs_type, sysfs_type;
 # QDMA data files
 type qdma_data_file, file_type, data_file_type;
 type qdma_app_data_file, file_type, data_file_type;
+
+# path to debugfs use this whic should be only used
+# in debug builds
+type qti_debugfs, fs_type, debugfs_type;
+
+# vendor radio files
+type vendor_radio_data_file, file_type, data_file_type;

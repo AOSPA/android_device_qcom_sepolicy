@@ -1,4 +1,4 @@
-# Copyright (c) 2016, The Linux Foundation. All rights reserved.
+# Copyright (c) 2017, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,8 +25,25 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#for oemfs
-allow platform_app oemfs:lnk_file { read getattr };
-#for regionalization
-allow platform_app regionalization_file:file r_file_perms;
-allow platform_app regionalization_file:dir r_dir_perms;
+#Define Domain
+type wifidisplayhalservice_qti, domain;
+type wifidisplayhalservice_qti_exec, exec_type, vendor_file_type, file_type;
+hal_server_domain(wifidisplayhalservice_qti,wifidisplayhalservice)
+
+#Allow for transition from init domain to wifidisplayhalservice
+init_daemon_domain(wifidisplayhalservice_qti)
+
+#Allow wifidisplayhalservice to use Vendor Binder IPC
+allow wifidisplayhalservice_client wfdservice_service:service_manager find;
+vndbinder_use(wifidisplayhalservice)
+binder_call(wfdservice,wifidisplayhalservice);
+
+#Allow hardware binder use
+hwbinder_use(wifidisplayhalservice_client)
+get_prop(wifidisplayhalservice, hwservicemanager_prop)
+
+# Allow hwbinder call from hal client to server
+binder_call(wifidisplayhalservice_client, wifidisplayhalservice_server)
+
+# Add hwservice related rules
+add_hwservice(wifidisplayhalservice_server, wifidisplayhalservice_hwservice)
