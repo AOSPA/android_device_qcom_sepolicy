@@ -1,8 +1,3 @@
-type wfdservice_exec, exec_type, file_type;
-
-#Allow for transition from init domain to wfdservice
-init_daemon_domain(wfdservice)
-
 #Inherit base socket permissions from netd domain
 net_domain(wfdservice)
 
