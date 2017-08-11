@@ -42,13 +42,6 @@ allow system_app {
     qfp_proxy_service
 }:service_manager add;
 
-# access to perflock
-#allow system_app mpctl_socket:dir r_dir_perms;
-#unix_socket_send(system_app, mpctl, mpdecision)
-#unix_socket_connect(system_app, mpctl, mpdecision)
-#unix_socket_send(system_app, mpctl, perfd)
-#unix_socket_connect(system_app, mpctl, perfd)
-
 # access to mm-pp-daemon
 #unix_socket_connect(system_app, pps, mm-pp-daemon)
 
@@ -196,7 +189,8 @@ allow system_app system_data_file:dir read;
 # allow access to ims helper
 #unix_socket_connect(system_app, ims, ims)
 
-# access to qseeproxy domain
+# allow system app to interact with hal_qteeconnector
+hal_client_domain(system_app, hal_qteeconnector);
 
 #allow system_app access boot mode switch
 set_prop(system_app, boot_mode_prop);
@@ -206,6 +200,10 @@ allow system_app cache_file:dir create_dir_perms;
 allow system_app cache_file:file create_file_perms;
 allow system_app cache_recovery_file:dir rw_dir_perms;
 allow system_app cache_recovery_file:file create_file_perms;
+
+#Allow system app access mmi_data_file
+allow system_app mmi_data_file:dir create_dir_perms;
+allow system_app mmi_data_file:file create_file_perms;
 
 # update engine
 binder_call( system_app, update_engine )
@@ -217,3 +215,6 @@ allowxperm system_app self:socket ioctl msm_sock_ipc_ioctls;
 allow system_app self:socket ioctl;
 
 hal_client_domain(system_app, hal_alarm_qti);
+
+#allow system app to interact with the esepowermanager
+hal_client_domain(system_app, hal_esepowermanager)

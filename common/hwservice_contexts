@@ -51,6 +51,7 @@ com.qualcomm.qti.ant::IAntHci                                u:object_r:hal_blue
 vendor.qti.hardware.fm::IFmHci                               u:object_r:hal_bluetooth_hwservice:s0
 vendor.qti.hardware.perf::IPerf                              u:object_r:hal_perf_hwservice:s0
 com.qualcomm.qti.wifidisplayhal::IHDCPSession                u:object_r:wifidisplayhalservice_hwservice:s0
+vendor.qti.hardware.iop::IIop                                u:object_r:hal_iop_hwservice:s0
 vendor.qti.hardware.alarm::IAlarm                            u:object_r:hal_alarm_qti_hwservice:s0
 android.hardware.tetheroffload.config::IOffloadConfig        u:object_r:hal_ipacm_hwservice:s0
 android.hardware.tetheroffload.control::IOffloadControl      u:object_r:hal_ipacm_hwservice:s0
@@ -59,3 +60,7 @@ com.qualcomm.qti.imscmservice::IImsCmService                 u:object_r:hal_imsr
 com.quicinc.cne.api::IApiService                             u:object_r:hal_cne_hwservice:s0
 com.quicinc.cne.server::IServer                              u:object_r:hal_cne_hwservice:s0
 vendor.qti.hardware.vpp::IHidlVppService                     u:object_r:hal_vpp_hwservice:s0
+vendor.qti.hardware.wigig.supptunnel::ISuppTunnelProvider    u:object_r:hal_wigig_hwservice:s0
+vendor.qti.hardware.qteeconnector::IAppConnector             u:object_r:hal_qteeconnector_hwservice:s0
+vendor.qti.hardware.qteeconnector::IGPAppConnector           u:object_r:hal_qteeconnector_hwservice:s0
+vendor.qti.esepowermanager::IEsePowerManager                 u:object_r:hal_esepowermanager_hwservice:s0
