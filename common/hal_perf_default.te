@@ -44,6 +44,8 @@ allow hal_perf device_latency:chr_file rw_file_perms;
 allow hal_perf freq_prop:file r_file_perms;
 allow hal_perf_default mpctl_data_file:dir rw_dir_perms;
 allow hal_perf_default mpctl_data_file:file create_file_perms;
+allow hal_perf_default lm_data_file:dir rw_dir_perms;
+allow hal_perf_default lm_data_file:file create_file_perms;
 
 allow hal_perf {
     sysfs_devices_system_cpu
@@ -58,7 +60,7 @@ allow hal_perf {
     sysfs_memory
     sysfs_graphics
     sysfs
-    sysfs_lpm
+    sysfs_msm_power
     sysfs_battery_supply
 }:dir r_dir_perms;
 
@@ -74,7 +76,7 @@ allow hal_perf {
     sysfs_scsi_host
     sysfs_devfreq
     sysfs_mmc_host
-    sysfs_lpm
+    sysfs_msm_power
     sysfs_battery_supply
 }:file rw_file_perms;
 

@@ -38,6 +38,7 @@ type data_qsee_file, file_type;
 type data_qtee_file, file_type, data_file_type;
 type persist_misc_file, file_type;
 type persist_bms_file, file_type;
+type persist_secnvm_file, file_type;
 
 type diag_data_file, file_type, data_file_type;
 
@@ -75,6 +76,10 @@ type sysfs_graphics, sysfs_type, fs_type;
 type sysfs_usb_supply, sysfs_type, fs_type;
 type sysfs_battery_supply, sysfs_type, fs_type;
 type sysfs_usbpd_device, sysfs_type, fs_type;
+# sysfs vadc device for hvdcp/quickcharge
+type sysfs_vadc_dev, sysfs_type, fs_type;
+# sysfs spmi device for hvdcp/quickcharge
+type sysfs_spmi_dev, sysfs_type, fs_type;
 
 #Define the files written during the operation of mpdecision
 type sysfs_mpdecision, fs_type, sysfs_type;
@@ -83,8 +88,10 @@ type sysfs_cpu_online, fs_type, sysfs_type;
 type mpctl_socket, file_type, mlstrustedobject;
 type mpctl_data_file, file_type, data_file_type;
 
+#Define the files used by lm
+type lm_data_file, file_type, data_file_type;
+
 type sysfs_devfreq, fs_type, sysfs_type;
-type sysfs_lpm, fs_type, sysfs_type;
 type sysfs_mmc_host, fs_type, sysfs_type;
 type sysfs_scsi_host, fs_type, sysfs_type;
 type sysfs_cpu_boost, fs_type, sysfs_type;
@@ -112,6 +119,9 @@ type mlid_socket, file_type, mlstrustedobject;
 
 #ssg qmi gateway daemon socket
 type ssgqmig_socket, file_type, mlstrustedobject;
+
+#ssg tz daemon socket
+type ssgtzd_socket, file_type, mlstrustedobject;
 
 #location file types
 type location_data_file, file_type, data_file_type;
