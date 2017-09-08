@@ -36,3 +36,5 @@ allow qti_init_shell sysfs_cpu_boost:file rw_file_perms;
 allow qti_init_shell sysfs_devfreq:lnk_file r_file_perms;
 allow qti_init_shell sysfs_kgsl:dir r_dir_perms;
 allow qti_init_shell sysfs_kgsl:lnk_file read;
+# Permission to QTI to load alx module properly on bootup
+allow qti_init_shell { system_file }:system module_load;
