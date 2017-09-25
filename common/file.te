@@ -97,6 +97,7 @@ type sysfs_scsi_host, fs_type, sysfs_type;
 type sysfs_cpu_boost, fs_type, sysfs_type;
 type sysfs_msm_perf, fs_type, sysfs_type;
 type sysfs_memory, fs_type, sysfs_type;
+type sysfs_lib, fs_type, sysfs_type;
 
 #define the files writer during the operation of app state changes
 type gamed_socket, file_type;
@@ -237,6 +238,7 @@ type persist_time_file, file_type;
 
 # kgsl file type for sysfs access
 type sysfs_kgsl, sysfs_type, fs_type;
+type sysfs_kgsl_proc, sysfs_type, fs_type;
 
 # secure touch files
 type sysfs_securetouch, fs_type, sysfs_type;
@@ -269,6 +271,9 @@ type vpp_data_file, file_type, data_file_type;
 type persist_vpp_file, file_type;
 # vendor camera files
 type vendor_camera_data_file, file_type, data_file_type;
+
+#tloc data files
+type tlocd_data_file, file_type, data_file_type;
 
 # wigig, fstman
 type sysfs_bond0, fs_type, sysfs_type;
