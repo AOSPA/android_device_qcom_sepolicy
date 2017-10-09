@@ -310,3 +310,6 @@ type data_tzstorage_file, file_type, data_file_type;
 
 # poweron_alarm sysfs file
 type sysfs_poweron_alarm, fs_type, sysfs_type;
+
+# spdaemon sysfs files
+type sysfs_spdaemon, sysfs_type, fs_type;
