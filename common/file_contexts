@@ -238,6 +238,7 @@
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.perf@1\.0-service       u:object_r:hal_perf_default_exec:s0
 /(vendor|system/vendor)/bin/ssgqmigd            u:object_r:ssgqmigd_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.iop@1\.0-service        u:object_r:hal_iop_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.iop@2\.0-service        u:object_r:hal_iop_default_exec:s0
 /(vendor|system/vendor)/bin/mlid                u:object_r:mlid_exec:s0
 /(vendor|system/vendor)/bin/ssgtzd              u:object_r:ssgtzd_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.esepowermanager@1\.0-service u:object_r:hal_esepowermanager_qti_exec:s0
@@ -257,7 +258,7 @@
 /(vendor|system/vendor)/bin/dts_configurator    u:object_r:dtsconfigurator_exec:s0
 /(vendor|system/vendor)/bin/dts_eagle_service   u:object_r:dtseagleservice_exec:s0
 /(vendor|system/vendor)/bin/qti                 u:object_r:qti_exec:s0
-/(vendor|system/vendor)/bin/wcnss_service       u:object_r:wcnss_service_exec:s0
+/(vendor|system/vendor|system)/bin/wcnss_service       u:object_r:wcnss_service_exec:s0
 /(vendor|system/vendor)/bin/hbtp_daemon         u:object_r:hbtp_exec:s0
 /(vendor|system/vendor)/bin/touch_fusion        u:object_r:touchfusion_exec:s0
 /(vendor|system/vendor)/bin/seemp_healthd       u:object_r:seemp_health_daemon_exec:s0
@@ -486,6 +487,8 @@
 /data/vendor/location(/.*)?                                         u:object_r:location_data_file:s0
 /data/vendor/location/mq/location-mq-s                              u:object_r:location_socket:s0
 /data/vendor/location/mq/alarm_svc                                  u:object_r:location_socket:s0
+/data/vendor/location/xtra/socket_xtra                              u:object_r:location_socket:s0
+/data/vendor/location/xtra/socket_hal_xtra                          u:object_r:location_socket:s0
 /data/FTM_AP(/.*)?                                                  u:object_r:mmi_data_file:s0
 /data/(misc|vendor)/hbtp(/.*)?                                      u:object_r:hbtp_log_file:s0
 /data/misc/qlogd(/.*)?                                              u:object_r:qlogd_data_file:s0
