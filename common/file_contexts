@@ -131,6 +131,7 @@
 /dev/socket/wififtmd_server                     u:object_r:wififtmd_socket:s0
 /dev/socket/wpa_wigig[0-9]                      u:object_r:wpa_socket:s0
 /dev/socket/wigignpt                            u:object_r:wigignpt_socket:s0
+/dev/socket/qdma(/.*)?                          u:object_r:qdma_socket:s0
 
 ###################################
 # System files
@@ -315,7 +316,7 @@
 /sys/devices/msm_otg/power_supply/usb(/.*)?                         u:object_r:sysfs_usb_supply:s0
 /sys/devices(/platform)?/soc/[a-z0-9]+.qcom,spmi/spmi-[0-9]/spmi0-0[0-9]/[a-z0-9]+.qcom,spmi:qcom,[a-z0-9]+@[0-9]:qcom,qpnp-smb2/power_supply/usb(/.*)?        u:object_r:sysfs_usb_supply:s0
 /sys/devices(/platform)?/soc/[a-z0-9]+.qcom,spmi/spmi-[0-9]/spmi0-0[0-9]/[a-z0-9]+.qcom,spmi:qcom,[a-z0-9]+@[0-9]:qcom,qpnp-smb2/power_supply/pc_port(/.*)?    u:object_r:sysfs_usb_supply:s0
-/sys/devices(/platform)?/soc/[a-z0-9]+.i2c/i2c-[0-9]+/[0-9]+-[0-9]+/[a-z0-9]+.i2c:qcom,[a-z0-9]+@[0-9]:qcom,smb[0-9]+-charger@[0-9]+/power_supply/parallel(/.*)?    u:object_r:sysfs_usb_supply:s0
+/sys/devices(/platform)?/soc/[a-z0-9]+.i2c/i2c-[0-9]+/[0-9]+-[a-z0-9]+/[a-z0-9]+.i2c:qcom,[a-z0-9]+@[a-z0-9]:qcom,smb[0-9]+-charger@[0-9]+/power_supply/parallel(/.*)?    u:object_r:sysfs_usb_supply:s0
 /sys/devices(/platform)?/soc/[a-z0-9]+.qcom,spmi/spmi-[0-9]/spmi0-0[0-9]/[a-z0-9]+.qcom,spmi:qcom,[a-z0-9]+@[0-9]:qcom,usb-pdphy@[0-9]+/usbpd/usbpd[0-9](/.*)?    u:object_r:sysfs_usbpd_device:s0
 /sys/devices/platform/battery_current_limit                         u:object_r:sysfs_thermal:s0
 /sys/devices/qpnp-charger.*/power_supply/battery(/.*)?              u:object_r:sysfs_battery_supply:s0
@@ -474,7 +475,7 @@
 /data/vendor/misc/qti_fp(/.*)?                                      u:object_r:qfp-daemon_data_file:s0
 /data/misc/qvop(/.*)?                                               u:object_r:qvop-daemon_data_file:s0
 /data/system/sensors(/.*)?                                          u:object_r:sensors_data_file:s0
-/data/vendor/time(/.*)?                                             u:object_r:time_data_file:s0
+/data/time(/.*)?                                                    u:object_r:time_data_file:s0
 /data/nfc(/.*)?                                                     u:object_r:nfc_data_file:s0
 /data/vendor/perfd(/.*)?                                            u:object_r:mpctl_data_file:s0
 /data/vendor/iop(/.*)?                                                u:object_r:iop_data_file:s0
@@ -524,6 +525,7 @@
 /data/vendor/media(/.*)?                                            u:object_r:media_data_file:s0
 /data/vendor/tloc(/.*)?                                     u:object_r:tlocd_data_file:s0
 /sys/kernel/debug/ipc_logging(/.*)?                                 u:object_r:qti_debugfs:s0
+/data/vendor/tzstorage(/.*)?                                        u:object_r:data_tzstorage_file:s0
 
 ###################################
 # persist files
