@@ -464,6 +464,7 @@
 /sys/module/lpm_stats(/.*)?                                         u:object_r:sysfs_msm_stats:s0
 /sys/module/lpm_levels(/.*)?                                        u:object_r:sysfs_msm_power:s0
 /sys/module/app_setting/parameters/lib_name                         u:object_r:sysfs_lib:s0
+/sys/module/qpnp_rtc/parameters/poweron_alarm                       u:object_r:sysfs_poweron_alarm:s0
 
 ###################################
 # data files
