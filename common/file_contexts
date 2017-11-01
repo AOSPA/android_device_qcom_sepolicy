@@ -465,6 +465,8 @@
 /sys/module/lpm_levels(/.*)?                                        u:object_r:sysfs_msm_power:s0
 /sys/module/app_setting/parameters/lib_name                         u:object_r:sysfs_lib:s0
 /sys/module/qpnp_rtc/parameters/poweron_alarm                       u:object_r:sysfs_poweron_alarm:s0
+/sys/devices(/platform)?/soc/soc:qcom,spss_utils/firmware_name      u:object_r:sysfs_spdaemon:s0
+/sys/devices/soc0/machine                                           u:object_r:sysfs_spdaemon:s0
 
 ###################################
 # data files
