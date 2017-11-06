@@ -61,7 +61,7 @@ allow spdaemon spss_data_file:file r_file_perms;
 allow spdaemon spss_data_file:file getattr;
 
 # Allow get system info
-r_dir_file(spdaemon, sysfs_spdaemon)
+r_dir_file(spdaemon, sysfs)
 
 # Allow SPSS-PIL via Peripheral Manager
 #binder_use(spdaemon)
