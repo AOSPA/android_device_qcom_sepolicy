@@ -154,6 +154,7 @@
 /(vendor|system/vendor)/bin/diag_buffering_test                 u:object_r:diag_exec:s0
 /(vendor|system/vendor)/bin/irsc_util                           u:object_r:irsc_util_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.sh              u:object_r:qti_init_shell_exec:s0
+/(vendor|system/vendor)/bin/init\.qcom\.crashdata\.sh              u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.class_core\.sh  u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.bt\.sh          u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.early_boot\.sh  u:object_r:qti_init_shell_exec:s0
@@ -310,6 +311,9 @@
 /sys/class/graphics/fb0/mdp/caps                                    u:object_r:sysfs_graphics:s0
 /sys/class/thermal(/.*)?                                            u:object_r:sysfs_thermal:s0
 /sys/class/sensors(/.*)?                                            u:object_r:sysfs_sensors:s0
+/sys/class/uio(/.*)?                                                u:object_r:sysfs_uio:s0
+/sys/devices(/platform)?/soc/[a-z0-9]+.qcom,rmtfs_sharedmem/uio/uio[0-9]+(/.*)?        u:object_r:sysfs_uio_file:s0
+/sys/devices(/platform)?/soc/[a-z0-9]+.qcom,rmtfs_sharedmem/uio/uio[0-9]+/maps/map[0-9]+(/.*)?    u:object_r:sysfs_uio_file:s0
 /sys/devices/[^/]+bcl[^/]+(/.*)?                                    u:object_r:sysfs_thermal:s0
 /sys/devices/f9200000.*/power_supply/usb(/.*)?                      u:object_r:sysfs_usb_supply:s0
 /sys/devices/msm_dwc3/power_supply/usb(/.*)?                        u:object_r:sysfs_usb_supply:s0
@@ -443,6 +447,7 @@
 /sys/devices(/platform)?/soc/[a-f0-9]+.ufshc/clkscale_enable        u:object_r:sysfs_scsi_host:s0
 /sys/devices(/platform)?/soc/[a-f0-9]+/host0/scsi_host/host0(/.*)?  u:object_r:sysfs_scsi_host:s0
 /sys/devices(/platform)?/soc/[a-f0-9]+.qcom,kgsl-3d0/kgsl/kgsl-3d0(/.*)? u:object_r:sysfs_kgsl:s0
+/sys/devices(/platform)?/soc(.[0-9])?/[a-f0-9]+.qcom,kgsl-3d0/kgsl/kgsl-3d0(/.*)? u:object_r:sysfs_kgsl:s0
 /sys/devices(/platform)?/soc/[a-f0-9]+.qcom,kgsl-3d0/devfreq/[a-f0-9]+.qcom,kgsl-3d0(/.*)? u:object_r:sysfs_kgsl:s0
 /sys/devices(/platform)?/soc/[a-f0-9]+.qcom,kgsl-3d0/kgsl/kgsl-3d0/gpuclk u:object_r:sysfs_kgsl_gpuclk:s0
 
@@ -460,6 +465,7 @@
 /sys/module/lpm_stats(/.*)?                                         u:object_r:sysfs_msm_stats:s0
 /sys/module/lpm_levels(/.*)?                                        u:object_r:sysfs_msm_power:s0
 /sys/module/app_setting/parameters/lib_name                         u:object_r:sysfs_lib:s0
+/sys/module/qpnp_rtc/parameters/poweron_alarm                       u:object_r:sysfs_poweron_alarm:s0
 
 ###################################
 # data files
@@ -481,7 +487,7 @@
 /data/vendor/iop(/.*)?                                                u:object_r:iop_data_file:s0
 /data/vendor/lm(/.*)?                                               u:object_r:lm_data_file:s0
 /data/vendor/display(/.*)?                                          u:object_r:display_misc_file:s0
-/data/vendor/ipa(/.*)?                                              u:object_r:ipacm_data_file:s0
+/data/vendor/ipa(/.*)?                                              u:object_r:ipa_vendor_data_file:s0
 /data/misc/qsee(/.*)?                                               u:object_r:data_qsee_file:s0
 /data/vendor/qtee(/.*)?                                             u:object_r:data_qtee_file:s0
 /data/misc/spss(/.*)?                                               u:object_r:spss_data_file:s0
@@ -635,3 +641,4 @@
 #vendor toolbox
 #
 /(vendor|system/vendor)/bin/toolbox_vendor                          u:object_r:vendor_toolbox_exec:s0
+/(vendor|system/vendor)/bin/grep_vendor                             u:object_r:vendor_toolbox_exec:s0

@@ -153,7 +153,7 @@ type persist_display_file, file_type;
 
 # IPA file types
 type ipacm_socket, file_type;
-type ipacm_data_file, file_type;
+type ipa_vendor_data_file, file_type, data_file_type;
 
 # Port-bridge file types
 type port_bridge_data_file, file_type, data_file_type;
@@ -266,6 +266,9 @@ type qti_debugfs, fs_type, debugfs_type;
 # vendor radio files
 type vendor_radio_data_file, file_type, data_file_type;
 
+#uio sysfs
+type sysfs_uio_file, fs_type, sysfs_type;
+
 #irq balance sysfs type
 type sysfs_irqbalance , sysfs_type, fs_type;
 
@@ -304,3 +307,6 @@ type vendor_tombstone_data_file, file_type, data_file_type;
 
 # SFS listener data file
 type data_tzstorage_file, file_type, data_file_type;
+
+# poweron_alarm sysfs file
+type sysfs_poweron_alarm, fs_type, sysfs_type;
