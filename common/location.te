@@ -31,6 +31,9 @@ allow location sensors_device:chr_file r_file_perms;
 allow location sensors_socket:sock_file rw_file_perms;
 allow location vendor_shell_exec:file rx_file_perms;
 
+unix_socket_connect(location,location,hal_gnss)
+allow location hal_gnss:unix_dgram_socket sendto;
+
 #allow location system_server:unix_stream_socket { read write connectto};
 
 # For interfacing with the device sensorservice
@@ -83,3 +86,9 @@ allow location self:udp_socket ioctl;
 allow location wifi_prop:file r_file_perms;
 # Replace this with macro
 allowxperm location self:udp_socket ioctl priv_sock_ioctls;
+
+#Allow access to wake alarm
+allow location self:capability2 wake_alarm;
+
+#access to qdma socket
+qdma_file_socket(location);
