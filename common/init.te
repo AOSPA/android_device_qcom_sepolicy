@@ -25,7 +25,7 @@ allow init tmpfs:lnk_file create_file_perms;
 
 #For configfs file permission
 allow init configfs:dir r_dir_perms;
-allow init configfs:file { rw_file_perms link };
+allow init configfs:file { create_file_perms link };
 allow init configfs:lnk_file create_file_perms;
 
 #Allow init to mount non-hlos partitions in A/B builds
@@ -38,6 +38,9 @@ dontaudit init sysfs:dir write;
 #load /vendor/lib/modules/qca_cld3/qca_cld3_wlan.ko
 #load /vendor/lib/modules/wil6210.ko
 allow init vendor_file:system module_load;
+
+#allow init to mount blkio device
+allow init blkio_device:dir { create mounton };
 
 #Needed for restorecon. Init already has these permissions
 #for generic block devices, but is unable to access those
@@ -53,3 +56,6 @@ allow init {
 
 #rawdump
 allow init rawdump_block_device:blk_file setattr;
+
+#cpu.rt_period_us and _runtime_us need this
+allow init cgroup:file create;

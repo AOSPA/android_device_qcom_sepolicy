@@ -26,3 +26,8 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 hal_client_domain(priv_app, hal_sidekickgraphics);
+
+#for oemfs
+allow priv_app oemfs:lnk_file { read getattr };
+#for regionalization
+r_dir_file(priv_app, regionalization_file);

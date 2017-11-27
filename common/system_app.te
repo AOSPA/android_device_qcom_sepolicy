@@ -62,6 +62,9 @@ userdebug_or_eng(`
   # allow to read ssr ramdump
   allow system_app ssr_ramdump_data_file:dir r_dir_perms;
   allow system_app ssr_ramdump_data_file:file r_file_perms;
+
+  # allow system app to read crash_prop
+  allow system_app crash_prop:file r_file_perms;
 ')
 
 allow system_app cnd_data_file:dir w_dir_perms;
@@ -214,6 +217,7 @@ allow system_app mmi_data_file:file create_file_perms;
 binder_call( system_app, update_engine )
 
 hal_client_domain(system_app, hal_perf)
+hal_client_domain(system_app, hal_iop)
 
 #allow system_app access ioctl
 allowxperm system_app self:socket ioctl msm_sock_ipc_ioctls;
@@ -229,6 +233,9 @@ allow system_app vendor_radio_data_file:file create_file_perms;
 #secureUI
 hal_client_domain(system_app, hal_qdutils_disp);
 hal_client_domain(system_app, hal_tui_comm);
+
+#allow system_app access factory
+hal_client_domain(system_app, hal_factory_qti);
 
 allow system_app graphics_device:chr_file r_file_perms;
 allow system_app graphics_device:dir r_dir_perms;

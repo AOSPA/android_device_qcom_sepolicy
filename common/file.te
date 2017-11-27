@@ -93,6 +93,7 @@ type mpctl_data_file, file_type, data_file_type;
 type lm_data_file, file_type, data_file_type;
 
 type sysfs_devfreq, fs_type, sysfs_type;
+type sysfs_devfreq_l3cdsp, fs_type, sysfs_type;
 type sysfs_mmc_host, fs_type, sysfs_type;
 type sysfs_scsi_host, fs_type, sysfs_type;
 type sysfs_cpu_boost, fs_type, sysfs_type;
@@ -307,6 +308,6 @@ type vendor_tombstone_data_file, file_type, data_file_type;
 
 # SFS listener data file
 type data_tzstorage_file, file_type, data_file_type;
-
-# poweron_alarm sysfs file
 type sysfs_poweron_alarm, fs_type, sysfs_type;
+# ship mode sysfs file
+type sysfs_pon_dev, fs_type, sysfs_type;
