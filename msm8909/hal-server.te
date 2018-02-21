@@ -33,7 +33,7 @@ typeattribute hal-server  hal_audio_server;
 typeattribute hal-server  hal_sensors_server;
 typeattribute hal-server  hal_broadcastradio_server;
 typeattribute hal-server  hal_drm_server;
-typeattribute hal-server  hal_drm;
+typeattribute hal-server  hal_drm;
 typeattribute hal-server  hal_configstore_client;
 
 init_daemon_domain(hal-server)
