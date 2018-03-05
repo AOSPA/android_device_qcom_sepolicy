@@ -27,3 +27,5 @@
 
 hal_client_domain(priv_app, hal_perf)
 hal_client_domain(priv_app, hal_iop)
+
+get_prop(priv_app, camera_prop)
