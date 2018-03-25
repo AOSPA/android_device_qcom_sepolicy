@@ -35,4 +35,7 @@ allow hal_neuralnetworks_hvx fwk_sensor_hwservice:hwservice_manager find;
 allow hal_neuralnetworks_hvx qdsp_device:chr_file r_file_perms;
 allow hal_neuralnetworks_hvx ion_device:chr_file r_file_perms;
 
+allow hal_neuralnetworks_hvx app_data_file:file { read write getattr };
+allow hal_neuralnetworks_hvx shell_data_file:file { read write getattr };
+
 r_dir_file(hal_neuralnetworks_hvx, adsprpcd_file)
