@@ -56,6 +56,7 @@
 #sys file system
 /sys/devices/platform/soc/200f000\.qcom,spmi/spmi-0/spmi0-03/200f000\.qcom,spmi:qcom,pmi8950@3:qcom,haptic@c000/leds/vibrator/activate     u:object_r:sysfs_spmi_device:s0
 /sys/devices/platform/soc/200f000\.qcom,spmi/spmi-0/spmi0-02/200f000\.qcom,spmi:qcom,pmi8950@2:qcom,qpnp-smbcharger/leds/red/brightness    u:object_r:sysfs_spmi_device:s0
+/sys/devices/platform/soc/200f000\.qcom,spmi/spmi-0/spmi0-03/200f000\.qcom,spmi:qcom,pmi632@3:qcom,vibrator@5700/leds/vibrator/activate    u:object_r:sysfs_spmi_device:s0
 ############################################################################################
 #Same hal process libs
 #
