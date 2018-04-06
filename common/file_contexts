@@ -206,6 +206,7 @@
 /(vendor|system/vendor)/bin/thermal-engine      u:object_r:thermal-engine_exec:s0
 /(vendor|system/vendor)/bin/vm_bms                              u:object_r:vm_bms_exec:s0
 /(vendor|system/vendor)/bin/ais_server          u:object_r:ais_server_exec:s0
+/(vendor|system/vendor)/bin/mm-qcamera-daemon   u:object_r:mm-qcamerad_exec:s0
 /(vendor|system/vendor)/bin/qfp-daemon          u:object_r:qfp-daemon_exec:s0
 /(vendor|system/vendor)/bin/qvop-daemon         u:object_r:qvop-daemon_exec:s0
 /system/rfs.*                                   u:object_r:rfs_system_file:s0
