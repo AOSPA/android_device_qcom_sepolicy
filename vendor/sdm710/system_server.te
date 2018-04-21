@@ -25,7 +25,9 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#for oemfs
-r_dir_file(idmap, oemfs);
-#for regionalization
-r_dir_file(idmap, regionalization_file);
+# For Regionalization
+allow system_server regionalization_file:file create_file_perms;
+allow system_server regionalization_file:dir rw_dir_perms;
+r_dir_file(system_server, vendor_carrier_file);
+allow system_server resourcecache_data_file:dir create_dir_perms;
+allow system_server resourcecache_data_file:file create_file_perms;

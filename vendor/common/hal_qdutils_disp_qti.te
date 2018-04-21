@@ -18,21 +18,25 @@
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
 # ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
 # BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-# # CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
 # SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
 # BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Qualcomm telephony apps, such as AtFwd and FastDormancy
-typeattribute qtelephony coredomain;
+type hal_qdutils_disp_qti, domain;
+hal_server_domain(hal_qdutils_disp_qti, hal_qdutils_disp)
 
-app_domain(qtelephony)
+type hal_qdutils_disp_qti_exec, exec_type, file_type, vendor_file_type;
+init_daemon_domain(hal_qdutils_disp_qti)
 
-hwbinder_use(qtelephony);
-get_prop(qtelephony, hwservicemanager_prop);
-add_hwservice(qtelephony, hal_atfwd_hwservice);
+binder_call(hal_qdutils_disp_client, hal_qdutils_disp_server)
+binder_call(hal_qdutils_disp_server, hal_qdutils_disp_client)
 
-allow qtelephony system_api_service:service_manager find;
-allow qtelephony app_api_service:service_manager find;
+add_hwservice(hal_qdutils_disp_server, hal_qdutils_disp_hwservice)
+allow hal_qdutils_disp_client hal_qdutils_disp_hwservice:hwservice_manager find;
+vndbinder_use(hal_qdutils_disp_qti);
+allow hal_qdutils_disp_qti qdisplay_service:service_manager find;
+#hal_client_domain(hal_qdutils_disp_qti, hal_display_config);
+hal_client_domain(hal_qdutils_disp_qti, hal_graphics_composer);

@@ -18,21 +18,15 @@
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
 # ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
 # BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-# # CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
 # SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
 # BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Qualcomm telephony apps, such as AtFwd and FastDormancy
-typeattribute qtelephony coredomain;
-
-app_domain(qtelephony)
-
-hwbinder_use(qtelephony);
-get_prop(qtelephony, hwservicemanager_prop);
-add_hwservice(qtelephony, hal_atfwd_hwservice);
-
-allow qtelephony system_api_service:service_manager find;
-allow qtelephony app_api_service:service_manager find;
+#for oemfs
+allow priv_app oemfs:lnk_file { read getattr };
+#for regionalization
+r_dir_file(priv_app, regionalization_file);
+r_dir_file(priv_app, vendor_carrier_file);
