@@ -311,3 +311,6 @@ type tlocd_data_file, file_type, data_file_type;
 
 #DRM files
 type data_qsee_file, file_type, data_file_type;
+
+# npu file
+type sysfs_npu, fs_type, sysfs_type;
