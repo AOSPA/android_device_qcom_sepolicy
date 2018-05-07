@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2018, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,15 +25,13 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# media_codecs_eld_prop - to choose target specific media_codecs.xml
-# media_settings_xml_prop - to choose target specific media_profiles.xml
-# media_msm8956_version_prop - to choose target version specific media_codecs.xml
-allow qti_init_shell {
-    media_msm8953_version_prop
-    media_settings_xml_prop
-}:property_service set;
+type init-qti-fbe-sh, domain;
+type init-qti-fbe-sh_exec, exec_type, file_type, vendor_file_type;
 
-# For regionalization
-allow qti_init_shell regionalization_file:dir r_dir_perms;
-allow qti_init_shell regionalization_file:file create_file_perms;
+init_daemon_domain(init-qti-fbe-sh)
 
+not_full_treble(`allow init-qti-fbe-sh shell_exec:file rx_file_perms;')
+full_treble_only(`allow init-qti-fbe-sh vendor_shell_exec:file rx_file_perms;')
+# execute toybox/toolbox
+not_full_treble(`allow init-qti-fbe-sh toolbox_exec:file rx_file_perms;')
+full_treble_only(`allow init-qti-fbe-sh vendor_toolbox_exec:file rx_file_perms;')
