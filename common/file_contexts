@@ -507,6 +507,7 @@
 /sys/module/qpnp_power_on/parameters/ship_mode_en                   u:object_r:sysfs_pon_dev:s0
 /sys/module/app_setting/parameters/lib_name                         u:object_r:sysfs_lib:s0
 /sys/module/process_reclaim(/.*)?  u:object_r:sysfs_process_reclaim:s0
+/sys/module/vmpressure(/.*)?  u:object_r:sysfs_vmpressure:s0
 /sys/module/qpnp_rtc/parameters/poweron_alarm                       u:object_r:sysfs_poweron_alarm:s0
 /sys/module/g_android/parameters/mtp_rx_req_len                     u:object_r:sysfs_usb_mtp_device:s0
 /sys/module/g_android/parameters/mtp_tx_req_len                     u:object_r:sysfs_usb_mtp_device:s0
