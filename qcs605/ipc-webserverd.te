@@ -40,3 +40,6 @@ allow ipc-webserverd vendor_shell_exec:file rx_file_perms;
 allow ipc-webserverd vendor_toolbox_exec:file execute_no_trans;
 
 allowxperm ipc-webserverd self:udp_socket ioctl { SIOCSIFADDR };
+
+#Read /sys/firmware/devicetree/base/model
+r_dir_file(ipc-webserverd, sysfs_devices_base_model);
