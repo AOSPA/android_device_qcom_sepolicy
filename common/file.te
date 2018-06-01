@@ -13,6 +13,9 @@ type qti_data_file, file_type, data_file_type;
 #Define the pps socket type
 type pps_socket, file_type;
 
+#Define the qdcmss socket type
+type qdcmsocket_socket, file_type;
+
 # Define cnd socket and data file type
 type cnd_socket, file_type, mlstrustedobject;
 type cnd_data_file, file_type, data_file_type;
