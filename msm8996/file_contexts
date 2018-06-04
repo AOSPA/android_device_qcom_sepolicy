@@ -168,3 +168,7 @@
 
 # device node for external anc
 /dev/msm_audio_anc                              u:object_r:msm_audio_anc_device:s0
+
+##################################
+# FBE
+/(vendor|system/vendor)/bin/init.qti.qseecomd.sh				u:object_r:init-qti-fbe-sh_exec:s0
