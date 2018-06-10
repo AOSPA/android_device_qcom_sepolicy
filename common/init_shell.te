@@ -132,6 +132,7 @@ allow qti_init_shell {
 }:file w_file_perms;
 
 allow qti_init_shell sysfs_process_reclaim:file write;
+allow qti_init_shell sysfs_vmpressure:file write;
 allow qti_init_shell sysfs_msm_power:file write;
 r_dir_file(qti_init_shell, sysfs_thermal)
 r_dir_file(qti_init_shell, sysfs_type)
@@ -276,3 +277,7 @@ dontaudit qti_init_shell proc:dir write;
 
 neverallow qti_init_shell sysfs_type:dir no_w_dir_perms;
 neverallow qti_init_shell proc:dir no_w_dir_perms;
+
+# For USB RNDIS configuration
+allow qti_init_shell sysfs_android_usb:dir r_dir_perms;
+allow qti_init_shell sysfs_android_usb:file rw_file_perms;
