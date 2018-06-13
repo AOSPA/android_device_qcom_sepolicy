@@ -69,6 +69,9 @@ r_dir_file(hal_graphics_composer, oemfs)
 # Allow pps socket access
 unix_socket_connect(hal_graphics_composer_default, pps, mm-pp-daemon)
 
+# Allow qdcmss socket access
+unix_socket_connect(hal_graphics_composer_default, qdcmsocket, qdcm-ss)
+
 # TBD: remove when dependency on libpowermanager is removed
 #allow hal_graphics_composer power_service:service_manager find;
 

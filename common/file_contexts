@@ -9,6 +9,7 @@
 /dev/mhi_pipe_.*                                u:object_r:mhi_device:s0
 /dev/bhi                                        u:object_r:bhi_device:s0
 /dev/msm_.*                                     u:object_r:audio_device:s0
+/dev/hab                                        u:object_r:audio_device:s0
 /dev/wcd_dsp0_control                           u:object_r:audio_device:s0
 /dev/wcd-dsp-glink                              u:object_r:audio_device:s0
 /dev/usf1                                       u:object_r:usf_device:s0
@@ -121,6 +122,7 @@
 #/dev/socket/dpmd                                u:object_r:dpmd_socket:s0
 #/dev/socket/dpmwrapper                          u:object_r:dpmwrapper_socket:s0
 /dev/socket/pps                                 u:object_r:pps_socket:s0
+/dev/socket/qdcmsocket                          u:object_r:qdcmsocket_socket:s0
 /dev/socket/rild2                               u:object_r:rild_socket:s0
 /dev/socket/rild2-debug                         u:object_r:rild_debug_socket:s0
 /dev/socket/rild-debug2                         u:object_r:rild_debug_socket:s0
@@ -189,6 +191,7 @@
 /(vendor|system/vendor)/bin/mm-pp-dpps          u:object_r:mm-pp-daemon_exec:s0
 /(vendor|system/vendor)/bin/mmi                 u:object_r:mmi_exec:s0
 /(vendor|system/vendor)/bin/mmid                u:object_r:mmi_exec:s0
+/(vendor|system/vendor)/bin/qdcmss              u:object_r:qdcm-ss_exec:s0
 /(vendor|system/vendor)/bin/ftmdaemon           u:object_r:mmi_exec:s0
 /(vendor|system/vendor)/bin/mm-audio-ftm        u:object_r:mmi_exec:s0
 /(vendor|system/vendor)/bin/mpdecision          u:object_r:mpdecision_exec:s0
@@ -410,6 +413,7 @@
 /sys/devices/virtual/graphics/fb([0-3])+/ad                         u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/graphics/fb([0-3])+/pp_bl_event                u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/graphics/fb([0-3])+/msm_fb_persist_mode        u:object_r:sysfs_graphics:s0
+/sys/devices/virtual/graphics/fb([0-3])+/config                     u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/rotator/mdss_rotator/caps                      u:object_r:sysfs_graphics:s0
 
 /sys/devices/platform/vfb.([0-3])+/graphics/fb([0-3])+/modes          u:object_r:sysfs_graphics:s0
@@ -505,7 +509,11 @@
 /sys/module/qpnp_power_on/parameters/ship_mode_en                   u:object_r:sysfs_pon_dev:s0
 /sys/module/app_setting/parameters/lib_name                         u:object_r:sysfs_lib:s0
 /sys/module/process_reclaim(/.*)?  u:object_r:sysfs_process_reclaim:s0
+/sys/module/vmpressure(/.*)?  u:object_r:sysfs_vmpressure:s0
 /sys/module/qpnp_rtc/parameters/poweron_alarm                       u:object_r:sysfs_poweron_alarm:s0
+/sys/module/g_android/parameters/mtp_rx_req_len                     u:object_r:sysfs_usb_mtp_device:s0
+/sys/module/g_android/parameters/mtp_tx_req_len                     u:object_r:sysfs_usb_mtp_device:s0
+/sys/module/usb_f_mtp/parameters(/.*)?                              u:object_r:sysfs_usb_mtp_device:s0
 
 ###################################
 # data files
@@ -559,7 +567,6 @@
 /data/vendor/wifi(/.*)?                                             u:object_r:wifi_vendor_data_file:s0
 /data/vendor/wifi/sockets(/.*)?                                     u:object_r:wifi_vendor_wpa_socket:s0
 /data/vendor/wifi/hostapd(/.*)?                                     u:object_r:wifi_vendor_hostapd_socket:s0
-/data/misc/wifi/nvbin(/.*)?                                         u:object_r:dynamic_nv_data_file:s0
 /data/vendor/wifi/wigig_sockets(/.*)?                               u:object_r:wpa_socket:s0
 /data/vendor/wifi/wigig_sockets/wpa_ctrl.*                          u:object_r:wifi_vendor_wpa_socket:s0
 /data/vendor/qdmastats(/.*)?                                        u:object_r:qdma_data_file:s0
