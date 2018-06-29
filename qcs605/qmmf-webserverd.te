@@ -75,3 +75,6 @@ allow qmmf-webserverd vendor_toolbox_exec:file execute_no_trans;
 
 #To shutdown using powerctl property
 set_prop(qmmf-webserverd, powerctl_prop)
+
+# Allow the service to access wakelock capability
+wakelock_use(qmmf-webserverd)
