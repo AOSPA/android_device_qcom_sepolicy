@@ -31,6 +31,10 @@ ro.vendor.bluetooth.       u:object_r:vendor_bluetooth_prop:s0
 sys.usb_uicc.              u:object_r:uicc_prop:s0
 dolby.audio.               u:object_r:audio_prop:s0
 vendor.ims.                u:object_r:qcom_ims_prop:s0
+persist.vendor.ims.disabled       u:object_r:qcom_ims_prop:s0
+vendor.service.qti.ims.enabled    u:object_r:qcom_ims_prop:s0
+persist.vendor.ims.        u:object_r:qcom_ims_prop:s0
+persist.vendor.qti.telephony.vt_cam_interface u:object_r:qcom_ims_prop:s0
 hw.fm.                     u:object_r:fm_prop:s0
 sys.usf.                   u:object_r:usf_prop:s0
 ro.qc.sdk.us.                 u:object_r:usf_prop:s0
@@ -46,7 +50,9 @@ ctl.vendor.ril-daemon      u:object_r:ctl_vendor_rild_prop:s0
 ctl.vendor.cnd             u:object_r:cnd_vendor_prop:s0
 persist.vendor.sys.cnd     u:object_r:cnd_vendor_prop:s0
 persist.vendor.cne.        u:object_r:cnd_vendor_prop:s0
+persist.vendor.cnd.        u:object_r:cnd_vendor_prop:s0
 init.svc.vendor.cnd        u:object_r:cnd_vendor_prop:s0
+persist.vendor.cnd.wqe     u:object_r:cnd_vendor_prop:s0
 ctl.vm_bms                 u:object_r:vm_bms_prop:s0
 ro.vendor.qualcomm.bluetooth.        u:object_r:vendor_bluetooth_prop:s0
 ctl.vendor.ipacm           u:object_r:vendor_ipacm_prop:s0
@@ -59,7 +65,7 @@ ctl.vendor.sensors                u:object_r:sensors_prop:s0
 ctl.vendor.msm_irqbalance         u:object_r:msm_irqbalance_prop:s0
 ctl.vendor.msm_irqbl_sdm630       u:object_r:msm_irqbl_sdm630_prop:s0
 vendor.slpi.               u:object_r:slpi_prop:s0
-ctl.msm_irqbal_lb          u:object_r:msm_irqbalance_prop:s0
+ctl.vendor.msm_irqbal_lb          u:object_r:msm_irqbalance_prop:s0
 camera.                    u:object_r:camera_prop:s0
 persist.camera.            u:object_r:camera_prop:s0
 vendor.spcom.              u:object_r:spcomlib_prop:s0
@@ -71,9 +77,13 @@ vendor.bg_reset               u:object_r:bg_daemon_prop:s0
 vendor.bg.boot_complete       u:object_r:bg_boot_complete_prop:s0
 ro.opengles.version           u:object_r:opengles_prop:s0
 ro.vendor.qualcomm.bt.hci_transport  u:object_r:vendor_bluetooth_prop:s0
-ctl.mdm_helper             u:object_r:mdm_helper_prop:s0
+ctl.vendor.mdm_helper      u:object_r:vendor_mdm_helper_prop:s0
 vendor.post_boot.parsed    u:object_r:vendor_mpctl_prop:s0
 vendor.perf.cores_online   u:object_r:vendor_mpctl_prop:s0
+persist.vendor.qti.        u:object_r:vendor_mpctl_prop:s0
+ro.vendor.at_library       u:object_r:vendor_mpctl_prop:s0
+vendor.debug.trace.perf    u:object_r:vendor_mpctl_prop:s0
+persist.vendor.perfservice.     u:object_r:vendor_mpctl_prop:s0
 vendor.iop.enable_uxe      u:object_r:vendor_iop_prop:s0
 vendor.perf.iop_v3.enable  u:object_r:vendor_iop_prop:s0
 vendor.perf.iop_v3.enable.debug u:object_r:vendor_iop_prop:s0
@@ -90,6 +100,7 @@ vendor.audio.              u:object_r:vendor_audio_prop:s0
 vendor.voice.              u:object_r:vendor_audio_prop:s0
 persist.vendor.audio.      u:object_r:vendor_audio_prop:s0
 ro.vendor.audio.           u:object_r:vendor_audio_prop:s0
+vendor.audio.debug.        u:object_r:vendor_audio_debug_prop:s0
 ro.vendor.alarm_boot       u:object_r:vendor_alarm_boot_prop:s0
 persist.vendor.net.doxlat  u:object_r:vendor_xlat_prop:s0
 vendor.gralloc.            u:object_r:vendor_gralloc_prop:s0
@@ -146,6 +157,12 @@ persist.vendor.debug.rtp.  u:object_r:wfd_debug_prop:s0
 persist.vendor.debug.wfd.  u:object_r:wfd_debug_prop:s0
 vendor.debug.wfd.          u:object_r:wfd_debug_prop:s0
 
+persist.vendor.debug.wfdcdbg  u:object_r:wfd_debug_prop:s0
+persist.vendor.debug.wfdcdbgv u:object_r:wfd_debug_prop:s0
+
+#MirrorLink
+vendor.mls.                u:object_r:vendor_mirrorlink_prop:s0
+
 ctl.vendor.imsrcsservice   u:object_r:ctl_vendor_imsrcsservice_prop:s0
 
 persist.vendor.mmi.        u:object_r:vendor_mmi_prop:s0
@@ -182,9 +199,9 @@ vendor.debug.mmosal.config         u:object_r:debug_prop:s0
 #mm-video
 vendor.encoder.video.profile       u:object_r:mm_video_prop:s0
 vendor.video.disable.ubwc          u:object_r:mm_video_prop:s0
-persist.vendor.dbg.av.logs.level   u:object_r:mm_video_prop:s0
-persist.vendor.mm.en.dropcorrupt   u:object_r:mm_video_prop:s0
-vendor.vidc.enc.trgt_sup_bframe    u:object_r:mm_video_prop:s0
+persist.vendor.debug.av.logs.lvl   u:object_r:debug_prop:s0
+persist.vendor.debug.en.drpcrpt   u:object_r:debug_prop:s0
+vendor.debug.vidc.enc.sup_bframe    u:object_r:debug_prop:s0
 persist.vendor.media.hls.          u:object_r:mm_video_prop:s0
 vendor.av.dbg.disable.pers.cache   u:object_r:mm_video_prop:s0
 persist.vendor.sys.media.rtp-ports u:object_r:mm_video_prop:s0

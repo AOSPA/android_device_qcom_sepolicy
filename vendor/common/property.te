@@ -56,7 +56,7 @@ type scr_enabled_prop, property_type;
 type bg_daemon_prop, property_type;
 type bg_boot_complete_prop, property_type;
 type opengles_prop, property_type;
-type mdm_helper_prop, property_type;
+type vendor_mdm_helper_prop, property_type;
 type vendor_mpctl_prop, property_type;
 type vendor_iop_prop, property_type;
 #Scroll Pre-obtain
@@ -137,6 +137,9 @@ type vendor_qdma_prop, property_type;
 type wfd_service_prop, property_type;
 type wfd_debug_prop, property_type;
 
+#MirrorLink
+type vendor_mirrorlink_prop, property_type;
+
 #imsrcsservice
 type ctl_vendor_imsrcsservice_prop, property_type;
 
@@ -149,6 +152,9 @@ type vendor_radio_prop, property_type;
 
 # Audio props
 type vendor_audio_prop, property_type;
+
+# Audio debug props
+type vendor_audio_debug_prop, property_type;
 
 #ss-restart
 type vendor_ssr_prop, property_type;
