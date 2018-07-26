@@ -82,3 +82,10 @@ binder_call(qmmf-servd, qmmf-webserverd)
 
 allow qmmf-servd persist_file:dir r_dir_perms;
 r_dir_file(qmmf-servd, sensors_persist_file)
+
+#Allow access to /dev/dri/card0
+allow qmmf-servd graphics_device:dir search;
+allow qmmf-servd graphics_device:chr_file rw_file_perms;
+
+#Allow access to video4linux name files
+r_dir_file(qmmf-servd, sysfs_graphics)
