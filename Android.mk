@@ -2,13 +2,20 @@
 ifneq ($(TARGET_EXCLUDE_QCOM_SEPOLICY),true)
 ifeq ($(call is-vendor-board-platform,QCOM),true)
 LOCAL_PATH:= $(call my-dir)
+ifneq ($(call is-board-platform-in-list, qcs605),true)
 BOARD_SEPOLICY_DIRS := \
        $(BOARD_SEPOLICY_DIRS) \
        $(LOCAL_PATH) \
        $(LOCAL_PATH)/common \
        $(LOCAL_PATH)/ssg \
        $(LOCAL_PATH)/$(TARGET_BOARD_PLATFORM)
-
+endif
+ifeq ($(call is-board-platform-in-list, qcs605),true)
+BOARD_SEPOLICY_DIRS := \
+      $(BOARD_SEPOLICY_DIRS) \
+      $(LOCAL_PATH)/ssg \
+      $(LOCAL_PATH)/$(TARGET_BOARD_PLATFORM)
+endif
 ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
 BOARD_SEPOLICY_DIRS += \
        $(LOCAL_PATH)/test

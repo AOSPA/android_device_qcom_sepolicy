@@ -134,3 +134,5 @@ ctl.vendor.imsrcsservice   u:object_r:ctl_vendor_imsrcsservice_prop:s0
 
 #qdcm socket service
 vendor.display.qdcm_socket_service u:object_r:vendor_qdcmss_prop:s0
+
+ro.radio.noril          u:object_r:radio_noril_prop:s0
