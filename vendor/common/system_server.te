@@ -53,7 +53,6 @@ type_transition system_server location_data_file:sock_file location_socket "loca
 type_transition system_server location_data_file:sock_file location_socket "alarm_svc";
 #allow system_server location:unix_stream_socket connectto;
 #allow system_server location_socket:sock_file create_file_perms;
-allow system_server location_prop:property_service set;
 
 #For wifistatemachine
 allow system_server kernel:key search;
@@ -146,7 +145,6 @@ allow system_server sysfs_graphics:file rw_file_perms;
 # timerslack_ns
 allow system_server { location_app system_app } :file write;
 allow system_server opengles_prop:file r_file_perms;
-allow system_server qemu_hw_mainkeys_prop:file r_file_perms;
 
 allow system_server hwui_prop:file r_file_perms;
 allow system_server bservice_prop:file r_file_perms;
@@ -180,6 +178,11 @@ hal_client_domain(system_server, hal_iop)
 
 #Allow access for vendor property
 allow system_server vendor_iop_prop:file r_file_perms;
+# Allow Gesture based boost from System Server
+allow system_server vendor_scroll_prop:file r_file_perms;
+
+# allow system_server to access vendor display property.
+get_prop(system_server, vendor_display_prop)
 
 # allow system server to get mirrorlink connection status prop
 get_prop(system_server, vendor_mirrorlink_prop)

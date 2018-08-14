@@ -24,18 +24,8 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+###################################
 
-## sysmon_app
-##
-## This file defines the permissions that sysmon_apps can carry
-
-type sysmon_app, domain;
-
-app_domain(sysmon_app)
-
-# display by the com.qualcomm.qti.sysmonappExternal.SysMonApp
-allow sysmon_app app_api_service:service_manager find;
-
-# Allow access to FastRPC
-allow sysmon_app qdsp_device:chr_file r_file_perms;
-allow sysmon_app xdsp_device:chr_file r_file_perms;
+genfscon sysfs /devices/soc/4080000.qcom,mss/subsys2/name              u:object_r:sysfs_ssr:s0
+genfscon sysfs /devices/soc/a21b000.qcom,pronto/subsys1/name           u:object_r:sysfs_ssr:s0
+genfscon sysfs /devices/soc/1de0000.qcom,venus/subsys0/name            u:object_r:sysfs_ssr:s0

@@ -24,18 +24,12 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+###################################
 
-## sysmon_app
-##
-## This file defines the permissions that sysmon_apps can carry
-
-type sysmon_app, domain;
-
-app_domain(sysmon_app)
-
-# display by the com.qualcomm.qti.sysmonappExternal.SysMonApp
-allow sysmon_app app_api_service:service_manager find;
-
-# Allow access to FastRPC
-allow sysmon_app qdsp_device:chr_file r_file_perms;
-allow sysmon_app xdsp_device:chr_file r_file_perms;
+genfscon sysfs /devices/soc/soc:qcom,wil6210/subsys3/name              u:object_r:sysfs_ssr:s0
+genfscon sysfs /devices/soc/soc:qcom,cnss/subsys2/name                 u:object_r:sysfs_ssr:s0
+genfscon sysfs /devices/soc/soc:qcom,kgsl-hyp/subsys1/name             u:object_r:sysfs_ssr:s0
+genfscon sysfs /devices/soc/1c00000.qcom,ssc/subsys5/name              u:object_r:sysfs_ssr:s0
+genfscon sysfs /devices/soc/9300000.qcom,lpass/subsys4/name            u:object_r:sysfs_ssr:s0
+genfscon sysfs /devices/soc/2080000.qcom,mss/subsys6/name              u:object_r:sysfs_ssr:s0
+genfscon sysfs /devices/soc/ce0000.qcom,venus/subsys0/name             u:object_r:sysfs_ssr:s0
