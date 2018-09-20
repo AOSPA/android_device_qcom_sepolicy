@@ -1,5 +1,5 @@
-# Copyright (c) 2017-2018, The Linux Foundation. All rights reserved.
-
+# Copyright (c) 2018, The Linux Foundation. All rights reserved.
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
@@ -25,26 +25,26 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-type poweroffalarm_app, domain;
-app_domain(poweroffalarm_app);
+## usta_app
+##
+## This file defines the permissions that usta_apps can carry
 
-allow poweroffalarm_app app_api_service:service_manager find;
+type usta_app, domain;
 
-allow poweroffalarm_app mnt_vendor_file:dir r_dir_perms;
-allow poweroffalarm_app persist_alarm_file:dir rw_dir_perms;
-allow poweroffalarm_app persist_alarm_file:file create_file_perms;
+app_domain(usta_app)
+hal_client_domain(usta_app, hal_perf)
 
-hal_client_domain(poweroffalarm_app, hal_alarm_qti);
+#allow only usta_app with userdebug to access ioctl
+userdebug_or_eng(`
+  allowxperm usta_app self:{ socket qipcrtr_socket } ioctl msm_sock_ipc_ioctls;
+  allow usta_app self:{ socket qipcrtr_socket } create_socket_perms;
+  allow usta_app xdsp_device:chr_file r_file_perms;
+')
 
-allow poweroffalarm_app hal_alarm_qti_default:binder call;
+allow usta_app {
+  app_api_service
+  surfaceflinger_service
+}:service_manager find;
 
-allow poweroffalarm_app system_app_data_file:dir create_dir_perms;
-allow poweroffalarm_app system_app_data_file:{ file lnk_file } create_file_perms;
-
-allow poweroffalarm_app surfaceflinger_service:service_manager find;
-allow poweroffalarm_app audioserver_service:service_manager find;
-allow poweroffalarm_app mediaserver_service:service_manager find;
-
-get_prop(poweroffalarm_app, vendor_alarm_boot_prop);
-
-get_prop(poweroffalarm_app, vendor_iop_prop)
+allow usta_app system_app_data_file:dir create_dir_perms;
+allow usta_app system_app_data_file:file create_file_perms;
