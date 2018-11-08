@@ -10,6 +10,12 @@ type qmuxd_socket, file_type;
 #Define the netmgrd socket type
 type netmgrd_socket, file_type;
 
+#Define the qti socket type
+type dataqti_socket, file_type;
+
+#Define the adpl socket type
+type dataadpl_socket, file_type;
+
 #QTI file types
 type vendor_qti_data_file, file_type, data_file_type;
 
@@ -251,6 +257,8 @@ type nfc_vendor_data_file, file_type, data_file_type;
 # kgsl file type for sysfs access
 type sysfs_kgsl, sysfs_type, fs_type;
 type sysfs_kgsl_proc, sysfs_type, fs_type;
+type sysfs_kgsl_gpuclk, sysfs_type, fs_type;
+
 # kgsl snapshot file type for sysfs access
 type sysfs_kgsl_snapshot, sysfs_type, fs_type;
 
