@@ -62,6 +62,7 @@ set_prop(qti_init_shell, vendor_dataqti_prop)
 set_prop(qti_init_shell, vendor_dataadpl_prop)
 set_prop(qti_init_shell, ctl_rildaemon_prop)
 set_prop(qti_init_shell, ctl_qcrild_prop)
+set_prop(qti_init_shell, ctl_atfwd_prop)
 set_prop(qti_init_shell, ctl_vendor_rild_prop)
 set_prop(qti_init_shell, ctl_vendor_qmuxd_prop)
 set_prop(qti_init_shell, ctl_vendor_netmgrd_prop)
@@ -257,3 +258,6 @@ allow qti_init_shell hvdcp_opti_prop:file r_file_perms;
 
 #Console configuration to enable
 set_prop(qti_init_shell, console_silent_prop)
+
+# Public readable properties
+get_prop(domain, exported2_default_prop)
