@@ -30,3 +30,6 @@ hal_client_domain(hal_secure_element_default, hal_esepowermanager)
 
 #Allow access to the qteeconnector
 hal_client_domain(hal_secure_element_default, hal_qteeconnector)
+
+allow hal_secure_element_default vendor_data_file:dir { add_name remove_name write };
+allow hal_secure_element_default vendor_data_file:file { create getattr open unlink write read append };
