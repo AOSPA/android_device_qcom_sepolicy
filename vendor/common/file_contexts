@@ -83,6 +83,8 @@
 /dev/qg_battery                                 u:object_r:qg_device:s0
 /dev/ipa_odl_ctl                                u:object_r:ipa_dev:s0
 /dev/ipa_adpl                                   u:object_r:ipa_dev:s0
+/dev/qvr_external_sensor_ioctl                  u:object_r:qvr_external_sensor_device:s0
+
 ###################################
 # Dev block nodes
 #
@@ -338,6 +340,7 @@
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.power\.pasrmanager\@1\.0-service u:object_r:hal_pasrmanager_qti_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.seccam@1\.0-service-qti u:object_r:hal_seccam_qti_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.cvp@1\.0-service u:object_r:vendor_cvp_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.2-service          u:object_r:hal_power_default_exec:s0
 
 ###################################
 # sysfs files
