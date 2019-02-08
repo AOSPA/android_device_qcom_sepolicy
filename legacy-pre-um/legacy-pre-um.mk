@@ -1,5 +1,7 @@
 ifeq ($(TARGET_USES_QCOM_LEGACY_PRE_UM_SEPOLICY),true)
 
+SELINUX_IGNORE_NEVERALLOWS := true
+
 # Board specific SELinux policy variable definitions
 BOARD_SEPOLICY_DIRS += \
     device/qcom/sepolicy/legacy-pre-um/common \
