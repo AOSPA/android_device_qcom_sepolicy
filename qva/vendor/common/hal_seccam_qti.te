@@ -1,4 +1,4 @@
-# Copyright (c) 2015, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,50 +25,18 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-type mdtpdaemon, domain;
-type mdtpdaemon_exec, exec_type, vendor_file_type, file_type;
+type hal_seccam_qti, domain;
 
-allow mdtpdaemon self:capability {
-    setuid
-    setgid
-};
+type hal_seccam_qti_exec, exec_type, file_type, vendor_file_type;
+init_daemon_domain(hal_seccam_qti)
+hal_server_domain(hal_seccam_qti, hal_seccam)
 
-userdebug_or_eng(`
-    #Needed for kill(pid, 0) existance test
-    allow mdtpdaemon su:process signull;
-    allow mdtpdaemon self:capability kill;
-    diag_use(mdtpdaemon)
-')
+binder_call(hal_seccam_client, hal_seccam_server)
+binder_call(hal_seccam_server, hal_seccam_client)
 
-#Allow for transition from init domain to mdtpdaemon
-init_daemon_domain(mdtpdaemon)
+add_hwservice(hal_seccam_server, hal_seccam_hwservice)
 
-#Allow apps to interact with mdtpdaemon
-binder_call(mdtpdaemon, platform_app)
-
-#Allow access to firmware
-r_dir_file(mdtpdaemon, firmware_file)
-
-#Allow access to tee device
-allow mdtpdaemon tee_device:chr_file rw_file_perms;
-
-# Provide access to block devices
-allow mdtpdaemon block_device:dir r_dir_perms;
-allow mdtpdaemon mdtp_device:blk_file rw_file_perms;
-allow mdtpdaemon system_block_device:blk_file r_file_perms;
-
-# Provide access to QTI Crypto driver for MDTP
-# allow mdtpdaemon qce_device:chr_file rw_file_perms;
-
-# Provide read access to all /system files for MDTP file-to-block-mapping
-r_dir_file(mdtpdaemon, exec_type)
-
-# Provide mdtpd ability to access QMUXD/IPCRouter for QMI
-qmux_socket(mdtpdaemon);
-allow mdtpdaemon self:socket create_socket_perms;
-allowxperm mdtpdaemon self:socket ioctl msm_sock_ipc_ioctls;
-
-# Provide tee ability to run executables in rootfs for MDTP
-allow mdtpdaemon rootfs:file x_file_perms;
-allow mdtpdaemon ion_device:chr_file r_file_perms;
-allow mdtpdaemon sysfs_data:file r_file_perms;
+allow hal_seccam_qti video_device:chr_file rw_file_perms;
+hal_client_domain(hal_seccam_qti, hal_graphics_allocator)
+hal_client_domain(hal_seccam_qti, hal_perf)
+set_prop(hal_seccam_qti, vendor_core_ctl_prop);
