@@ -1,4 +1,4 @@
-# Copyright (c) 2015, 2017, 2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,37 +25,4 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-binder_call(system_server, seempd)
-unix_socket_send(system_server, seempdw, seempd)
-
-unix_socket_connect(system_server, dpmd, dpmd);
-allow system_server { dpmd_socket dpmtcm_socket dpmwrapper_socket }:sock_file w_file_perms;
-
-allow system_server dpmd_data_file:dir create_dir_perms;
-allow system_server dpmd_data_file:file create_file_perms;
-
-# Allow Izat service
-allow system_server izat_service:service_manager add;
-
-#Allow system_server to add and find regionalization service
-add_service(system_server, regionalization_service);
-
-#Allow system_server to add and find perf service
-#add_service(system_server, vendor_perf_service);
-allow system_server vendor_perf_service:service_manager find;
-binder_call(system_server,qvrd);
-
-#Allow Cast Settings to access WFD prop
-userdebug_or_eng(`
-get_prop(system_server, wfd_debug_prop)
-')
-
-# Allow system server to access fst,wigig system properties
-set_prop(system_server, wigig_core_prop)
-set_prop(system_server, fst_prop)
-
-# Allow system server to access for dpm
-get_prop(system_server, persist_dpm_prop)
-
-# Allow system server to read persist camera properties
-get_prop(system_server, persist_camera_prop)
+get_prop(cameraserver, persist_camera_prop)
