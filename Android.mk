@@ -27,6 +27,8 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS := \
     $(PRODUCT_PRIVATE_SEPOLICY_DIRS) \
      $(LOCAL_PATH)/product/private
 
+# Include vendor sepolicies only if vendor image is built.
+ifdef BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE
 ifeq (,$(filter sdm845 sdm710 qcs605, $(TARGET_BOARD_PLATFORM)))
     BOARD_SEPOLICY_DIRS := \
        $(BOARD_SEPOLICY_DIRS) \
@@ -69,6 +71,7 @@ ifneq (,$(filter sdm845 sdm710 qcs605, $(TARGET_BOARD_PLATFORM)))
     ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
     BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/legacy/vendor/test
     endif
+endif # BOARD_VENDORIMAGE_FILE_SYSTEM_TYPE
 endif
 endif
 endif
