@@ -55,6 +55,7 @@ hal_client_domain(hal_perf_default, hal_iop);
 hal_client_domain(hal_perf_default, hal_graphics_composer);
 allow hal_perf_default qdisplay_service:service_manager find;
 r_dir_file(hal_perf_default, appdomain);
+hal_client_domain(hal_perf_default, hal_srvctracker);
 
 allow hal_perf {
     sysfs_devices_system_cpu
