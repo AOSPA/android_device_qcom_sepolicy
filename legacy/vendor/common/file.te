@@ -37,6 +37,12 @@ type qmuxd_socket, file_type;
 #Define the netmgrd socket type
 type netmgrd_socket, file_type;
 
+#Define the qti socket type
+type dataqti_socket, file_type;
+
+#Define the adpl socket type
+type dataadpl_socket, file_type;
+
 #QTI file types
 type vendor_qti_data_file, file_type, data_file_type;
 
@@ -144,6 +150,7 @@ type sysfs_devfreq, fs_type, sysfs_type;
 type sysfs_devfreq_l3cdsp, fs_type, sysfs_type;
 type sysfs_mmc_host, fs_type, sysfs_type;
 type sysfs_scsi_host, fs_type, sysfs_type;
+type sysfs_scsi_target, fs_type, sysfs_type;
 type sysfs_cpu_boost, fs_type, sysfs_type;
 type sysfs_msm_perf, fs_type, sysfs_type;
 type sysfs_memory, fs_type, sysfs_type;

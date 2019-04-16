@@ -1,4 +1,4 @@
-# Copyright (c) 2016, The Linux Foundation. All rights reserved.
+# Copyright (c) 2017,2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,32 +25,31 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-type wcnss_filter, domain;
-type wcnss_filter_exec, exec_type, vendor_file_type, file_type;
+type wigignpt, domain;
+type wigignpt_exec, exec_type, vendor_file_type, file_type;
 
-init_daemon_domain(wcnss_filter)
-net_domain(wcnss_filter)
+init_daemon_domain(wigignpt)
+#use bypass because net_admin capability is needed
+hal_server_domain_bypass(wigignpt, hal_wigig_npt)
 
-userdebug_or_eng(`
-allow wcnss_filter proc_sysrq:file { open write };
-')
-allow wcnss_filter sysfs_msmuart_file:file rw_file_perms;
-allow wcnss_filter {
-    serial_device
-}:chr_file rw_file_perms;
+#allows calls between client and server and vice-versa
+binder_call(hal_wigig_npt_client, hal_wigig_npt_server)
+binder_call(hal_wigig_npt_server, hal_wigig_npt_client)
 
-#wakelock policy
-wakelock_use(wcnss_filter);
-set_prop(wcnss_filter, vendor_bluetooth_prop);
+#register hal service, allow hal clients to find the service
+hal_attribute_hwservice(hal_wigig_npt, hal_wigig_npt_hwservice)
 
-#For bluetooth firmware
-r_dir_file(wcnss_filter, bt_firmware_file)
+#allow updating network stack parameters under /proc/sys/net
+#this also requires net_admin capability
+allow hal_wigig_npt proc_net:file rw_file_perms;
+allow hal_wigig_npt self:capability net_admin;
 
-allow wcnss_filter persist_bluetooth_file:dir r_dir_perms;
-allow wcnss_filter persist_bluetooth_file:file r_file_perms;
-allow wcnss_filter mnt_vendor_file:dir r_dir_perms;
+#update wigig0 network parameters like rps_cpus and gro_flush_timeout
+allow hal_wigig_npt sysfs_net:dir search;
+allow hal_wigig_npt sysfs_wigig:file rw_file_perms;
 
-#diag
-userdebug_or_eng(`
-    diag_use(wcnss_filter)
-')
+#update bond0 rps_cpus (FST)
+allow hal_wigig_npt sysfs_bond0:file rw_file_perms;
+
+#listen on /dev/socket/wigignpt
+allow hal_wigig_npt hal_wigig_npt:unix_stream_socket { listen accept read write };

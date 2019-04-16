@@ -44,9 +44,6 @@ type freq_prop, property_type;
 #iop
 type vendor_iop_prop, property_type;
 
-#dolphin
-type vendor_dolphin_prop, property_type;
-
 #properties for nfc
 type vendor_nfc_nq_prop, property_type;
 
@@ -70,3 +67,6 @@ type location_prop, property_type;
 
 # Netmgrd prop
 type vendor_data_ko_prop, property_type;
+# WIGIG
+type vendor_wigig_prop, property_type;
+type ctl_vendor_wigigsvc_prop, property_type;

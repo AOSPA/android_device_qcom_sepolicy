@@ -41,7 +41,6 @@ vendor.qti.qdma.                             u:object_r:vendor_qdma_prop:s0
 
 #perf
 vendor.post_boot.parsed                u:object_r:vendor_mpctl_prop:s0
-vendor.perf.dolphin.enable             u:object_r:vendor_dolphin_prop:s0
 
 # NFC
 vendor.qti.nfc.                              u:object_r:vendor_nfc_nq_prop:s0
@@ -66,3 +65,11 @@ persist.vendor.mmi.                          u:object_r:vendor_mmi_prop:s0
 
 # izat location property
 vendor.qti.izat.                             u:object_r:location_prop:s0
+# WIGIG
+vendor.wigig.                                u:object_r:vendor_wigig_prop:s0
+ctl.vendor.wigig_supplicant                  u:object_r:ctl_vendor_wigigsvc_prop:s0
+ctl.vendor.wigig_hostapd                     u:object_r:ctl_vendor_wigigsvc_prop:s0
+
+# netmgrd ko loading
+persist.vendor.data.shs_ko_load u:object_r:vendor_data_ko_prop:s0
+persist.vendor.data.perf_ko_load u:object_r:vendor_data_ko_prop:s0
