@@ -68,6 +68,7 @@ allow hal_perf {
     sysfs_msm_power
     sysfs_battery_supply
     sysfs_process_reclaim
+    sysfs_qfprom
 }:dir r_dir_perms;
 
 allow hal_perf {
@@ -85,6 +86,7 @@ allow hal_perf {
     sysfs_msm_power
     sysfs_battery_supply
     sysfs_process_reclaim
+    sysfs_qfprom
 }:file rw_file_perms;
 
 allow hal_perf {
@@ -93,3 +95,6 @@ allow hal_perf {
     sysfs_scsi_host
     sysfs_kgsl
 }:lnk_file r_file_perms;
+
+# Allow to self kill capability
+allow hal_perf_default self:capability { kill };

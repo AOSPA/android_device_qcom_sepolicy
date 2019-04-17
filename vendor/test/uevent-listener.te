@@ -1,4 +1,4 @@
-# Copyright (c) 2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,33 +25,9 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-## usta_app
-##
-## This file defines the permissions that usta_apps can carry
-
-type usta_app, domain;
-
-app_domain(usta_app)
-hal_client_domain(usta_app, hal_perf)
-
-#allow only usta_app with userdebug to access ioctl
-userdebug_or_eng(`
-  allowxperm usta_app self:{ socket qipcrtr_socket } ioctl msm_sock_ipc_ioctls;
-  allow usta_app self:{ socket qipcrtr_socket } create_socket_perms;
-  allow usta_app xdsp_device:chr_file r_file_perms;
-  allow usta_app ssr_device:chr_file r_file_perms;
-  diag_use(usta_app)
-')
-
-allow usta_app {
-  app_api_service
-  surfaceflinger_service
-}:service_manager find;
-
-allow usta_app system_app_data_file:dir create_dir_perms;
-allow usta_app system_app_data_file:file create_file_perms;
-
-allow usta_app sensors_data_file:dir create_dir_perms;
-allow usta_app sensors_data_file:file create_file_perms;
-
-dontaudit usta_app system_data_file:file open;
+# uevent-listener service
+type uevent-listener_exec, exec_type, vendor_file_type, file_type;
+type uevent-listener, domain;
+init_daemon_domain(uevent-listener)
+allow uevent-listener self:netlink_kobject_uevent_socket create_socket_perms_no_ioctl;
+set_prop(uevent-listener, subsystem_uevent_listener_prop)

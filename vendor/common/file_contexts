@@ -84,6 +84,7 @@
 /dev/ipa_odl_ctl                                u:object_r:ipa_dev:s0
 /dev/ipa_adpl                                   u:object_r:ipa_dev:s0
 /dev/qvr_external_sensor_ioctl                  u:object_r:qvr_external_sensor_device:s0
+/dev/synx_device                                u:object_r:synx_device:s0
 
 ###################################
 # Dev block nodes
@@ -172,6 +173,7 @@
 /(vendor|system/vendor)/bin/qrtr-ns                             u:object_r:qrtr_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.sh               u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/init\.qti\.manifest_sku\.sh  u:object_r:qti-manifest_exec:s0
+/(vendor|system/vendor)/bin/init\.mlvm_boot\.sh         u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.class_core\.sh  u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.bt\.sh          u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.early_boot\.sh  u:object_r:qti_init_shell_exec:s0
@@ -341,6 +343,7 @@
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.seccam@1\.0-service-qti u:object_r:hal_seccam_qti_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.cvp@1\.0-service u:object_r:vendor_cvp_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.power@1\.2-service          u:object_r:hal_power_default_exec:s0
+/(vendor|system/vendor)/bin/init.qti.charger.sh     u:object_r:qti_init_shell_exec:s0
 
 ###################################
 # sysfs files
@@ -436,6 +439,7 @@
 /sys/devices/virtual/graphics/fb([0-3])+/msm_fb_persist_mode        u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/graphics/fb([0-3])+/config                     u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/rotator/mdss_rotator/caps                      u:object_r:sysfs_graphics:s0
+/sys/devices/platform/soc/[a-f0-9]+.qfprom/qfprom0/nvmem            u:object_r:sysfs_qfprom:s0
 
 /sys/devices/platform/vfb.([0-3])+/graphics/fb([0-3])+/modes        u:object_r:sysfs_graphics:s0
 /sys/devices/platform/vfb.([0-3])+/graphics/fb([0-3])+/mode         u:object_r:sysfs_graphics:s0
@@ -453,6 +457,7 @@
 /sys/devices(/platform)?/soc/[0-9a-f]+.qcom,spmi/spmi-[0-9]+/spmi[0-9]+-[0-9]+/[0-9a-z]+.qcom,spmi:qcom,pmi[0-9]+@[0-9]+:qcom,leds@[a-z0-9]+(/.*)? u:object_r:sysfs_graphics:s0
 /sys/devices/platform/soc/[a-f0-9]+.qcom,spmi/spmi-0/spmi0-0[0-9]/[a-z0-9]+.qcom,spmi:qcom,[a-z0-9]+@[0-9]:qcom,haptics@c000/leds/vibrator(/.*)?   u:object_r:sysfs_leds:s0
 /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight(/.*)?     u:object_r:sysfs_graphics:s0
+/sys/devices/platform/soc/5e00000.qcom,mdss_mdp/backlight(/.*)?     u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/switch/hdmi(/.*)?                              u:object_r:sysfs_graphics:s0
 /sys/devices(/platform)?/soc/[a-f0-9]+.qcom,mdss_mdp/[a-f0-9]+.qcom,mdss_mdp:qcom,mdss_fb_primary/leds/lcd-backlight(/.*)?   u:object_r:sysfs_graphics:s0
 /sys/devices/soc.0/[a-z0-9]+.qcom,mdss_mdp/qcom,mdss_fb_primary.+[a-z0-9]/leds/lcd-backlight(/.*)?   u:object_r:sysfs_graphics:s0
@@ -579,8 +584,6 @@
 /data/vendor/ramdump(/.*)?                                          u:object_r:vendor_ramdump_data_file:s0
 /data/vendor/mdmhelperdata(/.*)?                                    u:object_r:vendor_mdmhelperdata_data_file:s0
 /sys/kernel/debug/ipc_logging(/.*)?                                 u:object_r:qti_debugfs:s0
-/sys/kernel/debug/clk(/.*)?                                         u:object_r:qti_debugfs:s0
-/sys/kernel/debug/regulator(/.*)?                                   u:object_r:qti_debugfs:s0
 /data/vendor/misc/qsee(/.*)?                                        u:object_r:data_qsee_file:s0
 /data/vendor/tui(/.*)?                                              u:object_r:vendor_tui_data_file:s0
 /data/vendor/nnhal(/.*)?                                            u:object_r:hal_neuralnetworks_data_file:s0
