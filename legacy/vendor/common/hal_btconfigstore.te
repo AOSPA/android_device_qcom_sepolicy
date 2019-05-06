@@ -1,4 +1,4 @@
-# Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -13,7 +13,7 @@
 #       contributors may be used to endorse or promote products derived
 #       from this software without specific prior written permission.
 #
-# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# THIS SOFTWARE IS PROVIDED"AS IS" AND ANY EXPRESS OR IMPLIED
 # WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
 # ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
@@ -24,27 +24,7 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-allow system_server self:socket ioctl;
-allowxperm system_server self:socket ioctl msm_sock_ipc_ioctls;
 
-binder_call(system_server, hal_camera_default)
-
-binder_call(system_server, hal_graphics_composer)
-
-allow system_server persist_file:dir search;
-allow system_server persist_sensors_file:dir search;
-allow system_server persist_sensors_file:file r_file_perms;
-allow system_server wlan_device:chr_file rw_file_perms;
-allow system_server hal_audio_default:file w_file_perms;
-
-allow system_server sysfs_sensors:dir search;
-allow system_server sysfs_sensors:file rw_file_perms;
-# allow access to low persistence mode sysfs node
-allow system_server sysfs_graphics:file rw_file_perms;
-
-userdebug_or_eng(`
-    diag_use(system_server)
-')
-
-# allow system_server to access vendor display property.
-get_prop(system_server, vendor_display_prop)
+binder_call(hal_btconfigstore_client, hal_btconfigstore_server)
+binder_call(hal_btconfigstore_server, hal_btconfigstore_client)
+hal_attribute_hwservice(hal_btconfigstore, hal_btconfigstore_hwservice)

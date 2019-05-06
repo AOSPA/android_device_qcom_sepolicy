@@ -67,6 +67,8 @@
 /dev/jdi-bu21150                                u:object_r:bu21150_device:s0
 /dev/usb_ext_chg                                u:object_r:hvdcp_device:s0
 /dev/synx_device                                u:object_r:synx_device:s0
+/dev/ipa_odl_ctl                                u:object_r:ipa_dev:s0
+/dev/ipa_adpl                                   u:object_r:ipa_dev:s0
 
 # dev socket nodes
 /dev/socket/chre                                u:object_r:chre_socket:s0
@@ -149,8 +151,6 @@
 /vendor/bin/time_daemon         u:object_r:time_daemon_exec:s0
 /vendor/bin/imsrcsd             u:object_r:hal_rcsservice_exec:s0
 /vendor/bin/tloc_daemon         u:object_r:tlocd_exec:s0
-/vendor/bin/hvdcp_opti          u:object_r:hvdcp_exec:s0
-/vendor/bin/init.qti.charger.sh u:object_r:qti_init_shell_exec:s0
 
 /vendor/bin/hw/qcrild           u:object_r:rild_exec:s0
 /vendor/bin/hw/android\.hardware\.drm@1\.0-service.widevine          u:object_r:hal_drm_widevine_exec:s0
@@ -240,7 +240,6 @@
 /data/vendor/netmgr(/.*)?              u:object_r:netmgr_data_file:s0
 /data/vendor/netmgr/recovery(/.*)?     u:object_r:netmgr_recovery_data_file:s0
 /data/vendor/location(/.*)?            u:object_r:location_data_file:s0
-/data/nfc(/.*)?                        u:object_r:nfc_data_file:s0
 /data/vendor/camera(/.*)?              u:object_r:vendor_camera_data_file:s0
 /data/vendor/display(/.*)?             u:object_r:display_vendor_data_file:s0
 /data/vendor/nfc(/.*)?                 u:object_r:nfc_vendor_data_file:s0
