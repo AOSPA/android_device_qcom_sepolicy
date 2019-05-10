@@ -1,4 +1,4 @@
-# Copyright (c) 2017, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,43 +25,18 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# hal_gnss_qti - binerized gnss hal
-type hal_gnss_qti, domain;
-type hal_gnss_qti_exec, exec_type, vendor_file_type, file_type;
-init_daemon_domain(hal_gnss_qti)
+#Define Domain
+type hal_srvctracker_default, domain;
+type hal_srvctracker_default_exec, exec_type, vendor_file_type, file_type;
+hal_server_domain(hal_srvctracker_default, hal_srvctracker)
+init_daemon_domain(hal_srvctracker_default)
 
-hal_server_domain(hal_gnss_qti, hal_gnss)
-# Allow Gnss HAL to get updates from health hal
-hal_client_domain(hal_gnss_qti, hal_health)
+binder_call(hal_srvctracker_client, hal_srvctracker_server)
+binder_call(hal_srvctracker_server, hal_srvctracker_client)
 
-allow hal_gnss_qti location_data_file:dir r_dir_perms;
-allow hal_gnss location_data_file:file create_file_perms;
-allow hal_gnss location_socket:sock_file create_file_perms;
-allow hal_gnss location_socket:dir rw_dir_perms;
-allow hal_gnss location:unix_stream_socket connectto;
-allow hal_gnss location:unix_dgram_socket sendto;
+add_hwservice(hal_srvctracker, hal_srvctracker_hwservice)
 
-unix_socket_connect(hal_gnss, location, location)
+allow hal_srvctracker_client hal_srvctracker_hwservice:hwservice_manager find;
+allow hal_srvctracker hwservicemanager:binder call;
 
-netmgr_socket(hal_gnss)
-allow hal_gnss self:{
-    socket
-    netlink_socket
-    netlink_generic_socket
-    qipcrtr_socket
-} create_socket_perms_no_ioctl;
-allow hal_gnss self:netlink_route_socket { create_socket_perms_no_ioctl nlmsg_read nlmsg_write };
-
-allow hal_gnss self:{ socket qipcrtr_socket } rw_socket_perms;
-allow hal_gnss sysfs_data:file r_file_perms;
-allow hal_gnss sysfs:dir r_dir_perms;
-get_prop(hal_gnss_qti, vendor_pd_locater_dbg_prop)
-
-allow hal_gnss self:socket { create ioctl };
-
-allowxperm hal_gnss self:{ socket qipcrtr_socket } ioctl msm_sock_ipc_ioctls;
-
-userdebug_or_eng(`
-  diag_use(hal_gnss);
-')
-use_vendor_per_mgr(hal_gnss)
+get_prop(hal_srvctracker_default, hwservicemanager_prop)
