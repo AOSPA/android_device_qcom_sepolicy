@@ -89,3 +89,9 @@ persist.vendor.tb.                           u:object_r:vendor_hvdcp_opti_prop:s
 persist.vendor.vin.                          u:object_r:vendor_hvdcp_opti_prop:s0
 persist.vendor.qg.                           u:object_r:vendor_hvdcp_opti_prop:s0
 persist.vendor.soh.                          u:object_r:vendor_hvdcp_opti_prop:s0
+
+# XLAT property
+persist.vendor.net.doxlat                    u:object_r:vendor_xlat_prop:s0
+
+#qvr properties
+vendor.qvr                       u:object_r:vendor_qvr_prop:s0
