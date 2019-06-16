@@ -56,7 +56,8 @@ genfscon sysfs /devices/platform/vendor/vendor:bt_qca6390/rfkill/rfkill0/state u
 # DCVS nodes
 genfscon sysfs /devices/platform/soc/soc:qcom,cpu-cpu-llcc-bw/devfreq u:object_r:sysfs_devfreq:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,cpu-llcc-ddr-bw/devfreq u:object_r:sysfs_devfreq:s0
-genfscon sysfs /devices/platform/soc/soc:qcom,npu-npu-ddr-bw/devfreq u:object_r:sysfs_devfreq:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,npu-npu-llcc-bw/devfreq u:object_r:sysfs_devfreq:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,npu-llcc-ddr-bw/devfreq u:object_r:sysfs_devfreq:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,npudsp-npu-ddr-bw/devfreq u:object_r:sysfs_devfreq:s0
 genfscon sysfs /devices/platform/soc/18590000.qcom,devfreq-l3/18590000.qcom,devfreq-l3:qcom,cpu0-cpu-l3-lat/devfreq u:object_r:sysfs_devfreq:s0
 genfscon sysfs /devices/platform/soc/18590000.qcom,devfreq-l3/18590000.qcom,devfreq-l3:qcom,cpu4-cpu-l3-lat/devfreq u:object_r:sysfs_devfreq:s0
@@ -70,6 +71,18 @@ genfscon sysfs /devices/platform/soc/soc:qcom,cpu4-cpu-ddr-latfloor/devfreq u:ob
 #mhi sysfs
 genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_QMI0 u:object_r:sysfs_mhi:s0
 genfscon sysfs /devices/platform/soc/1c10000.qcom,pcie/pci0002:00/0002:00:00.0/0002:01:00.0/0306_02.01.00_QMI1  u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/0306_00.01.00/time u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/0306_01.01.00/time u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/0306_02.01.00/time u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/1101_00.01.00/time u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/1101_01.01.00/time u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/1101_02.01.00/time u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/0306_00.01.00/time_us u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/0306_01.01.00/time_us u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/0306_02.01.00/time_us u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/1101_00.01.00/time_us u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/1101_01.01.00/time_us u:object_r:sysfs_mhi:s0
+genfscon sysfs /devices/1101_02.01.00/time_us u:object_r:sysfs_mhi:s0
 
 # Power supply device nodes
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,qpnp-smb5/power_supply/battery u:object_r:sysfs_battery_supply:s0
@@ -94,6 +107,14 @@ genfscon sysfs /devices/platform/soc/6048000.tmc/coresight-tmc-etr u:object_r:sy
 genfscon sysfs /devices/platform/soc/6002000.stm/coresight-stm u:object_r:sysfs_qdss_dev:s0
 genfscon sysfs /devices/platform/soc/soc:hwevent/coresight-hwevent u:object_r:sysfs_qdss_dev:s0
 genfscon sysfs /devices/platform/soc/6b0c000.csr/coresight-swao-csr u:object_r:sysfs_qdss_dev:s0
+
+#fps sysfs-node
+genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/measured_fps u:object_r:sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-1/measured_fps u:object_r:sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-2/measured_fps u:object_r:sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-0/fps_periodicity_ms u:object_r:sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-1/fps_periodicity_ms u:object_r:sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/ae00000.qcom,mdss_mdp/drm/card0/sde-crtc-2/fps_periodicity_ms u:object_r:sysfs_graphics:s0
 
 # USBPD device node
 genfscon sysfs /devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-02/c440000.qcom,spmi:qcom,pm8150b@2:qcom,usb-pdphy@1700/usbpd/usbpd0 u:object_r:sysfs_usbpd_device:s0
