@@ -1,4 +1,4 @@
-# Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,32 +25,7 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Define domain
-type hal_display_color_default, domain;
-hal_server_domain(hal_display_color_default, hal_display_color)
-type hal_display_color_default_exec, exec_type, vendor_file_type, file_type;
-init_daemon_domain(hal_display_color_default)
+binder_call(hal_capabilityconfigstore_qti_client, hal_capabilityconfigstore_qti_server)
+binder_call(hal_capabilityconfigstore_qti_server, hal_capabilityconfigstore_qti_client)
 
-# Allow hwbinder call from hal client to server
-binder_call(hal_display_color_client, hal_display_color_server)
-binder_call(platform_app, hal_display_color_server)
-
-# Add hwservice related rules
-add_hwservice(hal_display_color_server, hal_display_color_hwservice)
-allow hal_display_color_client hal_display_color_hwservice:hwservice_manager find;
-allow platform_app hal_display_color_hwservice:hwservice_manager find;
-
-# Rule for display color to access graphics composer process
-unix_socket_connect(hal_display_color, pps, hal_graphics_composer_default);
-
-# Rule for vndbinder usage
-allow hal_display_color qdisplay_service:service_manager find;
-vndbinder_use(hal_display_color);
-binder_call(hal_display_color, hal_graphics_composer)
-
-#Add rules for postproc hal
-add_hwservice(hal_display_color_server, hal_display_postproc_hwservice)
-allow hal_display_postproc_client hal_display_postproc_hwservice:hwservice_manager find;
-
-# Set vendor_qdcmss property
-set_prop(hal_display_color, vendor_qdcmss_prop);
+hal_attribute_hwservice(hal_capabilityconfigstore_qti, hal_capabilityconfigstore_qti_hwservice)

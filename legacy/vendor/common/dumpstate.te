@@ -1,4 +1,4 @@
-# Copyright (c) 2017, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -18,29 +18,24 @@
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
 # ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
 # BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-# # CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
 # SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
 # BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-typeattribute seempd coredomain;
-typeattribute seempd mlstrustedsubject;
-type seempd_exec, exec_type, system_file_type, file_type;
 
-init_daemon_domain(seempd)
-
-binder_use(seempd)
-binder_call(seempd, system_server)
-binder_call(seempd, appdomain)
-
-allow seempd MinkBinderSvc:service_manager { find };
-
-add_service(seempd, seemp_service)
-
-allow seempd self:binder call;
-allow seempd ion_device:chr_file r_file_perms;
-
-#Allow search access in seemp_data_file
-allow seempd seemp_data_file:dir search;
+# Needed by CTS test case  testNoBugreportDenials
+# where the test expect no denails from dumpstate
+allow dumpstate adsprpcd_file:dir getattr;
+allow dumpstate bt_firmware_file:dir getattr;
+allow dumpstate bt_firmware_file:filesystem getattr;
+allow dumpstate firmware_file:dir getattr;
+allow dumpstate firmware_file:filesystem getattr;
+# access to {stat} path where the path is like
+# /sys/devices/platform/soc/1d84000.ufshc/host0/target0:0:0/0:0:0:3/block/sdd/sdd2/stat
+# with too many variables  1d84000.ufshc  , target[0-5]:0:[0-5], sdd/sdd2  or sda/sdd/sdf  or sdf[1-5]
+# so instead of labeling this suppressing this access.
+dontaudit dumpstate sysfs:file * ;
+allow dumpstate debugfs_mmc:dir search;
