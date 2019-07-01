@@ -1,4 +1,4 @@
-# Copyright (c) 2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,25 +25,7 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# define SELinux domain
-type hal_drm_widevine, domain;
-hal_server_domain(hal_drm_widevine, hal_drm)
+binder_call(hal_capabilityconfigstore_qti_client, hal_capabilityconfigstore_qti_server)
+binder_call(hal_capabilityconfigstore_qti_server, hal_capabilityconfigstore_qti_client)
 
-type hal_drm_widevine_exec, exec_type, vendor_file_type, file_type;
-init_daemon_domain(hal_drm_widevine)
-
-allow hal_drm_widevine mediacodec:fd use;
-allow hal_drm_widevine { appdomain -isolated_app }:fd use;
-allow hal_drm_widevine qce_device:chr_file rw_file_perms;
-
-#Allow access to smcinvoke device
-allow hal_drm_widevine smcinvoke_device:chr_file rw_file_perms;
-
-# The QTI DRM-HAL implementation uses a vendor-binder service provided
-# by the HWC HAL.
-vndbinder_use(hal_drm_widevine);
-allow hal_drm_widevine qdisplay_service:service_manager { find };
-#binder_call(hal_drm_widevine, hal_graphics_composer)
-hal_client_domain(hal_drm_widevine, hal_graphics_composer);
-allow hal_drm_widevine mediadrm_vendor_data_file:dir create_dir_perms;
-allow hal_drm_widevine mediadrm_vendor_data_file:file create_file_perms;
+hal_attribute_hwservice(hal_capabilityconfigstore_qti, hal_capabilityconfigstore_qti_hwservice)
