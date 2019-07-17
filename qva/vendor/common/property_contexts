@@ -31,6 +31,11 @@ ctl.vendor.cnd                    u:object_r:cnd_vendor_prop:s0
 persist.vendor.cne.               u:object_r:cnd_vendor_prop:s0
 persist.vendor.cnd.               u:object_r:cnd_vendor_prop:s0
 
+persist.speaker.prot.enable                 u:object_r:qcv_vendor_audio_prop:s0
+audio.volume.listener.dump                  u:object_r:qcv_vendor_audio_prop:s0
+audio.volume.headset.gain.depcal            u:object_r:qcv_vendor_audio_prop:s0
+persist.audio.dualmic.config                u:object_r:qcv_vendor_audio_prop:s0
+
 ctl.vendor.dataadpl                          u:object_r:vendor_dataadpl_prop:s0
 vendor.spcom.                                u:object_r:spcomlib_prop:s0
 persist.vendor.bt.soc.scram_freqs            u:object_r:vendor_bluetooth_prop:s0
@@ -69,6 +74,7 @@ vendor.qti.izat.                             u:object_r:location_prop:s0
 vendor.wigig.                                u:object_r:vendor_wigig_prop:s0
 ctl.vendor.wigig_supplicant                  u:object_r:ctl_vendor_wigigsvc_prop:s0
 ctl.vendor.wigig_hostapd                     u:object_r:ctl_vendor_wigigsvc_prop:s0
+ctl.vendor.sensingdaemon                     u:object_r:ctl_vendor_wigigsvc_prop:s0
 
 # netmgrd ko loading
 persist.vendor.data.shs_ko_load u:object_r:vendor_data_ko_prop:s0
@@ -98,3 +104,6 @@ vendor.qvr                       u:object_r:vendor_qvr_prop:s0
 
 #qmuxd property
 ctl.start$vendor.qmuxd                       u:object_r:ctl_qmuxd_prop:s0
+
+#bluetooth property
+ro.vendor.bt.enablelazyhal                   u:object_r:bluetooth_prop:s0 exact bool
