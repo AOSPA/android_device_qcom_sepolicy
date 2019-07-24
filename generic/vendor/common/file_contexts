@@ -30,6 +30,7 @@
 /dev/kgsl-3d0                                   u:object_r:gpu_device:s0
 /dev/rtc0                                       u:object_r:rtc_device:s0
 /dev/smd.*                                      u:object_r:smd_device:s0
+/dev/msm_npu                                    u:object_r:npu_device:s0
 # TODO: does ttyMSM0 need to be more specific
 /dev/ttyMSM0                                    u:object_r:tty_device:s0
 /dev/ipa                                        u:object_r:ipa_dev:s0
@@ -307,6 +308,7 @@
 /mnt/vendor/persist/sensors(/.*)?    u:object_r:persist_sensors_file:s0
 /mnt/vendor/persist/time(/.*)?       u:object_r:persist_time_file:s0
 /mnt/vendor/persist/audio(/.*)?      u:object_r:persist_audio_file:s0
+/mnt/vendor/persist/feature_enabler_client(/.*)? u:object_r:persist_feature_enabler_file:s0
 
 # graphics device
 /dev/mdss_rotator                               u:object_r:graphics_device:s0
@@ -336,6 +338,8 @@
 
 # sysfs_graphics
 /sys/class/graphics/fb0/mdp/caps                                    u:object_r:sysfs_graphics:s0
+/sys/class/thermal(/.*)?                                            u:object_r:sysfs_thermal:s0
+/sys/devices/virtual/thermal(/.*)?                                  u:object_r:sysfs_thermal:s0
 /sys/devices/virtual/graphics/fb([0-3])+/idle_time                  u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/graphics/fb([0-3])+/dynamic_fps                u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/graphics/fb([0-3])+/product_description        u:object_r:sysfs_graphics:s0
