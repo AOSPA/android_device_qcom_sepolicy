@@ -1,4 +1,4 @@
-# Copyright (c) 2019 The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,33 +25,14 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+type init-qcom-wifi-sh, domain;
+type init-qcom-wifi-sh_exec, exec_type, vendor_file_type, file_type;
 
-#Define Domain
-type wfdvndservice, domain;
-type wfdvndservice_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(init-qcom-wifi-sh)
 
-init_daemon_domain(wfdvndservice)
-
-#Allow net for hdcp connection
-net_domain(wfdvndservice)
-
-#Allow to use Vendor Binder IPC
-vndbinder_use(wfdvndservice)
-
-#Allow to host sink hdcp vnd service
-add_service(wfdvndservice, wfdhdcpvndservice_service)
-binder_call(wfdvndservice, wfdhdcphalservice_qti);
-
-#Allow access to firmware files for HDCP session
-r_dir_file(wfdvndservice, firmware_file)
-
-#Allow for using fds
-allow wfdvndservice { mediacodec system_app wfdhdcphalservice_qti}:fd use;
-
-#Allow access to tee/ion device
-allow wfdvndservice tee_device:chr_file rw_file_perms;
-allow wfdvndservice ion_device:chr_file r_file_perms;
-
-#Allow access to graphics_composer and qdisplay_service
-hal_client_domain(wfdvndservice, hal_graphics_composer);
-allow wfdvndservice qdisplay_service:service_manager find;
+# WLAN dynamic detect
+# - allow exec lspci: access /sys/bus/pci/devices & /sys/devices/platform/soc
+# - set wlan prop
+allow init-qcom-wifi-sh vendor_toolbox_exec:file rx_file_perms;
+r_dir_file(init-qcom-wifi-sh, sysfs_type)
+set_prop(init-qcom-wifi-sh, qcom_wlan_prop);
