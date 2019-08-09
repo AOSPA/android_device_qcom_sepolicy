@@ -75,3 +75,6 @@ allow hal_audio self:capability sys_nice;
 
 #Rule to enable read/write capability for device latency nodes
 allow hal_audio_default device_latency: chr_file  rw_file_perms;
+
+#Rule to allow Audio HAL to access qseecom device
+allow hal_audio_default tee_device:chr_file rw_file_perms;
