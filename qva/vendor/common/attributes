@@ -105,10 +105,6 @@ attribute hal_srvctracker;
 attribute hal_srvctracker_client;
 attribute hal_srvctracker_server;
 
-attribute hal_qspmhal;
-attribute hal_qspmhal_client;
-attribute hal_qspmhal_server;
-
 attribute hal_bluetooth_dun;
 attribute hal_bluetooth_dun_client;
 attribute hal_bluetooth_dun_server;
