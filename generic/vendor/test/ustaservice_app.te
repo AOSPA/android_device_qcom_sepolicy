@@ -1,5 +1,5 @@
-# Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
-
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
 # met:
@@ -24,38 +24,22 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+type ustaservice_app, domain;
+app_domain(ustaservice_app)
 
+allow ustaservice_app usta_app_service:service_manager add;
+allow ustaservice_app usta_app_service:service_manager find;
+allow ustaservice_app activity_service:service_manager find;
 
-#allow system_app access factory
-hal_client_domain(system_app, vendor_hal_factory_qti);
-hal_client_domain(system_app, hal_fm);
+userdebug_or_eng(`
+  allowxperm ustaservice_app self:{ socket qipcrtr_socket } ioctl msm_sock_ipc_ioctls;
+  allow ustaservice_app self:{ socket qipcrtr_socket } create_socket_perms;
+  allow ustaservice_app xdsp_device:chr_file r_file_perms;
+  allow ustaservice_app ssr_device:chr_file r_file_perms;
+')
 
-# fm_radio app needes  open read on fm_radio_device
-allow system_app fm_radio_device:chr_file r_file_perms;
+hwbinder_use(ustaservice_app)
 
-#allow system_app access sensorscalibration service
-hal_client_domain(system_app, hal_sensorscalibrate_qti);
-
-#perf
-hal_client_domain(system_app, hal_perf)
-
-#allow system_app to interact with soter hal
-hal_client_domain(system_app, hal_soter);
-
-#allow system app access display color for qdcm
-hal_client_domain(system_app, hal_display_color);
-
-# allow system_app to interact with light hal
-hal_client_domain(system_app, hal_light);
-
-#allow system app to access btconfigstore hal
-hal_client_domain(system_app, hal_btconfigstore);
-
-# update engine
-binder_call( system_app, update_engine )
-
-#allow system app to access hal_qspmhal
-hal_client_domain(system_app, hal_qspmhal);
-
-# allow system_app to interact with pasr hal
-hal_client_domain(system_app, hal_pasrmanager)
+userdebug_or_eng(`
+   diag_use(ustaservice_app)
+')
