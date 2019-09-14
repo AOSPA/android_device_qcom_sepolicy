@@ -1,4 +1,4 @@
-# Copyright (c) 2018, 2019 The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -24,13 +24,7 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-persist.vendor.debug.sensors.             u:object_r:sensors_dbg_prop:s0
 
-#Wifi Display
-persist.vendor.debug.mux.                    u:object_r:wfd_vendor_debug_prop:s0
-persist.vendor.debug.rtp.                    u:object_r:wfd_vendor_debug_prop:s0
-persist.vendor.debug.wfd.                    u:object_r:wfd_vendor_debug_prop:s0
-vendor.debug.wfd.                            u:object_r:wfd_vendor_debug_prop:s0
+# Needed for time service apk
+user=_app seinfo=timeserviceapp name=com.qualcomm.timeservice domain=timeservice_app type=app_data_file levelFrom=all
 
-#CNE IWLAN Logging
-persist.vendor.iwlan.logging.logcat          u:object_r:cnd_prop:s0
