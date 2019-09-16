@@ -33,6 +33,7 @@
 /dev/sp_keymaster                     u:object_r:sp_keymaster_device:s0
 /dev/sp_ssr                           u:object_r:sp_ssr_device:s0
 /dev/spdaemon_ssr                     u:object_r:spdaemon_ssr_device:s0
+/dev/spss_utils                       u:object_r:spss_utils_device:s0
 /dev/iuicc                            u:object_r:iuicc_device:s0
 /dev/cryptoapp                        u:object_r:cryptoapp_device:s0
 /dev/sec_nvm_.*                       u:object_r:sec_nvm_device:s0
@@ -54,7 +55,7 @@
 /dev/socket/qdma(/.*)?                          u:object_r:qdma_socket:s0
 /dev/socket/adpl_cmd_uds_file                   u:object_r:dataadpl_socket:s0
 /dev/socket/wigig/wpa_wigig[0-9]                u:object_r:wigig_vendor_wpa_socket:s0
-/dev/socket/wigig/vendor_wpa_wlan[0-9]          u:object_r:wigig_vendor_wpa_socket:s0
+/dev/socket/vendor_wpa_wlan[0-9]                u:object_r:wifi_vendor_wpa_socket:s0
 /dev/socket/wigig/wigignpt                      u:object_r:wigignpt_socket:s0
 /dev/socket/wigig/sensingdaemon                 u:object_r:sensingdaemon_socket:s0
 
@@ -107,7 +108,7 @@
 /(vendor|system/vendor)/bin/mmi                                                    u:object_r:vendor_mmi_exec:s0
 /(vendor|system/vendor)/bin/mmid                                                   u:object_r:vendor_mmi_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.factory@1\.0-service         u:object_r:vendor_hal_factory_qti_default_exec:s0
-/(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.servicetracker@1\.0-service u:object_r:hal_srvctracker_default_exec:s0
+/(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.servicetracker@1\.[0-1]-service u:object_r:hal_srvctracker_default_exec:s0
 /(vendor|system/vendor)/bin/hw/vendor\.qti\.hardware\.cvp@1\.0-service             u:object_r:vendor_cvp_exec:s0
 /(vendor|system/vendor)/bin/fstman                                                 u:object_r:fstman_exec:s0
 /(vendor|system/vendor)/bin/wigighalsvc                                            u:object_r:wigighalsvc_exec:s0
@@ -153,6 +154,8 @@
 
 /sys/devices(/platform)?/soc/soc:qcom,gpubw/devfreq/soc:qcom,gpubw(/.*)? u:object_r:sysfs_devfreq:s0
 
+/sys/devices(/platform)?/soc/soc:qcom,spss_utils(/.*)?             u:object_r:sysfs_spss:s0
+
 ###################################
 # data files
 #
@@ -178,10 +181,14 @@
 # persist files
 #
 /mnt/vendor/persist/secnvm(/.*)?      u:object_r:persist_secnvm_file:s0
+/mnt/vendor/persist/iar_db(/.*)?      u:object_r:persist_iar_db_file:s0
 /mnt/vendor/persist/qti_fp(/.*)?      u:object_r:persist_qti_fp_file:s0
 /mnt/vendor/persist/FTM_AP(/.*)?      u:object_r:vendor_persist_mmi_file:s0
 /mnt/vendor/persist/vpp(/.*)?         u:object_r:persist_vpp_file:s0
 /mnt/vendor/persist/hvdcp_opti(/.*)?  u:object_r:persist_hvdcp_file:s0
+
+# spunvm partition
+/mnt/vendor/spunvm(/.*)?              u:object_r:spunvm_file:s0
 
 # same-process HAL files and their dependencies
 #

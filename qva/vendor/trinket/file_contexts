@@ -84,6 +84,8 @@
 /dev/block/platform/soc/4804000.ufshc/by-name/imagefv_[ab]      u:object_r:custom_ab_block_device:s0
 /dev/block/platform/soc/4804000.ufshc/by-name/uefisecapp_[ab]   u:object_r:uefi_block_device:s0
 /dev/block/platform/soc/4804000.ufshc/by-name/super             u:object_r:super_block_device:s0
+/dev/block/platform/soc/4804000.ufshc/by-name/recovery_[ab]     u:object_r:recovery_block_device:s0
+/dev/block/platform/soc/4804000.ufshc/by-name/vbmeta_system_[ab]    u:object_r:custom_ab_block_device:s0
 
 # Block device holding the GPT, where the A/B attributes are stored.
 /dev/block/platform/soc/4804000.ufshc/sd[ade]                   u:object_r:gpt_block_device:s0
@@ -125,6 +127,8 @@
 /dev/block/platform/soc/4744000.sdhci/by-name/storsec_[ab]      u:object_r:custom_ab_block_device:s0
 /dev/block/platform/soc/4744000.sdhci/by-name/imagefv_[ab]      u:object_r:custom_ab_block_device:s0
 /dev/block/platform/soc/4744000.sdhci/by-name/uefisecapp_[ab]   u:object_r:uefi_block_device:s0
+/dev/block/platform/soc/4744000.sdhci/by-name/recovery_[ab]     u:object_r:recovery_block_device:s0
+/dev/block/platform/soc/4744000.sdhci/by-name/vbmeta_system_[ab]    u:object_r:custom_ab_block_device:s0
 
 #non A/B
 /dev/block/platform/soc/4744000.sdhci/by-name/system                            u:object_r:system_block_device:s0
@@ -173,3 +177,5 @@
 /sys/devices/platform/soc/soc:fpc1020(/.*?) u:object_r:sysfs_fps_attr:s0
 /sys/devices/platform/soc/c440000.qcom,spmi/spmi-0/spmi0-03/c440000.qcom,spmi:qcom,pmi632@3:qcom,leds@d000/leds/modalias u:object_r:sysfs_fps_attr:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service-fpc u:object_r:hal_fingerprint_fpc_exec:s0
+
+/sys/devices/platform/soc/1b46018.qfprom/qfprom0/nvmem                  u:object_r:sysfs_qfprom:s0
