@@ -35,8 +35,6 @@ allow system_server seempdw_socket:sock_file write;
 binder_call(system_server, seempd)
 unix_socket_send(system_server, seempdw, seempd)
 
-#Allow system server to get mirrorlink connection status prop
-get_prop(system_server, vendor_mirrorlink_prop)
 unix_socket_connect(system_server, dpmd, dpmd);
 allow system_server { dpmd_socket dpmtcm_socket }:sock_file w_file_perms;
 
@@ -63,3 +61,7 @@ set_prop(system_server, fst_prop)
 
 #Allow system_server to add and find qspmsvc service
 allow system_server qspmsvc_service:service_manager find;
+
+# Allow system server to access for dpm
+get_prop(system_server, persist_dpm_prop)
+
