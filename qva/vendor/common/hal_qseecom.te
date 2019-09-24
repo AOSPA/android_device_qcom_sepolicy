@@ -1,4 +1,4 @@
-# Copyright (c) 2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -24,40 +24,29 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-userdebug_or_eng(`
-  allow domain diag_device:chr_file rw_file_perms;
-')
 
-# In order for /sys/kernel/debug/kgsl/proc/<pid>/mem
-# to be created for memory tracking, the domain of
-# the tracked process must have permission to search
-# in /sys/kernel/debug/kgsl
-allow domain debugfs_kgsl:dir search;
+#define the domain
+type hal_qseecom_default, domain;
+hal_server_domain(hal_qseecom_default, hal_qseecom)
+type hal_qseecom_default_exec, exec_type, file_type, vendor_file_type;
 
-allow domain debugfs_ion:dir search;
+init_daemon_domain(hal_qseecom_default)
 
-get_prop(domain, vendor_gralloc_prop)
+#Allow hal_qseecom client domain apps to find hwservice
+binder_call(hal_qseecom_client, hal_qseecom_server)
+binder_call(hal_qseecom_server, hal_qseecom_client)
 
-r_dir_file({domain - isolated_app}, sysfs_soc);
-r_dir_file({domain - isolated_app}, sysfs_esoc);
-r_dir_file({domain - isolated_app}, sysfs_ssr);
-r_dir_file({domain - isolated_app}, sysfs_thermal);
+#allow the service to be added to hwservice list
+hal_attribute_hwservice(hal_qseecom, hal_qseecom_hwservice)
 
-get_prop(domain, public_vendor_default_prop)
+#allow access to hal_allocator
+hal_client_domain(hal_qseecom_default, hal_allocator)
 
-dontaudit domain kernel:system module_request;
+#allow access to ion device
+allow hal_qseecom_default ion_device:chr_file rw_file_perms;
 
-# For compliance testing test suite reads vendor_security_path_level
-# Which is the public readable property “ ro.vendor.build.security_patch
-get_prop(domain, vendor_security_patch_level_prop)
+#Allow access to firmware
+r_dir_file(hal_qseecom_default, firmware_file);
 
-neverallow {
-     coredomain
-     -init
-     -ueventd
-     -vold
-     -kernel
-     } vendor_persist_type: { dir file } *;
-
-# allow all context to read gpu model
-allow { domain - isolated_app } sysfs_kgsl_gpu_model:file r_file_perms;
+#Allow access to tee device
+allow hal_qseecom_default tee_device:chr_file rw_file_perms;

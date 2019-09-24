@@ -49,6 +49,10 @@ attribute hal_pasrmanager;
 attribute hal_pasrmanager_client;
 attribute hal_pasrmanager_server;
 
+attribute hal_qseecom;
+attribute hal_qseecom_client;
+attribute hal_qseecom_server;
+
 attribute hal_qteeconnector;
 attribute hal_qteeconnector_client;
 attribute hal_qteeconnector_server;
@@ -60,10 +64,6 @@ attribute hal_seccam_server;
 attribute wifidisplayhalservice;
 attribute wifidisplayhalservice_client;
 attribute wifidisplayhalservice_server;
-
-attribute hal_mirrorlink;
-attribute hal_mirrorlink_client;
-attribute hal_mirrorlink_server;
 
 attribute hal_vpp;
 attribute hal_vpp_client;
