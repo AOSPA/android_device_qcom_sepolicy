@@ -1,4 +1,4 @@
-# Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -13,7 +13,7 @@
 #       contributors may be used to endorse or promote products derived
 #       from this software without specific prior written permission.
 #
-# THIS SOFTWARE IS PROVIDED"AS IS" AND ANY EXPRESS OR IMPLIED
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
 # WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
 # ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
@@ -25,26 +25,26 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-allow qti_init_shell sysfs_npu:file rw_file_perms;
-set_prop(qti_init_shell, vendor_mdm_helper_prop)
-set_prop(qti_init_shell, vendor_mmi_prop)
+# qwesd - Wireless Edge Service Daemon
+type qwesd, domain, mlstrustedsubject;
+type qwesd_exec, exec_type, vendor_file_type, file_type;
 
-set_prop(qti_init_shell, vendor_video_prop)
+init_daemon_domain(qwesd)
 
-set_prop(qti_init_shell, vendor_dataadpl_prop)
+# Allow access to smcinvoke device
+allow qwesd smcinvoke_device:chr_file rw_file_perms;
 
-#perf
-set_prop(qti_init_shell, vendor_mpctl_prop)
+# Allow qwesd to create sockets for HTTP
+allow qwesd self:udp_socket create_socket_perms;
 
-# hvdcp_opti property
-set_prop(qti_init_shell, vendor_hvdcp_opti_prop)
+# Allow read-only access to firmware/image
+allow qwesd vendor_firmware_file:dir r_dir_perms;
+allow qwesd vendor_firmware_file:file r_file_perms;
 
-# To write to /data/vendor/perfd
-allow qti_init_shell mpctl_data_file:dir w_dir_perms;
-allow qti_init_shell mpctl_data_file:file { write getattr unlink };
-allow qti_init_shell sysfs_vmpressure:file w_file_perms;
+# Allow qwesd to write state information to /data/vendor/qwes/qwesd.conf
+allow qwesd vendor_qwes_data_file:dir rw_dir_perms;
+allow qwesd vendor_qwes_data_file:file rw_file_perms;
 
-userdebug_or_eng(`
-# Needed for starting console in userdebug mode
-set_prop(qti_init_shell, vendor_audio_debug_prop)
-')
+# Allow access to qipcrtr_socket
+# Remove this when QMI service moves to pfmd
+allow qwesd self:qipcrtr_socket create_socket_perms_no_ioctl;
