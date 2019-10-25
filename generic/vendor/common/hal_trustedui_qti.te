@@ -1,4 +1,4 @@
-# Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -13,7 +13,7 @@
 #       contributors may be used to endorse or promote products derived
 #       from this software without specific prior written permission.
 #
-# THIS SOFTWARE IS PROVIDED"AS IS" AND ANY EXPRESS OR IMPLIED
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
 # WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
 # MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
 # ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
@@ -25,26 +25,27 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-allow qti_init_shell sysfs_npu:file rw_file_perms;
-set_prop(qti_init_shell, vendor_mdm_helper_prop)
-set_prop(qti_init_shell, vendor_mmi_prop)
+type hal_trustedui_qti, domain;
+hal_server_domain(hal_trustedui_qti, hal_trustedui)
 
-set_prop(qti_init_shell, vendor_video_prop)
+type hal_trustedui_qti_exec, exec_type, file_type, vendor_file_type;
+init_daemon_domain(hal_trustedui_qti)
 
-set_prop(qti_init_shell, vendor_dataadpl_prop)
+binder_call(hal_trustedui_client, hal_trustedui_server)
+binder_call(hal_trustedui_server, hal_trustedui_client)
 
-#perf
-set_prop(qti_init_shell, vendor_mpctl_prop)
+hal_attribute_hwservice(hal_trustedui, hal_trustedui_hwservice)
 
-# hvdcp_opti property
-set_prop(qti_init_shell, vendor_hvdcp_opti_prop)
+hal_client_domain(hal_trustedui_qti, hal_graphics_allocator);
+hal_client_domain(hal_trustedui_qti, hal_graphics_composer);
+hal_client_domain(hal_trustedui_qti, hal_systemhelper);
 
-# To write to /data/vendor/perfd
-allow qti_init_shell mpctl_data_file:dir w_dir_perms;
-allow qti_init_shell mpctl_data_file:file { write getattr unlink };
-allow qti_init_shell sysfs_vmpressure:file w_file_perms;
+allow hal_trustedui_qti sysfs_sectouch:file rw_file_perms;
+allow hal_trustedui_qti vendor_tui_data_file:file rw_file_perms;
+allow hal_trustedui_qti vendor_tui_data_file:dir r_dir_perms;
 
-userdebug_or_eng(`
-# Needed for starting console in userdebug mode
-set_prop(qti_init_shell, vendor_audio_debug_prop)
-')
+allow hal_trustedui_qti ion_device:chr_file r_file_perms;
+allow hal_trustedui_qti surfaceflinger:fd use;
+
+allow hal_trustedui_qti tee_device:chr_file rw_file_perms;
+binder_call(hal_trustedui_qti, systemhelper_app)
