@@ -57,6 +57,7 @@
 /dev/wcd-spi-ac-client                          u:object_r:audio_device:s0
 /dev/msm_.*                                     u:object_r:audio_device:s0
 /dev/avtimer                                    u:object_r:avtimer_device:s0
+/dev/aud_pasthru_adsp                           u:object_r:audio_device:s0
 /dev/subsys_.*                                  u:object_r:ssr_device:s0
 /dev/ramdump_.*                                 u:object_r:ramdump_device:s0
 /dev/hbtp_input                                 u:object_r:hbtp_device:s0
@@ -134,6 +135,7 @@
 /vendor/bin/cnss_diag           u:object_r:wcnss_service_exec:s0
 /vendor/bin/diag_mdlog          u:object_r:qlogd_exec:s0
 /vendor/bin/netmgrd             u:object_r:netmgrd_exec:s0
+/vendor/bin/shsusrd             u:object_r:shsusrd_exec:s0
 /vendor/bin/port-bridge         u:object_r:port-bridge_exec:s0
 /vendor/bin/qti                 u:object_r:qti_exec:s0
 /vendor/bin/loc_launcher        u:object_r:location_exec:s0
@@ -272,6 +274,7 @@
 # data files
 /data/vendor/netmgr(/.*)?              u:object_r:netmgr_data_file:s0
 /data/vendor/netmgr/recovery(/.*)?     u:object_r:netmgr_recovery_data_file:s0
+/data/vendor/shsusr(/.*)?              u:object_r:shsusr_data_file:s0
 /data/vendor/location(/.*)?            u:object_r:location_data_file:s0
 /data/vendor/camera(/.*)?              u:object_r:vendor_camera_data_file:s0
 /data/vendor/display(/.*)?             u:object_r:display_vendor_data_file:s0
@@ -399,6 +402,7 @@
 /sys/class/graphics/fb([0-3])+/ad                                   u:object_r:sysfs_graphics:s0
 /sys/devices(/platform)?/soc/[0-9a-f]+.qcom,spmi/spmi-[0-9]+/spmi[0-9]+-[0-9]+/[0-9a-f]+.qcom,spmi:qcom,pmi[0-9]+@[0-9]+:qcom,leds@[a-f0-9]+(/.*)? u:object_r:sysfs_graphics:s0
 /sys/devices/platform/soc/ae00000.qcom,mdss_mdp/backlight(/.*)?     u:object_r:sysfs_graphics:s0
+/sys/devices/platform/soc/5e00000.qcom,mdss_mdp/backlight(/.*)?     u:object_r:sysfs_graphics:s0
 /sys/devices/virtual/switch/hdmi(/.*)?                              u:object_r:sysfs_graphics:s0
 /sys/devices(/platform)?/soc/[a-f0-9]+.qcom,mdss_mdp/[a-f0-9]+.qcom,mdss_mdp:qcom,mdss_fb_primary/leds/lcd-backlight(/.*)?   u:object_r:sysfs_graphics:s0
 /sys/devices/soc.0/[a-f0-9]+.qcom,mdss_mdp/qcom,mdss_fb_primary.+[a-f0-9]/leds/lcd-backlight(/.*)?   u:object_r:sysfs_graphics:s0
