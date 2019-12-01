@@ -106,3 +106,6 @@ userdebug_or_eng(`
 ')
 # this is for ramdump
 allow vendor_init block_device:lnk_file setattr;
+
+# Access vendor time properties
+set_prop(vendor_init, vendor_time_service_prop)
