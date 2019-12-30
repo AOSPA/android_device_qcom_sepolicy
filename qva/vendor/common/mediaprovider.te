@@ -1,4 +1,4 @@
-# Copyright (c) 2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -24,12 +24,5 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-allow bootanim hwservicemanager:binder call;
 
-# TODO(b/62954877). On Android Wear, bootanim reads the time
-# during boot to display. It currently gets that time from a file
-# in /data/system. This should be moved. In the meantime, suppress
-# this denial on phones since this functionality is not used.
-dontaudit bootanim system_data_file:dir read;
-
-dontaudit bootanim hal_qspmhal_hwservice:hwservice_manager find;
+dontaudit mediaprovider hal_perf_hwservice:hwservice_manager find;
