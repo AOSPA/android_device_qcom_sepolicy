@@ -58,6 +58,7 @@ binder_call(hal_audio,bluetooth)
 
 # audio properties
 get_prop(hal_audio, vendor_audio_prop)
+set_prop(hal_audio, vendor_audio_prop)
 
 #for perf hal call
 hal_client_domain(hal_audio_default, hal_perf)
