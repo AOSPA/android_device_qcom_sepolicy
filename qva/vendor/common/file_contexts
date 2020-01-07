@@ -122,6 +122,7 @@
 /(vendor|system/vendor)/bin/sensingdaemon                                          u:object_r:sensingdaemon_exec:s0
 /vendor/bin/hw/android\.hardware\.usb\@1\.[0-2]-service-qti                        u:object_r:hal_usb_qti_exec:s0
 /vendor/bin/vendor\.qti\.qspmhal@1\.0-service                                      u:object_r:hal_qspmhal_default_exec:s0
+/(vendor|system/vendor)/bin/mutualex                                               u:object_r:mutualex_exec:s0
 
 
 #### Context for location features
@@ -146,16 +147,20 @@
 /sys/module/msm_performance(/.*)?                                   u:object_r:sysfs_msm_perf:s0
 /sys/module/process_reclaim(/.*)?                                   u:object_r:sysfs_process_reclaim:s0
 /sys/module/vmpressure(/.*)?                                        u:object_r:sysfs_vmpressure:s0
+/sys/devices/platform/soc/1d84000.ufshc/clkscale_enable             u:object_r:sysfs_scsi_host:s0
 
 ###################################
 # sysfs files
 #
 /sys/devices/virtual/net/bond0/bonding/queue_id                     u:object_r:sysfs_bond0:s0
 /sys/devices/virtual/net/bond0/queues/rx-0/rps_cpus                 u:object_r:sysfs_bond0:s0
+/sys/devices/virtual/net/bond0/statistics/rx_bytes                  u:object_r:sysfs_bond0:s0
+/sys/devices/virtual/net/bond0/statistics/tx_bytes                  u:object_r:sysfs_bond0:s0
 
 /sys/devices(/platform)?/soc/[a-z0-9]+\.qcom,pcie/pci[0-9:]+/[0-9:\.]+/[0-9:\.]+/wil6210/fst_link_loss            u:object_r:sysfs_wigig:s0
 /sys/devices(/platform)?/soc/[a-z0-9]+\.qcom,pcie/pci[0-9:]+/[0-9:\.]+/[0-9:\.]+/wil6210/thermal_throttling       u:object_r:sysfs_wigig:s0
 /sys/devices(/platform)?/soc/[a-z0-9]+\.qcom,pcie/pci[0-9:]+/[0-9:\.]+/[0-9:\.]+/wil6210/snr_thresh               u:object_r:sysfs_wigig:s0
+/sys/devices(/platform)?/soc/[a-f0-9]+\.qcom,pcie/pci[0-9:]+/[0-9:\.]+/[0-9:\.]+/wil6210/fst_config               u:object_r:sysfs_wigig:s0
 /sys/devices(/platform)?/soc/[a-z0-9]+\.qcom,pcie/pci[0-9:]+/[0-9:\.]+/[0-9:\.]+/net/wigig0/queues/rx-0/rps_cpus  u:object_r:sysfs_wigig:s0
 /sys/devices(/platform)?/soc/[a-z0-9]+\.qcom,pcie/pci[0-9:]+/[0-9:\.]+/[0-9:\.]+/net/wigig0/gro_flush_timeout     u:object_r:sysfs_wigig:s0
 
