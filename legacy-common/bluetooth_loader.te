@@ -1,0 +1,33 @@
+type bluetooth_loader, domain;
+type bluetooth_loader_exec, exec_type, file_type;
+
+# Started by init
+init_daemon_domain(bluetooth_loader)
+
+# Execute init.qcom.bt.sh
+allow bluetooth_loader qti_init_shell_exec:file entrypoint;
+
+# Run hci_qcomm_init and log without changing domain
+allow bluetooth_loader bluetooth_loader_exec:file execute_no_trans;
+allow bluetooth_loader vendor_toolbox_exec:file execute_no_trans;
+
+# Set persist.service.bdroid.*, bluetooth.* and get wcnss property values
+set_prop(bluetooth_loader, bluetooth_prop)
+get_prop(bluetooth_loader, vendor_wifi_prop)
+
+# Access the serial device
+allow bluetooth_loader serial_device:chr_file rw_file_perms;
+
+# And the smd device
+allow bluetooth_loader smd_device:chr_file rw_file_perms;
+
+# And qmuxd
+allow bluetooth_loader qmuxd_socket:dir create_dir_perms;
+allow bluetooth_loader qmuxd_socket:sock_file create_file_perms;
+allow bluetooth_loader qmuxd:unix_stream_socket connectto;
+
+r_dir_file(bluetooth_loader, persist_file)
+
+userdebug_or_eng(`
+    diag_use(bluetooth_loader)
+')
