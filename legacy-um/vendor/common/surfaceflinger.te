@@ -1,0 +1,24 @@
+allow surfaceflinger sysfs_graphics:file rw_file_perms;
+
+# Use open file provided by poweroffhandler
+binder_call(surfaceflinger, poweroffhandler);
+
+binder_call(surfaceflinger, location)
+binder_call(surfaceflinger, tee)
+
+#Allow access to fastmmi
+binder_call(surfaceflinger, vendor_mmi)
+
+#Allow access to cameraserver service
+allow surfaceflinger cameraserver_service:service_manager find;
+
+#Allow access to binder callback's to camera hal
+hal_client_domain(surfaceflinger, hal_camera)
+
+#diag
+userdebug_or_eng(`
+    diag_use(surfaceflinger)
+')
+
+get_prop(surfaceflinger, vendor_gralloc_prop)
+get_prop(surfaceflinger, vendor_display_prop)

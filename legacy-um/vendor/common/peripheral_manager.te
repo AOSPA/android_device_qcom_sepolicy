@@ -1,0 +1,27 @@
+# Policy for peripheral_manager
+# per_mgr - peripheral_manager domain
+type vendor_per_mgr, domain;
+
+type vendor_per_mgr_exec, exec_type, vendor_file_type, file_type;
+init_daemon_domain(vendor_per_mgr);
+
+# Needed for binder transactions
+use_vendor_per_mgr(vendor_per_mgr)
+allow vendor_per_mgr vendor_per_mgr_service:service_manager { add };
+
+allow vendor_per_mgr self:{ socket qipcrtr_socket } create_socket_perms;
+allowxperm vendor_per_mgr self:{ socket qipcrtr_socket } ioctl msm_sock_ipc_ioctls;
+
+# Needed by ipc_router
+allow vendor_per_mgr self:capability net_bind_service;
+
+# Needed to power on the peripheral
+allow vendor_per_mgr ssr_device:chr_file r_file_perms;
+
+# Needed by libmdmdetect to get subsystem info and to check their states
+r_dir_file(vendor_per_mgr, firmware_file)
+r_dir_file(vendor_per_mgr, sysfs)
+allow vendor_per_mgr sysfs_data:file r_file_perms;
+
+# Set the peripheral state property
+set_prop(vendor_per_mgr, vendor_per_mgr_state_prop);
