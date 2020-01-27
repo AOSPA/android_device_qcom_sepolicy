@@ -1,0 +1,49 @@
+allow surfaceflinger sysfs_graphics:file rw_file_perms;
+
+# Allow reading/writing to 'persist/display/*'
+allow surfaceflinger persist_display_file:dir rw_dir_perms;
+allow surfaceflinger persist_display_file:file create_file_perms;
+
+# Allow only directory search to '/persist'
+allow surfaceflinger persist_file:dir search;
+
+# Use open file provided by poweroffhandler
+binder_call(surfaceflinger, poweroffhandler);
+
+binder_call(surfaceflinger, location)
+binder_call(surfaceflinger, tee)
+
+hal_client_domain(surfaceflinger, hal_display_config)
+
+# access to /data/vendor/display for dumping input frames
+allow surfaceflinger display_vendor_data_file:dir create_dir_perms;
+allow surfaceflinger display_vendor_data_file:file create_file_perms;
+
+# Allows access to dpps daemon in calibration mode
+#unix_socket_connect(surfaceflinger, pps, mm-pp-daemon)
+
+r_dir_file(surfaceflinger, firmware_file)
+
+#Allow access to fastmmi
+binder_call(surfaceflinger, mmi)
+
+#Allow access to cameraserver service
+allow surfaceflinger cameraserver_service:service_manager find;
+
+#Allow access to binder callback's to camera hal
+binder_call(surfaceflinger, hal_camera_default)
+
+allow surfaceflinger qdisplay_service:service_manager { add find };
+
+#diag
+userdebug_or_eng(`
+    diag_use(surfaceflinger)
+')
+
+allow surfaceflinger {
+    debug_gralloc_prop
+    sdm_idle_time_prop
+}:file r_file_perms;
+
+#set qemu.gles prop
+set_prop(surfaceflinger, qemu_gles_prop)
