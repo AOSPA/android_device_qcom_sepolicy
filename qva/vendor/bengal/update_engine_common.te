@@ -1,4 +1,4 @@
-# Copyright (c) 2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -24,30 +24,17 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#ims rtp service
-type hal_imsrtp, domain;
-type hal_imsrtp_exec, exec_type, vendor_file_type, file_type;
 
-# Started by init
-init_daemon_domain(hal_imsrtp)
-net_domain(hal_imsrtp)
+# Allow update_engine and update_engine_sideload (recovery) read/write on the
+# device-specific partitions it should update.
+allow update_engine_common {
+	custom_ab_block_device
+	xbl_block_device
+	uefi_block_device
+	ssd_block_device
+	modem_block_device
+	recovery_block_device
+}:blk_file rw_file_perms;
 
-hwbinder_use(hal_imsrtp)
-get_prop(hal_imsrtp, hwservicemanager_prop)
-add_hwservice(hal_imsrtp, hal_imsrtp_hwservice)
+allow update_engine_common tmpfs:lnk_file r_file_perms;
 
-allow hal_imsrtp self: qipcrtr_socket  create_socket_perms_no_ioctl;
-unix_socket_connect(hal_imsrtp, ims, ims)
-
-allow hal_imsrtp self:capability net_bind_service;
-
-allow hal_imsrtp ion_device:chr_file r_file_perms;
-allow hal_imsrtp sysfs_data:file r_file_perms;
-r_dir_file(hal_imsrtp, sysfs_diag)
-
-get_prop(hal_imsrtp, ims_prop)
-binder_call(hal_imsrtp, radio)
-
-userdebug_or_eng('
-binder_call(hal_imsrtp, vtloopback_app)
-')
