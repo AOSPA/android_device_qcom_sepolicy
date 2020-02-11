@@ -1,4 +1,4 @@
-# Copyright (c) 2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -24,30 +24,27 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#ims rtp service
-type hal_imsrtp, domain;
-type hal_imsrtp_exec, exec_type, vendor_file_type, file_type;
 
-# Started by init
-init_daemon_domain(hal_imsrtp)
-net_domain(hal_imsrtp)
+# qva/private/location_app_test.te - sepolicy rules for qti value added
+# location apps (internal) that will be part of system image. eg: ODLT, Qlogcat
 
-hwbinder_use(hal_imsrtp)
-get_prop(hal_imsrtp, hwservicemanager_prop)
-add_hwservice(hal_imsrtp, hal_imsrtp_hwservice)
+type dualsta_app, domain;
+app_domain(dualsta_app)
 
-allow hal_imsrtp self: qipcrtr_socket  create_socket_perms_no_ioctl;
-unix_socket_connect(hal_imsrtp, ims, ims)
-
-allow hal_imsrtp self:capability net_bind_service;
-
-allow hal_imsrtp ion_device:chr_file r_file_perms;
-allow hal_imsrtp sysfs_data:file r_file_perms;
-r_dir_file(hal_imsrtp, sysfs_diag)
-
-get_prop(hal_imsrtp, ims_prop)
-binder_call(hal_imsrtp, radio)
-
-userdebug_or_eng('
-binder_call(hal_imsrtp, vtloopback_app)
+userdebug_or_eng(`
+  binder_call(cnd,dualsta_app)
+  binder_call(dualsta_app,cnd)
+  allow dualsta_app hal_datafactory_hwservice:hwservice_manager find;
+  allow dualsta_app activity_service:service_manager find;
+  allow dualsta_app activity_task_service:service_manager find;
+  allow dualsta_app audio_service:service_manager find;
+  allow dualsta_app autofill_service:service_manager find;
+  allow dualsta_app cgroup:file write;
+  allow dualsta_app gpu_service:service_manager find;
+  allow dualsta_app gpuservice:binder call;
+  allow dualsta_app surfaceflinger_service:service_manager find;
+  allow dualsta_app system_app_data_file:dir { add_name getattr remove_name search write };
+  allow dualsta_app system_app_data_file:file { create getattr map open read setattr unlink write };
+  allow dualsta_app textservices_service:service_manager find;
 ')
+
