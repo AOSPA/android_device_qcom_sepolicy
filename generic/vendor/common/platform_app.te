@@ -26,3 +26,10 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #allow embms app to access vendor radio property
 get_prop(radio, vendor_radio_prop)
+
+#============= QCAI ==============
+allow platform_app sysfs_usb_supply:dir search;
+allow platform_app sysfs_battery_supply:file read;
+allow platform_app sysfs_usb_supply:file r_file_perms;
+allow platform_app sysfs_battery_supply:dir search;
+allow platform_app sysfs_spmi_dev:dir r_dir_perms;

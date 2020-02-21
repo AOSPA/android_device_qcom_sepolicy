@@ -41,3 +41,5 @@ userdebug_or_eng(`
 allow platform_app color_service:service_manager find;
 # WigigSettings need to read persist.vendor.wigig.icon.disable
 get_prop(platform_app, wigig_core_prop)
+
+allow platform_app qcai_service:service_manager find;
