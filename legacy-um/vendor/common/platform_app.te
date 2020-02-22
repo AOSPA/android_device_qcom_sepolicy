@@ -1,0 +1,36 @@
+# Allow platform apps to interact with dtseagleservice
+binder_call(platform_app, dtseagleservice)
+
+# Allow platform apps to interact with fido daemon
+binder_call(platform_app, fidodaemon)
+
+# Allow platform apps to interact with secota daemon
+allow platform_app secotad_service:service_manager find;
+binder_call(platform_app, secotad)
+
+allow platform_app imsrcs_service:service_manager find;
+
+# Allow NFC service to be found
+allow platform_app nfc_service:service_manager find;
+
+#Allow platform apps to interact with seemp health daemon
+binder_call(platform_app, seemp_health_daemon)
+
+# Allow gba_auth_service to be found
+allow platform_app gba_auth_service:service_manager find;
+
+# Allow hbtp hal Service to be found
+hal_client_domain(platform_app, hal_hbtp)
+
+#for perf-hal call
+hal_client_domain(platform_app, hal_perf)
+
+#allow embms app to access vendor radio property
+get_prop(platform_app, vendor_radio_prop)
+
+#allow scve hw service
+#allow platform_app hal_scve_hwservice:hwservice_manager find;
+hal_client_domain(platform_app, hal_scve)
+
+#allow platform_app to read vendor_mpctl_prop
+get_prop(platform_app, vendor_mpctl_prop)
