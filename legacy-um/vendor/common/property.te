@@ -187,3 +187,5 @@ type vendor_wifi_version, property_type;
 
 #capabilityconfigstore hal (CCHAL)
 type vendor_cap_configstore_dbg_prop, property_type;
+
+type vendor_data_qmipriod_prop, property_type;
