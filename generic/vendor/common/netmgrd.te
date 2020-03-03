@@ -40,6 +40,9 @@ allow netmgrd self:socket create_socket_perms;
 allowxperm netmgrd self:socket ioctl msm_sock_ipc_ioctls;
 allowxperm netmgrd self:udp_socket ioctl priv_sock_ioctls;
 
+#Allow connections to qmipriod
+unix_socket_connect(netmgrd, netmgrd, qmipriod)
+
 allow netmgrd sysfs_net:dir r_dir_perms;
 allow netmgrd sysfs_net:file rw_file_perms;
 allow netmgrd sysfs_data:file r_file_perms;
@@ -68,6 +71,7 @@ allow netmgrd netmgr_recovery_data_file:dir rw_dir_perms;
 get_prop(netmgrd, hwservicemanager_prop)
 # Allow netmgrd to set vendor properties
 set_prop(netmgrd, vendor_data_shsusr_prop)
+set_prop(netmgrd, vendor_data_qmipriod_prop)
 
 hwbinder_use(netmgrd)
 binder_call(netmgrd, netd)
