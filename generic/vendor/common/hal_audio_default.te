@@ -33,6 +33,9 @@ userdebug_or_eng(`
 hal_client_domain(hal_audio_default, hal_perf)
 hal_client_domain(hal_audio_default, hal_power)
 
+allow hal_audio_default self:qipcrtr_socket create_socket_perms_no_ioctl;
+allow hal_audio_default sysfs:dir r_dir_perms;
+
 # read-only permission to obtain the calibration data
 r_dir_file(hal_audio_default, persist_audio_file);
 allow hal_audio_default mnt_vendor_file:dir search;
