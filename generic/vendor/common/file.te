@@ -1,4 +1,4 @@
-# Copyright (c) 2018-2019 The Linux Foundation. All rights reserved.
+# Copyright (c) 2018-2020 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -131,6 +131,7 @@ type persist_feature_enabler_file, file_type, vendor_persist_type;
 type netmgr_data_file, file_type, data_file_type;
 type netmgr_recovery_data_file, file_type, data_file_type;
 type shsusr_data_file, file_type, data_file_type;
+type qmipriod_data_file, file_type, data_file_type;
 type ipa_vendor_data_file, file_type, data_file_type;
 
 type vendor_tombstone_data_file, file_type, data_file_type;
