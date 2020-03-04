@@ -26,7 +26,7 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # To allow GPU application to write "/data/vendor/gpu" path
-type vendor_gles_data_file, file_type, data_file_type;
+type vendor_gles_data_file, file_type, data_file_type, mlstrustedobject;
 
 # To allow GPU application to read "/data/misc/gpu" path
 type system_gles_data_file, core_data_file_type, file_type, data_file_type;
