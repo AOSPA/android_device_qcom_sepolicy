@@ -44,9 +44,9 @@ allow hal_sensors hal_graphics_allocator:fd use;
 allow hal_sensors qdsp_device:chr_file r_file_perms;
 allow hal_sensors xdsp_device:chr_file r_file_perms;
 
-allow hal_sensors sysfs_sensors:dir r_dir_perms;
-allow hal_sensors sysfs_sensors:file rw_file_perms;
-allow hal_sensors sysfs_sensors:lnk_file read;
+allow hal_sensors vendor_sysfs_sensors:dir r_dir_perms;
+allow hal_sensors vendor_sysfs_sensors:file rw_file_perms;
+allow hal_sensors vendor_sysfs_sensors:lnk_file read;
 allow hal_sensors input_device:dir r_dir_perms;
 allow hal_sensors input_device:chr_file r_file_perms;
 #following to set the ssr

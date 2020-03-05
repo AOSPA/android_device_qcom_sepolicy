@@ -12,8 +12,8 @@ allow system_server self:capability sys_module;
 
 allow system_server self:socket create_socket_perms;
 allowxperm system_server self:socket ioctl msm_sock_ipc_ioctls;
-allow system_server sysfs_sensors:dir search;
-allow system_server sysfs_sensors:file rw_file_perms;
+allow system_server vendor_sysfs_sensors:dir search;
+allow system_server vendor_sysfs_sensors:file rw_file_perms;
 
 allow system_server {
     # For wifistatemachine
