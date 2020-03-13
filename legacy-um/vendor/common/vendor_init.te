@@ -111,3 +111,6 @@ userdebug_or_eng(`
 ')
 
 set_prop(vendor_init, vendor_time_service_prop)
+
+# Allow vendor_init to set camera properties
+set_prop(vendor_init, { persist_camera_prop camera_prop } )
