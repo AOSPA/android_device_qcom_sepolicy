@@ -55,6 +55,9 @@ type sysfs_touch_aoi, fs_type, sysfs_type;
 #sysfs jpeg
 type sysfs_jpeg, fs_type, sysfs_type;
 
+#vendor sysfs ddr
+type vendor_sysfs_ddr, fs_type, sysfs_type;
+
 # QDMA data files
 type vendor_qdma_data_file, file_type, data_file_type;
 type qdma_socket, file_type, mlstrustedobject;
@@ -128,3 +131,7 @@ type vendor_qspmhal_data_file, file_type, data_file_type;
 type sysfs_memory_offline, sysfs_type, fs_type;
 
 type sysfs_qfprom, fs_type, sysfs_type;
+
+#slub-debug
+type sysfs_slab_zshandle_storeuser, fs_type, sysfs_type;
+type sysfs_slab_zspage_storeuser, fs_type, sysfs_type;
