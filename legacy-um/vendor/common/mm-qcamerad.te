@@ -14,7 +14,7 @@ userdebug_or_eng(`
   allow mm-qcamerad self:tcp_socket { accept listen };
 
   # mm-qcamerad needs to set persist.camera. property
-  set_prop(mm-qcamerad, camera_prop)
+  set_prop(mm-qcamerad, vendor_camera_prop)
 ')
 
 #Communicate with user land process through domain socket

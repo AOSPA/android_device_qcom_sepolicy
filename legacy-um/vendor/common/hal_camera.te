@@ -32,7 +32,7 @@ allow hal_camera qdisplay_service:service_manager find;
 #binder_use(hal_camera)
 #')
 binder_call(hal_camera, surfaceflinger)
-set_prop(hal_camera, camera_prop)
+set_prop(hal_camera, vendor_camera_prop)
 allow hal_camera gpu_device:chr_file rw_file_perms;
 
 allow hal_camera sysfs_jpeg:file r_file_perms;
