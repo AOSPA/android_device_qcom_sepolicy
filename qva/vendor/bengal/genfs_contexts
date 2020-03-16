@@ -52,7 +52,7 @@ genfscon sysfs /devices/platform/soc/1c40000.qcom,spmi/spmi-0/spmi0-00/1c40000.q
 genfscon sysfs /devices/platform/soc/1c40000.qcom,spmi/spmi-0/spmi0-00/1c40000.qcom,spmi:qcom,pm2250@0:qpnp,qg/power_supply/bms u:object_r:sysfs_battery_supply:s0
 genfscon sysfs /devices/platform/soc/1c40000.qcom,spmi/spmi-0/spmi0-00/1c40000.qcom,spmi:qcom,pm2250@0:qcom,pm2250_rtc/rtc u:object_r:sysfs_rtc:s0
 genfscon sysfs /devices/platform/soc/1c40000.qcom,spmi/spmi-0/spmi0-01/1c40000.qcom,spmi:qcom,pm2250@1:qcom,vibrator@5600/leds/vibrator u:object_r:sysfs_leds:s0
-genfscon sysfs /devices/platform/soc/1c40000.qcom,spmi/spmi-0/spmi0-01/1c40000.qcom,spmi:qcom,pm2250@1:qcom,rg_leds/leds u:object_r:sysfs_graphics:s0
+genfscon sysfs /devices/platform/soc/1c40000.qcom,spmi/spmi-0/spmi0-01/1c40000.qcom,spmi:qcom,pm2250@1:qcom,flash_led@d300/leds u:object_r:sysfs_graphics:s0
 genfscon sysfs /devices/platform/soc/1c40000.qcom,spmi/spmi-0/spmi0-01/1c40000.qcom,spmi:qcom,pm2250@1:qcom,rg_leds/leds u:object_r:sysfs_leds:s0
 
 #qdss sysfs-node
