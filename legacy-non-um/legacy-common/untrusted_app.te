@@ -1,2 +1,0 @@
-unix_socket_connect(untrusted_app, mpctl, mpdecision)
-unix_socket_send(untrusted_app, mpctl, mpdecision)

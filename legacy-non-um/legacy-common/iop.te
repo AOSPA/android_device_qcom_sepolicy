@@ -1,1 +1,0 @@
-allow dumpstate iop_socket:sock_file rw_file_perms;

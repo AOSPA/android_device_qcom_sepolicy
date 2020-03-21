@@ -1,2 +1,0 @@
-type debugfs_rmt, debugfs_type, fs_type;
-type sysfs_runtime_status, sysfs_type, fs_type;
