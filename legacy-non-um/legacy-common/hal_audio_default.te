@@ -1,1 +1,0 @@
-allow hal_audio_default mpctl_socket:dir search;
