@@ -27,7 +27,7 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS := \
     $(PRODUCT_PRIVATE_SEPOLICY_DIRS) \
      $(LOCAL_PATH)/product/private
 
-ifeq (,$(filter sdm845 sdm710 qcs605, $(TARGET_BOARD_PLATFORM)))
+ifneq (,$(filter msmnile sm6150 trinket kona lito, $(TARGET_BOARD_PLATFORM)))
     BOARD_SEPOLICY_DIRS := \
        $(BOARD_SEPOLICY_DIRS) \
        $(LOCAL_PATH) \
@@ -50,9 +50,8 @@ ifeq (,$(filter sdm845 sdm710 qcs605, $(TARGET_BOARD_PLATFORM)))
     BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/generic/vendor/test
     BOARD_SEPOLICY_DIRS += $(LOCAL_PATH)/qva/vendor/test
     endif
-endif
 
-ifneq (,$(filter sdm845 sdm710 qcs605, $(TARGET_BOARD_PLATFORM)))
+else
     BOARD_SEPOLICY_DIRS := \
                  $(BOARD_SEPOLICY_DIRS) \
                  $(LOCAL_PATH) \
