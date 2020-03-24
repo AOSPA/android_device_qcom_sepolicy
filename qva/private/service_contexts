@@ -41,4 +41,4 @@ wigig                                          u:object_r:wigig_service:s0
 display.smomoservice                           u:object_r:surfaceflinger_service:s0
 vendor.vpsservice                              u:object_r:vendor_vps_service:s0
 qspmsvc                                        u:object_r:qspmsvc_service:s0
-
+com.qualcomm.qti.quickcharge.service.daemon    u:object_r:qcai_service:s0
