@@ -58,3 +58,5 @@ allow mediacodec audio_device:chr_file rw_file_perms;
 
 #Allow mediacodec to access configstore
 hal_client_domain(mediacodec, hal_capabilityconfigstore_qti)
+
+set_prop(mediacodec, vendor_sys_video_prop)
