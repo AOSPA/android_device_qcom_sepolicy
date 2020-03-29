@@ -16,16 +16,19 @@
 
 # Include Legacy pre-UM Makefiles
 ifeq ($(TARGET_USES_QCOM_LEGACY_PRE_UM_SEPOLICY),true)
+    $(warning including legacy-pre-um sepolicy)
     include device/qcom/sepolicy/legacy-pre-um/legacy-pre-um.mk
 endif
 
 # Include Legacy UM Makefiles
 ifeq ($(TARGET_USES_QCOM_LEGACY_UM_SEPOLICY),true)
+    $(warning including legacy-um sepolicy)
     include device/qcom/sepolicy/legacy-um/legacy-um.mk
 endif
 
 # Include latest sepolicy
 ifeq ($(TARGET_USES_QCOM_LATEST_SEPOLICY),true)
+    $(warning including latest sepolicy)
     BOARD_PLAT_PUBLIC_SEPOLICY_DIR := \
         $(BOARD_PLAT_PUBLIC_SEPOLICY_DIR) \
         device/qcom/sepolicy/generic/public
@@ -51,6 +54,7 @@ ifeq ($(TARGET_USES_QCOM_LATEST_SEPOLICY),true)
          device/qcom/sepolicy/product/private
 
     ifeq ($(TARGET_USES_QCOM_LEGACY_SEPOLICY),true)
+        $(warning including latest legacy sepolicy)
         BOARD_SEPOLICY_DIRS := \
             $(BOARD_SEPOLICY_DIRS) \
             device/qcom/sepolicy \
