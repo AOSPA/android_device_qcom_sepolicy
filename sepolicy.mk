@@ -26,36 +26,24 @@ endif
 
 # Include latest sepolicy
 ifeq ($(TARGET_USES_QCOM_LATEST_SEPOLICY),true)
-    BOARD_PLAT_PUBLIC_SEPOLICY_DIR := \
-        $(BOARD_PLAT_PUBLIC_SEPOLICY_DIR) \
-        device/qcom/sepolicy/generic/public
-
-    BOARD_PLAT_PRIVATE_SEPOLICY_DIR := \
-        $(BOARD_PLAT_PRIVATE_SEPOLICY_DIR) \
-        device/qcom/sepolicy/generic/private
-
-    BOARD_PLAT_PUBLIC_SEPOLICY_DIR := \
-        $(BOARD_PLAT_PUBLIC_SEPOLICY_DIR) \
+    BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
+        device/qcom/sepolicy/generic/public \
         device/qcom/sepolicy/qva/public
 
-    BOARD_PLAT_PRIVATE_SEPOLICY_DIR := \
-        $(BOARD_PLAT_PRIVATE_SEPOLICY_DIR) \
+    BOARD_PLAT_PRIVATE_SEPOLICY_DIR += \
+        device/qcom/sepolicy/generic/private \
         device/qcom/sepolicy/qva/private
 
-    PRODUCT_PUBLIC_SEPOLICY_DIRS := \
-        $(PRODUCT_PUBLIC_SEPOLICY_DIRS) \
-         device/qcom/sepolicy/product/public
+    PRODUCT_PUBLIC_SEPOLICY_DIRS += \
+        device/qcom/sepolicy/product/public
 
-    PRODUCT_PRIVATE_SEPOLICY_DIRS := \
-        $(PRODUCT_PRIVATE_SEPOLICY_DIRS) \
-         device/qcom/sepolicy/product/private
-
+    PRODUCT_PRIVATE_SEPOLICY_DIRS += \
+        device/qcom/sepolicy/product/private
 
     # Include vendor sepolicies only if vendor image is built.
     ifneq ($(TARGET_USES_PREBUILT_VENDOR_SEPOLICY), true)
         ifneq ($(TARGET_USES_QCOM_LEGACY_SEPOLICY),true)
-            BOARD_SEPOLICY_DIRS := \
-                $(BOARD_SEPOLICY_DIRS) \
+            BOARD_SEPOLICY_DIRS += \
                 device/qcom/sepolicy \
                 device/qcom/sepolicy/generic/vendor/common \
                 device/qcom/sepolicy/qva/vendor/common/sysmonapp \
@@ -77,8 +65,7 @@ ifeq ($(TARGET_USES_QCOM_LATEST_SEPOLICY),true)
                 BOARD_SEPOLICY_DIRS += device/qcom/sepolicy/qva/vendor/test
             endif
         else
-            BOARD_SEPOLICY_DIRS := \
-                $(BOARD_SEPOLICY_DIRS) \
+            BOARD_SEPOLICY_DIRS += \
                 device/qcom/sepolicy \
                 device/qcom/sepolicy/legacy/vendor/common/sysmonapp \
                 device/qcom/sepolicy/legacy/vendor/ssg \
