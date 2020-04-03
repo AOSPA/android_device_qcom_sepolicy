@@ -139,7 +139,7 @@ genfscon sysfs /devices/platform/soc/8300000.qcom,turing/subsys4/name u:object_r
 genfscon sysfs /devices/platform/soc/aae0000.qcom,venus/subsys5/name u:object_r:sysfs_ssr:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,ipa_fws/subsys6/name u:object_r:sysfs_ssr:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,kgsl-hyp/subsys7/name u:object_r:sysfs_ssr:s0
-genfscon sysfs /devices/platform/soc/soc:qcom,mdm3/subsys8/name u:object_r:sysfs_ssr:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,ipa_uc/subsys8/name u:object_r:sysfs_ssr:s0
 #   Secondary hardware config - restart level
 genfscon sysfs /devices/platform/soc/17300000.qcom,lpass/subsys0/restart_level u:object_r:sysfs_ssr_toggle:s0
 genfscon sysfs /devices/platform/soc/5c00000.qcom,ssc/subsys1/restart_level u:object_r:sysfs_ssr_toggle:s0
@@ -149,5 +149,5 @@ genfscon sysfs /devices/platform/soc/8300000.qcom,turing/subsys4/restart_level u
 genfscon sysfs /devices/platform/soc/aae0000.qcom,venus/subsys5/restart_level u:object_r:sysfs_ssr_toggle:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,ipa_fws/subsys6/restart_level u:object_r:sysfs_ssr_toggle:s0
 genfscon sysfs /devices/platform/soc/soc:qcom,kgsl-hyp/subsys7/restart_level u:object_r:sysfs_ssr_toggle:s0
-genfscon sysfs /devices/platform/soc/soc:qcom,mdm3/subsys8/restart_level u:object_r:sysfs_ssr_toggle:s0
+genfscon sysfs /devices/platform/soc/soc:qcom,ipa_uc/subsys8/restart_level u:object_r:sysfs_ssr_toggle:s0
 #####
