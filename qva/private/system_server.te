@@ -49,6 +49,7 @@ allow system_server vendor_perf_service:service_manager find;
 allow system_server vendor_vps_service:service_manager find;
 
 binder_call(system_server,qvrd);
+binder_call(system_server,sxrd);
 
 #Allow for access to WFD specific debug properties
 binder_call(system_server, wfdservice);

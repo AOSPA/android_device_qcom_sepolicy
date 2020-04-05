@@ -176,6 +176,12 @@
 ###################################
 # sysfs files
 #
-/sys/devices/virtual/block/dm-[0-6]/queue/read_ahead_kb                 u:object_r:sysfs_mmc_host:s0
+/sys/devices/virtual/block/dm-[0-6]/queue/read_ahead_kb                                           u:object_r:sysfs_mmc_host:s0
+/sys/devices/platform/soc/4744000.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/read_ahead_kb u:object_r:sysfs_mmc_host:s0
 
 /sys/devices/platform/soc/1b40000.qfprom/qfprom0/feat_conf10            u:object_r:sysfs_qfprom:s0
+
+###################################
+#camera
+/sys/firmware/devicetree/base/memory/ddr_device_rank_ch0               u:object_r:vendor_sysfs_ddr:s0
+/sys/firmware/devicetree/base/memory/ddr_device_type                   u:object_r:vendor_sysfs_ddr:s0
