@@ -42,6 +42,8 @@ PRODUCT_PRIVATE_SEPOLICY_DIRS := \
     $(PRODUCT_PRIVATE_SEPOLICY_DIRS) \
      device/qcom/sepolicy/product/private
 
+# Include vendor sepolicies only if vendor image is built.
+ifneq ($(TARGET_USES_PREBUILT_VENDOR_SEPOLICY), true)
 ifeq (,$(filter sdm845 sdm710 qcs605, $(TARGET_BOARD_PLATFORM)))
     BOARD_SEPOLICY_DIRS := \
        $(BOARD_SEPOLICY_DIRS) \
@@ -85,6 +87,7 @@ ifneq (,$(filter sdm845 sdm710 qcs605, $(TARGET_BOARD_PLATFORM)))
     BOARD_SEPOLICY_DIRS += device/qcom/sepolicy/legacy/vendor/test
     endif
 endif # sdm845 sdm710 qcs605
+endif # !PREBUILT_VENDOR_SEPOLICY
 endif
 
 endif # Exclude QCOM SEPolicy
