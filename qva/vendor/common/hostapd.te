@@ -46,6 +46,7 @@ allow hostapd hostapd_data_file:dir w_dir_perms;
 allow hostapd hostapd_data_file:sock_file create_file_perms;
 allow hostapd wifi_vendor_wpa_socket:dir r_dir_perms;
 allow hostapd wifi_vendor_wpa_socket:sock_file rw_file_perms;
+allow hostapd hal_wifi_hostapd_default:unix_dgram_socket sendto;
 
 #diag
 userdebug_or_eng(`
