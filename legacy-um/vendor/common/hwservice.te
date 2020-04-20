@@ -64,3 +64,4 @@ type hal_capabilityconfigstore_qti_hwservice, hwservice_manager_type;
 type hal_srvctracker_hwservice, hwservice_manager_type;
 type hal_qseecom_hwservice, hwservice_manager_type;
 type hal_slmadapter_hwservice, hwservice_manager_type;
+type hal_perfcallback_hwservice, hwservice_manager_type;
