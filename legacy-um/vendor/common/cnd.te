@@ -93,6 +93,8 @@ binder_call(cnd, qtidataservices_app)
 binder_call(cnd, ims)
 binder_call(cnd, location)
 
+add_hwservice(cnd,hal_slmadapter_hwservice)
+
 ##############################################################
 #for using public interface vendor.qti.data.factory
 #client should add their domain to cnd.te
