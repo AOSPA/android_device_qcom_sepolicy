@@ -45,4 +45,9 @@ allow dataservice_app app_api_service:service_manager find;
 
 dontaudit dataservice_app runtime_event_log_tags_file:file map;
 
-allow dataservice_app hal_slmadapter_hwservice:hwservice_manager find;
+allow dataservice_app {
+  hal_perf_hwservice
+  hal_slmadapter_hwservice
+}:hwservice_manager find;
+
+binder_call(dataservice_app, hal_perf_default)

@@ -27,3 +27,6 @@
 
 #properties for qvrd
 type ctl_qvrd_prop, property_type;
+
+#property for thermal daemon
+type ctl_thermal-engine_prop, property_type;

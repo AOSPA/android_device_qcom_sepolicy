@@ -88,3 +88,7 @@ allow hal_perf {
     sysfs_scsi_host
     sysfs_kgsl
 }:lnk_file r_file_perms;
+
+# Perf wants access to read information from /proc.
+allow hal_perf_default system_server:file { open read };
+allow hal_perf_default system_server:dir { open read search };

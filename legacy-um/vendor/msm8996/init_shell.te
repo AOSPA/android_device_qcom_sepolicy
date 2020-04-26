@@ -26,3 +26,6 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 set_prop(qti_init_shell, ctl_qvrd_prop)
+
+#ctl_thermal-engine_prop - for access the thermal-engine
+set_prop(qti_init_shell, ctl_thermal-engine_prop)

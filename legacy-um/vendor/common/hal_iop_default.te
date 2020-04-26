@@ -48,3 +48,6 @@ allow hal_iop_default proc:file rw_file_perms;
 #Allow Access for /data/vendor/iop
 allow hal_iop iop_data_file:dir rw_dir_perms;
 allow hal_iop iop_data_file:file create_file_perms;
+
+binder_call(hal_iop_default, hal_perf_default)
+allow hal_iop_default hal_perf_hwservice:hwservice_manager find;

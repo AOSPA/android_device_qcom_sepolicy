@@ -383,3 +383,5 @@ type vendor_capabilityconfigstore_data_file, file_type, data_file_type;
 
 # kgsl gpu model file type for sysfs access
 type sysfs_kgsl_gpu_model, sysfs_type, fs_type;
+
+type debugfs_rmt_storage, debugfs_type, fs_type;

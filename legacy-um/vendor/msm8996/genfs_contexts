@@ -36,3 +36,5 @@ genfscon sysfs /devices/soc/9300000.qcom,lpass/subsys4/name            u:object_
 genfscon sysfs /devices/soc/2080000.qcom,mss/subsys5/name              u:object_r:sysfs_ssr:s0
 genfscon sysfs /devices/soc/2080000.qcom,mss/subsys6/name              u:object_r:sysfs_ssr:s0
 genfscon sysfs /devices/soc/ce0000.qcom,venus/subsys0/name             u:object_r:sysfs_ssr:s0
+genfscon sysfs /devices/soc/qpnp-smbcharger-16/power_supply/battery    u:object_r:sysfs_battery_supply:s0
+genfscon sysfs /devices/soc/qpnp-fg-17/power_supply/bms                u:object_r:sysfs_battery_supply:s0

@@ -53,3 +53,6 @@ hwbinder_use(dpmd)
 userdebug_or_eng(`
     diag_use(dpmd)
 ')
+
+# Give DPMD access to TMPFS
+allow dpmd device:file { open write };
