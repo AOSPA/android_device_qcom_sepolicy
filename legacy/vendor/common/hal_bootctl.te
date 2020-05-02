@@ -42,6 +42,7 @@ allow hal_bootctl {
   system_block_device
   recovery_block_device
   mdtp_device
+  uefi_block_device
 }:blk_file { getattr };
 
 # Allow the boot_control_hal to edit the attributes stored in the GPT.
