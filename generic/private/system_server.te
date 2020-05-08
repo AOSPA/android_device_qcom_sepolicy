@@ -1,4 +1,4 @@
-# Copyright (c) 2017, The Linux Foundation. All rights reserved.
+# Copyright (c) 2020, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,19 +25,5 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-# Allow update_engine and update_engine_sideload (recovery) read/write on the
-# device-specific partitions it should update.
-allow update_engine_common {
-	custom_ab_block_device
-	xbl_block_device
-	uefi_block_device
-	ssd_block_device
-	modem_block_device
-	recovery_block_device
-}:blk_file rw_file_perms;
-
-allow update_engine_common tmpfs:lnk_file r_file_perms;
-allow update_engine_common {adsprpcd_file firmware_file metadata_file}:dir search;
-allow update_engine_common {bt_firmware_file firmware_file}:filesystem getattr;
-
-dontaudit update_engine_common self:capability {dac_read_search dac_override};
+#allow system_server to start shutdown animation by set prop
+set_prop(system_server, ctl_bootanim_prop)
