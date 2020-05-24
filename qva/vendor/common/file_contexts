@@ -1,4 +1,4 @@
-# Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2018-2020, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -36,9 +36,7 @@
 /dev/spdaemon_ssr                     u:object_r:spdaemon_ssr_device:s0
 /dev/spu_hal_ssr                      u:object_r:spu_hal_ssr_device:s0
 /dev/spss_utils                       u:object_r:spss_utils_device:s0
-/dev/iuicc                            u:object_r:iuicc_device:s0
-/dev/iuicc0                           u:object_r:iuicc_device:s0
-/dev/iuicc1                           u:object_r:iuicc_device:s0
+/dev/iuicc.*                          u:object_r:iuicc_device:s0
 /dev/cryptoapp                        u:object_r:cryptoapp_device:s0
 /dev/sec_nvm_.*                       u:object_r:sec_nvm_device:s0
 /dev/qbt.*                            u:object_r:qbt_device:s0
