@@ -93,6 +93,7 @@
 /(vendor|system/vendor)/bin/sec_nvm                                                u:object_r:sec_nvm_exec:s0
 /(vendor|system/vendor)/bin/hostapd_cli                                            u:object_r:hostapd_exec:s0
 /(vendor|system/vendor)/bin/qcom-system-daemon                                     u:object_r:vendor_qcomsysd_exec:s0
+/(vendor|system/vendor)/bin/init\.qti\.media\.sh                                   u:object_r:qti-media_exec:s0
 /(vendor|system/vendor)/bin/vppservice                                             u:object_r:vendor_vppservice_exec:s0
 /(vendor|system/vendor)/bin/wifidisplayhalservice                                  u:object_r:wifidisplayhalservice_qti_exec:s0
 /(vendor|system/vendor)/bin/wfdhdcphalservice                                      u:object_r:wfdhdcphalservice_qti_exec:s0
