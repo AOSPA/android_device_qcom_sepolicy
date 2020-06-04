@@ -3,7 +3,6 @@ ifneq ($(TARGET_USES_PREBUILT_VENDOR_SEPOLICY), true)
 BOARD_SEPOLICY_DIRS := \
     device/qcom/sepolicy/legacy-um/vendor/common \
     device/qcom/sepolicy/legacy-um/vendor/ssg \
-    device/qcom/sepolicy/legacy-um/timeservice \
     device/qcom/sepolicy/legacy-um/vendor/common/sysmonapp \
     $(BOARD_SEPOLICY_DIRS)
 

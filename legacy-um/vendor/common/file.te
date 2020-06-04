@@ -66,7 +66,7 @@ type msm_irqbalance_socket, file_type;
 # Sensor file types
 type sensors_socket, file_type;
 type sensors_persist_file, file_type, vendor_persist_type;
-type sysfs_sensors, sysfs_type, fs_type;
+type vendor_sysfs_sensors, sysfs_type, fs_type;
 
 #Memory offlining file types
 type sysfs_memory_offline, sysfs_type, fs_type;
@@ -179,6 +179,7 @@ type ipa_vendor_data_file, file_type, data_file_type;
 
 # vendor audio data file
 type vendor_audio_data_file, file_type, data_file_type;
+type persist_audio_file, file_type, vendor_persist_type;
 
 # Tombstone vendor data
 type vendor_tombstone_data_file, file_type, data_file_type;
