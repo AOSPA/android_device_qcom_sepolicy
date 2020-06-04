@@ -26,3 +26,6 @@
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 ctl.qvrd                   u:object_r:ctl_qvrd_prop:s0
+
+#QSEE DRM services
+vendor.drm_ta_loaded u:object_r:vendor_drm_ta_prop:s0

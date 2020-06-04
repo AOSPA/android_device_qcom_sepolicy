@@ -12,8 +12,8 @@ allow system_server self:capability sys_module;
 
 allow system_server self:socket create_socket_perms;
 allowxperm system_server self:socket ioctl msm_sock_ipc_ioctls;
-allow system_server sysfs_sensors:dir search;
-allow system_server sysfs_sensors:file rw_file_perms;
+allow system_server vendor_sysfs_sensors:dir search;
+allow system_server vendor_sysfs_sensors:file rw_file_perms;
 
 allow system_server {
     # For wifistatemachine
@@ -89,7 +89,7 @@ binder_call(system_server, fps_hal)
 allow system_server iqfp_service:service_manager find;
 
 # For shutdown animation
-set_prop(system_server, ctl_bootanim_prop)
+allow system_server ctl_bootanim_prop:property_service set;
 
 # allow tethering to access dhcp leases
 r_dir_file(system_server, dhcp_data_file)

@@ -55,6 +55,8 @@ ctl.vendor.ipacm-diag      u:object_r:vendor_ipacm-diag_prop:s0
 ctl.vendor.dataqti         u:object_r:vendor_dataqti_prop:s0
 ctl.vendor.dataadpl         u:object_r:vendor_dataadpl_prop:s0
 ctl.vendor.sensors                u:object_r:sensors_prop:s0
+ro.vendor.sensors.wearqstp        u:object_r:vendor_sensors_prop:s0
+persist.vendor.sensors.no_audio   u:object_r:vendor_sensors_prop:s0
 ctl.vendor.msm_irqbalance         u:object_r:msm_irqbalance_prop:s0
 ctl.vendor.msm_irqbl_sdm630       u:object_r:msm_irqbl_sdm630_prop:s0
 vendor.slpi.               u:object_r:slpi_prop:s0
@@ -201,7 +203,7 @@ vendor.mm.en.sec.smoothstreaming   u:object_r:mm_video_prop:s0
 vendor.hevc.mux.print.codec.cfg    u:object_r:mm_video_prop:s0
 ro.vendor.mm-enable-accurate-seek  u:object_r:mm_video_prop:s0
 
-persist.vendor.camera.debug.logfile u:object_r:camera_prop:s0
+vendor.media.target.version        u:object_r:vendor_video_prop:s0
 
 #rmt_storage
 ctl.vendor.rmt_storage     u:object_r:ctl_vendor_rmt_storage_prop:s0
