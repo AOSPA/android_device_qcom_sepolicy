@@ -174,3 +174,9 @@
 /(vendor|system/vendor)/bin/hw/android\.hardware\.biometrics\.fingerprint@2\.1-service-fpc u:object_r:hal_fingerprint_fpc_exec:s0
 
 /sys/devices/platform/soc/1b46018.qfprom/qfprom0/nvmem                  u:object_r:sysfs_qfprom:s0
+
+###################################
+# sysfs files
+#
+/sys/devices/virtual/block/dm-[0-6]/queue/read_ahead_kb                                           u:object_r:sysfs_mmc_host:s0
+
