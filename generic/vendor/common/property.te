@@ -50,6 +50,9 @@ type vendor_radio_prop, property_type;
 #Needed for  ubwc support
 type vendor_gralloc_prop, property_type;
 
+#Needed for opengles version support
+type vendor_opengles_prop, property_type;
+
 type vendor_system_prop, property_type;
 
 #imsrcsservice
