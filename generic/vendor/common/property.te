@@ -108,3 +108,6 @@ type vendor_debuglog_prop, property_type;
 
 # Wifi version recorder
 type vendor_wifi_version, property_type;
+
+#kernel console log level
+type vendor_console_log_level_prop, property_type;
