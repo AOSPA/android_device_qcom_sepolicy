@@ -210,3 +210,11 @@
 #
 /sys/devices/virtual/block/dm-[0-6]/queue/read_ahead_kb                                           u:object_r:sysfs_mmc_host:s0
 /sys/devices/platform/soc/4744000.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/read_ahead_kb u:object_r:sysfs_mmc_host:s0
+
+#Display nodes
+/sys/devices/platform/soc/[a-f0-9]+.qcom,mdss_mdp/drm/card([0-3])+/card([0-3])+-DSI-([1-2])/enabled u:object_r:sysfs_graphics:s0
+/sys/devices/platform/soc/[a-f0-9]+.qcom,mdss_mdp/drm/card([0-3])+/card([0-3])+-DP-1/enabled u:object_r:sysfs_graphics:s0
+/sys/devices/platform/soc/[a-f0-9]+.qcom,mdss_mdp/drm/card([0-3])+/card([0-3])+-Virtual-1/enabled u:object_r:sysfs_graphics:s0
+
+#poweropt-service
+/(vendor|system/vendor)/bin/poweropt-service u:object_r:poweroptservice_exec:s0

@@ -33,3 +33,5 @@ hal_client_domain(bluetooth, hal_perf);
 
 #allow bluetooth to access bluetooth_dun hal
 hal_client_domain(bluetooth, hal_bluetooth_dun);
+
+hal_client_domain(bluetooth, hal_qspmhal);

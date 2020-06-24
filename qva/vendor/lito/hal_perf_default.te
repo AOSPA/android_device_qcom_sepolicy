@@ -27,3 +27,4 @@
 
 allow hal_perf_default self:capability kill;
 allow hal_perf_default {appdomain}:process sigkill;
+allow hal_perf_default poweroptservice:binder call;
