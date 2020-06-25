@@ -1,4 +1,4 @@
-# Copyright (c) 2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2020, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,14 +25,11 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
+type qti-media, domain;
+type qti-media_exec, exec_type, vendor_file_type,file_type;
 
-## qwesas_app
-##
-## This file defines the permissions that qwesas_apps can carry
+init_daemon_domain(qti-media)
 
-type qwesas_app, domain;
-
-app_domain(qwesas_app)
-net_domain(qwesas_app)
-
-allow qwesas_app app_api_service:service_manager find;
+allow qti-media qti-media_exec:file rx_file_perms;
+allow qti-media vendor_toolbox_exec:file rx_file_perms;
+set_prop(qti-media, vendor_video_prop)

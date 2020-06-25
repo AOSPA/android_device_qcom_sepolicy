@@ -68,6 +68,8 @@ allow init {
 allow init sysfs_zram:dir r_dir_perms;
 allow init sysfs_zram:file r_file_perms;
 
+allow init sysfs_graphics:lnk_file read;
+
 allow init sysfs_boot_adsp:file w_file_perms;
 # Search and write access for sysfs_graphics for backlight in recovery
 recovery_only(`
