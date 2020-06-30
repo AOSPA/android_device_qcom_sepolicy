@@ -28,3 +28,4 @@
 unix_socket_send(zygote, seempdw, seempd)
 
 get_prop(zygote, persist_dpm_prop)
+get_prop(zygote, vendor_sys_video_prop)
