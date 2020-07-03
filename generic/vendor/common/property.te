@@ -50,6 +50,9 @@ type vendor_radio_prop, property_type;
 #Needed for  ubwc support
 type vendor_gralloc_prop, property_type;
 
+#Needed for opengles version support
+type vendor_opengles_prop, property_type;
+
 type vendor_system_prop, property_type;
 
 #imsrcsservice
@@ -105,3 +108,6 @@ type vendor_debuglog_prop, property_type;
 
 # Wifi version recorder
 type vendor_wifi_version, property_type;
+
+#kernel console log level
+type vendor_console_log_level_prop, property_type;
