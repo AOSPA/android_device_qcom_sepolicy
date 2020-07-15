@@ -171,6 +171,7 @@
 /sys/devices(/platform)?/soc/soc:qcom,gpubw/devfreq/soc:qcom,gpubw(/.*)? u:object_r:sysfs_devfreq:s0
 
 /sys/devices(/platform)?/soc/soc:qcom,spss_utils(/.*)?             u:object_r:sysfs_spss:s0
+/sys/class/kgsl/kgsl/proc(/.*)?                                    u:object_r:sysfs_kgsl_proc:s0
 
 ###################################
 # data files
