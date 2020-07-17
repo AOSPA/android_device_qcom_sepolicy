@@ -178,6 +178,7 @@
 ###################################
 # sysfs files
 #
+/sys/devices/virtual/bdi/[0-9]+:[0-9]+/read_ahead_kb                                              u:object_r:sysfs_mmc_host:s0
 /sys/devices/virtual/block/dm-[0-6]/queue/read_ahead_kb                                           u:object_r:sysfs_mmc_host:s0
 /sys/devices/platform/soc/4744000.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/read_ahead_kb u:object_r:sysfs_mmc_host:s0
 

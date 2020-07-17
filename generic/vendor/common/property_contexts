@@ -134,4 +134,4 @@ vendor.display.qdcm_socket_service u:object_r:vendor_qdcmss_prop:s0
 vendor.fastrpc.                  u:object_r:vendor_adsprpc_prop:s0
 
 #kernel console log level
-persist.console.silent.config    u:object_r:vendor_console_log_level_prop:s0
+persist.vendor.console.silent.config    u:object_r:vendor_console_log_level_prop:s0
