@@ -1,4 +1,4 @@
-# Copyright (c) 2018-2019, The Linux Foundation. All rights reserved.
+# Copyright (c) 2018-2020, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -40,6 +40,8 @@ hwbinder_use(hal_rcsservice)
 # add IUceSerive and IService to Hidl interface
 add_hwservice(hal_rcsservice, hal_imsrcsd_hwservice)
 add_hwservice(hal_rcsservice, hal_imscallinfo_hwservice)
+#add imsfactory to HIDl interface
+add_hwservice(hal_rcsservice, vendor_hal_imsfactory_hwservice)
 
 get_prop(hal_rcsservice, hwservicemanager_prop)
 
