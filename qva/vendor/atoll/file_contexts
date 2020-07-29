@@ -189,9 +189,3 @@
 /sys/devices/platform/soc/200f000.qcom,spmi/spmi-0/spmi0-03/200f000.qcom,spmi:qcom,pmi632@3:qcom,leds@d000/modalias u:object_r:sysfs_fps_attr:s0
 #Same process file
 /vendor/lib(64)?/hw/gralloc\.atoll\.so                            u:object_r:same_process_hal_file:s0
-
-###################################
-# sysfs files
-#
-/sys/devices/virtual/block/dm-[0-9]/queue/read_ahead_kb                                           u:object_r:sysfs_mmc_host:s0
-

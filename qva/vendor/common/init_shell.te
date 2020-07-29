@@ -56,5 +56,6 @@ allow qti_init_shell sysfs_slab_zspage_storeuser:file w_file_perms;
 
 allow qti_init_shell {
     sysfs_mmc_host
+    sysfs_dm
 }:file w_file_perms;
 
