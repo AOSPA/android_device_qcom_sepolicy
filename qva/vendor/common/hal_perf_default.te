@@ -80,6 +80,7 @@ allow hal_perf {
      sysfs_cpu_boost
      sysfs_msm_perf
      sysfs_kgsl
+     sysfs_kgsl_proc
      sysfs_cpu_boost
      sysfs_msm_perf
      sysfs_memory
