@@ -34,8 +34,3 @@
 /(vendor|system/vendor)/bin/hw/vendor.qti.hardware.automotive.audiocontrol@1.0-service     u:object_r:hal_audiocontrol_qti_exec:s0
 # WLAN dynamic detect
 /(vendor|system/vendor)/bin/init\.qcom\.wlan\.sh                    u:object_r:init-qcom-wifi-sh_exec:s0
-
-###################################
-# sysfs files
-#
-/sys/devices/virtual/block/dm-[0-6]/queue/read_ahead_kb                                           u:object_r:sysfs_mmc_host:s0
