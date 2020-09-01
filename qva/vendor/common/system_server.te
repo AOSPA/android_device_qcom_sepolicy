@@ -44,6 +44,9 @@ get_prop(system_server, reschedule_service_prop)
 get_prop(system_server, vendor_cgroup_follow_prop)
 get_prop(system_server, vendor_scroll_prop)
 
+#allow system_server to access wifi ip nmonitor
+get_prop(system_server, vendor_wifi_init_prop)
+
 # allow WIGIG framework hosted in system_server to access wigig_hal
 hal_client_domain(system_server, hal_wigig)
 # allow WIGIG framework to access network performance tuner

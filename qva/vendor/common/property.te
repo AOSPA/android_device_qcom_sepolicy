@@ -94,3 +94,6 @@ type ctl_qmuxd_prop, property_type;
 
 #slm property
 type slm_prop, property_type;
+
+#wifi property
+type vendor_wifi_init_prop, property_type;
