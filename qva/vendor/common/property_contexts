@@ -127,3 +127,6 @@ ro.vendor.bt.enablelazyhal                   u:object_r:bluetooth_prop:s0 exact 
 
 #SLM
 persist.vendor.slm.                          u:object_r:slm_prop:s0
+
+#wifi
+persist.vendor.wifi.                         u:object_r:vendor_wifi_init_prop:s0

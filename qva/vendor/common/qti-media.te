@@ -33,3 +33,4 @@ init_daemon_domain(qti-media)
 allow qti-media qti-media_exec:file rx_file_perms;
 allow qti-media vendor_toolbox_exec:file rx_file_perms;
 set_prop(qti-media, vendor_video_prop)
+allow qti-media vendor_sysfs_sku:file { open read };
