@@ -51,6 +51,8 @@ userdebug_or_eng(`
     #loc api access from ODLT
     allow location_app_test self:qipcrtr_socket create_socket_perms_no_ioctl;
 
+    binder_call(location_app_test, gpuservice);
+
     allow location_app_test audioserver_service:service_manager find;
 
     #dontaudit denial location_app_test to access hwservice_manager
