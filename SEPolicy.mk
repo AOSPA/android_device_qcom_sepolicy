@@ -54,7 +54,7 @@ ifeq (,$(filter sdm845 sdm710 sdm660 msm8937 msm8953 msm8998, $(TARGET_BOARD_PLA
     endif
 endif
 
-ifneq (,$(filter sdm845 sdm710 sdm660 msm8937 msm8953 msm8998, $(TARGET_BOARD_PLATFORM)))
+ifneq (,$(filter sdm845 sdm710 sdm660 msm8937 msm8953 msm8996 msm8998, $(TARGET_BOARD_PLATFORM)))
     BOARD_SEPOLICY_DIRS := \
                  $(BOARD_SEPOLICY_DIRS) \
                  $(SEPOLICY_PATH) \
