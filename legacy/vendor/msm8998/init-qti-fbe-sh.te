@@ -1,4 +1,4 @@
-# Copyright (c) 2019-2020, The Linux Foundation. All rights reserved.
+# Copyright (c) 2016,2017 The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -25,41 +25,13 @@
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-allow mediaserver qdsp_device:chr_file r_file_perms;
-allow mediaserver xdsp_device:chr_file r_file_perms;
+type init-qti-fbe-sh, domain;
+type init-qti-fbe-sh_exec, exec_type, file_type, vendor_file_type;
 
-allow mediaserver self:socket create_socket_perms_no_ioctl;
+init_daemon_domain(init-qti-fbe-sh)
 
-binder_call(mediaserver, rild)
+allow init-qti-fbe-sh vendor_shell_exec:file rx_file_perms;
 
-#qmux_socket(mediaserver)
-allow mediaserver camera_data_file:sock_file w_file_perms;
-
-userdebug_or_eng(`
-  allow mediaserver camera_data_file:dir rw_dir_perms;
-  allow mediaserver camera_data_file:file create_file_perms;
-  # Access to audio
-  allow mediaserver qti_debugfs:file rw_file_perms;
-')
-
-# allow poweroffhandler to binder mediaserver
-binder_call(mediaserver, poweroffhandler);
-
-#This is required for thermal sysfs access
-r_dir_file(mediaserver, sysfs_thermal);
-
-binder_call(mediaserver, wfdservice)
-
-#allow mediaserver to access adsprpc_prop
-get_prop(mediaserver, adsprpc_prop)
-
-binder_call(mediaserver, bootanim);
-
-get_prop(mediaserver, vendor_audio_prop)
-
-get_prop(mediaserver, vendor_sys_video_prop)
-
-allow mediaserver surfaceflinger:unix_stream_socket rw_socket_perms;
-
-hal_client_domain(mediaserver, hal_graphics_composer)
-#binder_call(mediaserver, hal_display_config);
+# execute toybox/toolbox
+allow init-qti-fbe-sh vendor_toolbox_exec:file rx_file_perms;
+get_prop(init-qti-fbe-sh, vendor_tee_listener_prop)
