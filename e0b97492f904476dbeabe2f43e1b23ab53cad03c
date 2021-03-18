@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa91fe82_6459cf29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000447
+      },
+      "writtenOn": "2021-03-18T03:21:12Z",
+      "side": 1,
+      "message": "Considering this is the only commit from us in this repo, drop this and just go back to tracking it from CAF",
+      "revId": "e0b97492f904476dbeabe2f43e1b23ab53cad03c",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
