@@ -1,4 +1,5 @@
 # Board specific SELinux policy variable definitions
+ifeq ($(TARGET_USES_LEGACY_SEPOLICY),true)
 ifeq ($(call is-vendor-board-platform,QCOM),true)
 SEPOLICY_PATH:= device/qcom/sepolicy-legacy
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR := \
@@ -70,5 +71,6 @@ ifneq (,$(filter sdm845 sdm710 sdm660 msm8937 msm8953 msm8996 msm8998, $(TARGET_
     ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
     BOARD_SEPOLICY_DIRS += $(SEPOLICY_PATH)/legacy/vendor/test
     endif
+endif
 endif
 endif
