@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7e76f48_f579e4b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000715
+      },
+      "writtenOn": "2022-03-02T11:29:12Z",
+      "side": 1,
+      "message": "We should stick to the old labeling in my opinion, exported prop is way too wide and in itself should not be used (in my opinion) on S even if inside the old api 30 policy, people can slightly adapt their sepolicy if they really need to",
+      "revId": "3f63a55e7e11f73f93095a28d0376a96378fbcf6",
+      "serverId": "3162e3d8-d894-470e-abd9-724f7b0effad"
+    }
+  ]
+}
