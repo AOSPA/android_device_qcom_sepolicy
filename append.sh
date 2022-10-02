@@ -32,8 +32,6 @@ dirpath=$(pwd)
 
 for i in ${api_versions[@]}
 do
-
- cat $dirpath/system/sepolicy/prebuilts/api/$i/plat_pub_versioned.cil $dirpath/device/qcom/sepolicy/generic/prebuilts/api/$i/system_ext_pub_versioned.cil $dirpath/device/qcom/sepolicy/generic/product/prebuilts/api/$i/product_pub_versioned.cil > $dirpath/device/qcom/sepolicy/prebuilts/api/$i/plat_pub_versioned.cil
-
+ cat $dirpath/device/qcom/sepolicy/generic/prebuilts/api/$i/system_ext_pub_versioned.cil $dirpath/device/qcom/sepolicy/generic/product/prebuilts/api/$i/product_pub_versioned.cil > $dirpath/device/qcom/sepolicy/prebuilts/api/$i/plat_pub_versioned.cil
 done
 
